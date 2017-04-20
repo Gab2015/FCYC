@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="reportecyc" language="groovy" pageWidth="612" pageHeight="792" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="f7cdcb19-0bee-4659-894b-9a155536efaa">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[EXECUTE pc_m_Bancos]]>
+	</queryString>
+	<field name="codbanco" class="java.lang.String"/>
+	<field name="nombanco" class="java.lang.String"/>
+	<pageHeader>
+		<band height="110" splitType="Stretch">
+			<image scaleImage="FillFrame">
+				<reportElement x="19" y="0" width="62" height="80" uuid="c7ba17df-9be8-4719-9665-e6a9639cd43e"/>
+				<imageExpression><![CDATA["C:\\xampp\\htdocs\\Planilla\\imagenes\\logocyc.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="18" y="90" width="76" height="20" uuid="796dca73-b410-4111-be09-14926ae15c76"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CODIGO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="100" y="90" width="346" height="20" uuid="5b4d39d0-48a2-4271-800c-047f904f1778"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[BANCO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="177" y="60" width="285" height="20" uuid="ef625eb5-8fff-48ae-bfa8-3af55b2f1af4"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[LISTADO DE BANCOS]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band/>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement x="18" y="0" width="76" height="20" uuid="4b8968b9-9be9-489a-b93b-125de7993380"/>
+				<textElement>
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{codbanco}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="100" y="0" width="346" height="20" uuid="23df88d1-3d72-4031-b295-75af06cc0243"/>
+				<textElement>
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nombanco}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<summary>
+		<band height="20">
+			<textField>
+				<reportElement x="446" y="0" width="80" height="20" uuid="0ee7b43e-dd10-4ea2-9900-ca87033e31b6"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="526" y="0" width="40" height="20" uuid="2ea4b06e-1b66-4ecb-97bc-68f85cf02823"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>

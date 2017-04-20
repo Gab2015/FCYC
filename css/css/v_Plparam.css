@@ -1,0 +1,19 @@
+  /*Para view v_Plparam.php*/
+  .colbox{
+    margin-left: 0px;
+    margin-right: 0px;
+  }
+  .inicio{
+    margin-left:100px;
+  } 
+ span.inicio{
+  	margin-left:15px;
+    text-align:center;
+  }
+  .well{
+    position:relative;
+    margin-left:10px;
+  }
+  legend {
+    text-align:center;
+  }
