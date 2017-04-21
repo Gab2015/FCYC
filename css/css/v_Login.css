@@ -20,3 +20,6 @@
   .Head{
   width:100%;
 }
+body,html {
+  padding-top: 0px;
+ }
