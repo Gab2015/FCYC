@@ -11,8 +11,7 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
-        </button>
-      <!--   <img border="0" src="<?php echo base_url('imagenes/logocyc.jpg'); ?>" width="63" height="75"/>   -->    
+        </button>  
       </div>
       <div class="collapse navbar-collapse" id="bs-sidebar-navbar-collapse-1">
         <ul class="nav navbar-nav">

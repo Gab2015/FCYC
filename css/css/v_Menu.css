@@ -91,6 +91,9 @@ nav.sidebar, .main{
   padding-top: 0px;
   padding-bottom: 30px;
  }
+ .container{
+  width:1200px; 
+}
 }
 /*CSS para lo responsivo en mobiles*/
 @media (min-width: 1330px) {
@@ -241,7 +244,9 @@ nav.sidebar .navbar-nav .open .dropdown-menu>li>a:hover, nav.sidebar .navbar-nav
 .navbar-default .navbar-nav .open .dropdown-menu > li > a {
     color:#fff;
 }
-
+.navbar {
+  border-radius:0px;
+}
 /* Para todos los th de las table */
 th {
   background-color: #60b044;
