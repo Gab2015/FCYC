@@ -91,9 +91,6 @@ nav.sidebar, .main{
   padding-top: 0px;
   padding-bottom: 30px;
  }
- .container{
-  width:1200px; 
-}
 }
 /*CSS para lo responsivo en mobiles*/
 @media (min-width: 1330px) {
@@ -255,3 +252,7 @@ th {
   color: #fff;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.15);
 } 
+  span.inicio{
+    margin-left:420px;
+    text-align:center;
+  }

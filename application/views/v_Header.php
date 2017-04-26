@@ -1,4 +1,4 @@
-<header>
+<header class="Head">
      <div class="container">
           <nav class="row">     
                <div class="col-lg-10 col-xs-12 Head">

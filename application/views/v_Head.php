@@ -11,3 +11,5 @@
 	<script src="<?php echo base_url("js/jquery.js");?>"></script>
 	<script src="<?php echo base_url("js/jquery.maskedinput.js");?>"></script>
 	<script src="<?php echo base_url("css/js/bootstrap.js");?>"></script>
+	<script src="<?php echo base_url("js/v_Menu.js");?>"></script>
+</head>
