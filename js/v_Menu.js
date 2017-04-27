@@ -7,7 +7,7 @@ marginLeft:'150px'});
 $(".MenuPrincipal").css({
 height:'20px'});
 $("h1#HeadMenu").css({
-marginLeft:'-160px'});
+ marginLeft:'-160px'});
 $("span#Cerrar").css({
 marginLeft:'0px'});
 });
