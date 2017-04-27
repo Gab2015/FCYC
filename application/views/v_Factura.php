@@ -8,16 +8,16 @@
 			<br>
 			<div class="row Herramientas">
 				<div class="col-lg-6 col-xs-12">
-					<span style="float:left"><a class="btn btn-primary" href="<?php echo base_url('c_Cuadros/c_Cuadros_i');?>"><span class="glyphicon glyphicon-plus"></span> Agregar</a>&nbsp;</span>	 
-					<span style="float:left"><a class="btn btn-warning" href="<?php echo base_url('c_Cuadros/c_Cuadros_i');?>"><span class="glyphicon glyphicon-trash"></span> Remover</a>&nbsp;</span>	 
-					<button type="submit" name="Imprimir" class="btn btn-success"><span class="glyphicon glyphicon-print"></span> Imprimir</button>		
+					<span style="float:left"><a class="btn btn-primary" href="<?php echo base_url('c_Cuadros/c_Cuadros_i');?>"><span id="Herramienta" class="glyphicon glyphicon-plus"></span> Agregar</a>&nbsp;</span>	 
+					<span style="float:left"><a class="btn btn-warning" href="<?php echo base_url('c_Cuadros/c_Cuadros_i');?>"><span id="Herramienta" class="glyphicon glyphicon-trash"></span> Remover</a>&nbsp;</span>	 
+					<button type="submit" name="Imprimir" class="btn btn-success"><span id="Herramienta" class="glyphicon glyphicon-print"></span> Imprimir</button>		
 				</div>
 			</div>
 			<hr class="Linea">
 			<br>
 			<div class="row Detalle">
 				<div class="col-lg-6 col-xs-12">
-					<table class="table-bordered table-striped table-condensed table-hover">
+					<table id="DetalleFac" class="table-bordered table-striped table-condensed table-hover">
 						<thead><th>IdFac</th><th>NumDoc</th><th>Cliente</th><th>Nombre</th><th>IdTipo</th><th>Cajero</th><th>Vendedor</th><th>CodVendedor</th><th>FechaContable</th><th>NumCaja</th><th>VentaGravada</th><th>VentaExenta</th><th>VentaNoSujeta</th><th>Iva</th><th>Total</th><th>DocType</th></thead>
 						<tbody>
 							<?php
@@ -55,7 +55,6 @@
 					<span style="float:left"><a class="btn btn-success" href="<?php echo base_url('c_Cuadros/c_Cuadros_i');?>"> Guardar</a>&nbsp;</span>	 	
 				</div>
 			</div>
-		</div>		
-	</form>
-</body>
-</html>
+		</div>
+	</div>		
+</form>
