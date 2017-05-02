@@ -5,17 +5,9 @@ div.AreaTrabajo{
 	margin-right:0px;
 	margin-bottom:0px;
 	margin-top:0px;
+	overflow:hidden;
 }
 hr.Linea{
 	margin-top:1px;
 	margin-bottom:1px;
-}
-div.Encabezado{
-	height:500px;
-}
-div.Herramientas{
-height:40px;
-}
-div.Detalle{
-	height:100px;
 }

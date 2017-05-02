@@ -75,7 +75,7 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => '192.168.0.21\DESARROLLO',//'GABRIEL-ROJA-PC\DESARROLLO',
+	'hostname' => 'GABRIEL-ROJA-PC\DESARROLLO',//'192.168.0.21\DESARROLLO',
 	'port'     => '1433',
 	'username' => 'sa',
 	'password' => 'Gabo12345',

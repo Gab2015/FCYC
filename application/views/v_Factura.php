@@ -64,64 +64,10 @@
 								</div>     
 							</div>
 						</div>  
-						<div class="form-group">
-							<div class="row colbox">
-								<div class="col-lg-4 col-xs-12">
-									<label for="txt_Mas" class="control-lable">Más</label>
-								</div>
-								<div class="col-lg-6 col-xs-12">
-									<input class="form-control" id="txt_Mas" name="txt_Mas" placeholder="Formato 0.0000" type="text" value="<?php echo set_value('txt_Mas'); ?>"/>
-									<span class="text-danger"><?php echo form_error('txt_Mas'); ?></span>
-								</div>     
-							</div>
-						</div> 
-						<div class="form-group">
-							<div class="row colbox">
-								<div class="col-lg-4 col-xs-12">
-									<label for="txt_Comentario" class="control-lable">Comentario</label>
-								</div>
-								<div class="col-lg-6 col-xs-12">
-									<input class="form-control" id="txt_Comentario" name="txt_Comentario" placeholder="Comentario" type="text" value="<?php echo set_value('txt_Comentario'); ?>"/>
-									<span class="text-danger"><?php echo form_error('txt_Comentario'); ?></span>
-								</div>     
-							</div>
-						</div>     
-						<div class="form-group">
-							<div class="row colbox">
-								<div class="col-lg-4 col-xs-12">
-									<label for="txt_Tipo" class="control-label">Tipo</label>
-								</div>
-								<div class="col-lg-6 col-xs-12">
-									<input class="form-control" id="txt_Tipo" name="txt_Tipo" placeholder="Tipo de cobro" type="text" value="<?php echo set_value('txt_Tipo'); ?>" />
-									<span class="text-danger"><?php echo form_error('txt_Tipo'); ?></span>
-								</div>
-							</div>
-						</div>
-						<div class="form-group">
-							<div class="row colbox">
-								<div class="col-lg-4 col-xs-12">
-									<label for="txt_Fechaini" class="control-label">Fecha inicial</label>
-								</div>
-								<div class="col-lg-6 col-xs-12">
-									<input class="form-control" id="txt_Fechaini" name="txt_Fechaini" placeholder="Fecha inicial" type="text" value="<?php echo set_value('txt_Fechaini'); ?>" />
-									<span class="text-danger"><?php echo form_error('txt_Fechaini'); ?></span>
-								</div>
-							</div>
-						</div>
-						<div class="form-group">
-							<div class="row colbox">
-								<div class="col-lg-4 col-xs-12">
-									<label for="txt_Fechafin" class="control-label">Fecha fin</label>
-								</div>
-								<div class="col-lg-6 col-xs-12">
-									<input class="form-control" id="txt_Fechafin" name="txt_Fechafin" placeholder="Fecha fin" type="text" value="<?php echo set_value('txt_Fechafin'); ?>" />
-									<span class="text-danger"><?php echo form_error('txt_Fechafin'); ?></span>
-								</div>
-							</div>
-						</div>
 					</fieldset>
 				</div>
-            </div>
+			</div>
+			<div style="clear: both;"></div>  
 			<hr class="Linea">
 			<br>
 			<div class="row Herramientas">
@@ -172,6 +118,6 @@
 					<span style="float:left"><a class="btn btn-warning" href="<?php echo base_url('c_Cuadros/c_Cuadros_i');?>"> Actualizar</a>&nbsp;</span>	 
 					<span style="float:left"><a class="btn btn-success" href="<?php echo base_url('c_Cuadros/c_Cuadros_i');?>"> Guardar</a>&nbsp;</span>	 	
 				</div>
-			</div>
-		</div>   
+			</div> 
+		</div>
 		</form>
