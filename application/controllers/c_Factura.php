@@ -70,7 +70,7 @@ class c_Factura extends CI_Controller {
 			$this->load->view('v_Header');
             $this->load->view("v_Menu",$data);
             $this->load->view('v_Factura',$datos_vista);
-			$this->load->view('v_Foot');
+			//$this->load->view('v_Foot');
 		}
 		else{
 			$this->session->set_flashdata('msg', '<div class="alert alert-danger text-center">¡Datos incorrectos!</div>');
