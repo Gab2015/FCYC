@@ -133,27 +133,38 @@
 					<div class="row">
 						<div class="col-lg-6 col-xs-12">
 							<table id="DetalleFac" class="table-bordered table-striped table-condensed table-hover">
-								<thead><th>IdFac</th><th>NumDoc</th><th>Cliente</th><th>Nombre</th><th>IdTipo</th><th>Cajero</th><th>Vendedor</th><th>CodVendedor</th><th>FechaContable</th><th>NumCaja</th><th>VentaGravada</th><th>VentaExenta</th><th>VentaNoSujeta</th><th>Iva</th><th>Total</th><th>DocType</th></thead>
+								<thead>
+									<th class="hidden-md hidden-lg">IdDetFac</th>
+									<th class="hidden-md hidden-lg">IdFac</th>
+									<th class="hidden-md hidden-lg">IdProducto</th>
+									<th class="hidden-md hidden-lg">CuentaMayor</th>
+									<th class="hidden-md hidden-lg">CuentaCoste</th>
+									<th class="hidden-md hidden-lg">NormaReparto</th>
+									<th class="hidden-md hidden-lg">NumDoc</th>
+									<th>Código</th>
+									<th>Numero de Parte</th>
+									<th>Descripción</th>
+								    <th>Cantidad</th>
+								    <th>Precio con IVA</th>
+								    <th>Afecto</th>
+								</thead>
 								<tbody>
 									<?php
-									foreach($rs_Factura as $fila){	
+									foreach($rs_DetalleFactura as $fila){	
 										echo '<tr>';
-										echo '<td>'.$fila->IdFac.'</td>';
-										echo '<td>'.$fila->NumDoc.'</td>';
-										echo '<td>'.$fila->Cliente.'</td>';
-										echo '<td>'.$fila->Nombre.'</td>';
-										echo '<td>'.$fila->IdTipo.'</td>';
-										echo '<td>'.$fila->Cajero.'</td>';
-										echo '<td>'.$fila->Vendedor.'</td>';
-										echo '<td>'.$fila->CodVendedor.'</td>';
-										echo '<td>'.$fila->FechaContable.'</td>';
-										echo '<td>'.$fila->NumCaja.'</td>';
-										echo '<td>'.$fila->VentaGravada.'</td>';
-										echo '<td>'.$fila->VentaExenta.'</td>';
-										echo '<td>'.$fila->VentaNoSujeta.'</td>';
-										echo '<td>'.$fila->Iva.'</td>';
-										echo '<td>'.$fila->Total.'</td>';
-										echo '<td>'.$fila->DocType.'</td>';
+										echo '<td class="hidden-md hidden-lg">'.$fila->IdDetFac.'</td>';
+										echo '<td class="hidden-md hidden-lg">'.$fila->IdFac.'</td>';
+										echo '<td class="hidden-md hidden-lg">'.$fila->IdProducto.'</td>';
+										echo '<td class="hidden-md hidden-lg">'.$fila->CuentaMayor.'</td>';
+										echo '<td class="hidden-md hidden-lg">'.$fila->CuentaCoste.'</td>';
+										echo '<td class="hidden-md hidden-lg">'.$fila->NormaReparto.'</td>';
+										echo '<td class="hidden-md hidden-lg">'.$fila->NumDoc.'</td>';
+										echo '<td>'.$fila->CodProducto.'</td>';
+										echo '<td>'.$fila->NumFabricante.'</td>';
+										echo '<td>'.$fila->DescripcionProducto.'</td>';
+										echo '<td>'.$fila->Cantidad.'</td>';
+										echo '<td>'.$fila->PrecioConIva.'</td>';
+										echo '<td>'.$fila->Afecto.'</td>';
 										echo '</tr>';
 									}
 									?>

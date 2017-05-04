@@ -64,13 +64,12 @@ class c_Factura extends CI_Controller {
 	     }
 	    }
       //creo el array con datos de configuración para la vista
-			$datos_vista = $this->m_Factura->get_Factura();
+			$datos_vista = $this->m_Factura->get_DetalleFactura();
       //cargo la vista pasando los datos de configuracion
 			$this->load->view('v_Head');
 			$this->load->view('v_Header');
             $this->load->view("v_Menu",$data);
             $this->load->view('v_Factura',$datos_vista);
-			//$this->load->view('v_Foot');
 		}
 		else{
 			$this->session->set_flashdata('msg', '<div class="alert alert-danger text-center">¡Datos incorrectos!</div>');

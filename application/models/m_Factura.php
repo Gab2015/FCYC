@@ -12,5 +12,15 @@
     $rs_Facturas['rs_Factura'] = $rs_Factura->result();
  	return  $rs_Facturas;
  	}
+ 	function get_DetalleFactura(){
+ 	//Variables
+ 	$NumDoc  = 1;
+ 	$IdFact  = 1;
+ 	$ssqlNumDoc = "EXECUTE pc_m_DetalleFactura ?,?";
+ 	$paramsNumDoc = array($NumDoc,$IdFact);
+    $rs_DetalleFactura = $this->db->query($ssqlNumDoc,$paramsNumDoc);
+    $rs_DetalleFacturas['rs_DetalleFactura'] = $rs_DetalleFactura->result();
+ 	return  $rs_DetalleFacturas;
+ 	}
  }
  ?> 

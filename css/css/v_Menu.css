@@ -240,6 +240,7 @@ th {
   border-color:#5ca941;
   color: #fff;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.15);
+  text-align: center;
 } 
   span.inicio{
     margin-left:420px;
