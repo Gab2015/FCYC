@@ -10,6 +10,8 @@ $(document).ready(function () {
 			marginLeft:'-160px'});
 		$("span#Herramienta").css({
 			marginLeft:'0px'});
+		$(".AreaTrabajo").css({
+			marginLeft:'50px'});
 	});
 	$(".navbar-nav li.desplazar a").dblclick(function(event) {
 		$("nav.sidebar").css({
@@ -20,6 +22,8 @@ $(document).ready(function () {
 			marginLeft:'0px'});
 		$("span#Herramienta").css({
 			marginLeft:'0px'});
+		$(".AreaTrabajo").css({
+			marginLeft:'210px'});
 	});
 	$('#DetalleFac').dataTable( {
 		"language": {
