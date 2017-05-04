@@ -141,15 +141,18 @@
 									<th class="hidden-md hidden-lg">CuentaCoste</th>
 									<th class="hidden-md hidden-lg">NormaReparto</th>
 									<th class="hidden-md hidden-lg">NumDoc</th>
+									<th>#</th>
+									<th></th>
 									<th>Código</th>
 									<th>Numero de Parte</th>
 									<th>Descripción</th>
-								    <th>Cantidad</th>
-								    <th>Precio con IVA</th>
-								    <th>Afecto</th>
+									<th>Cantidad</th>
+									<th>Precio con IVA</th>
+									<th>Afecto</th>
 								</thead>
 								<tbody>
 									<?php
+									$i = 0;
 									foreach($rs_DetalleFactura as $fila){	
 										echo '<tr>';
 										echo '<td class="hidden-md hidden-lg">'.$fila->IdDetFac.'</td>';
@@ -159,6 +162,8 @@
 										echo '<td class="hidden-md hidden-lg">'.$fila->CuentaCoste.'</td>';
 										echo '<td class="hidden-md hidden-lg">'.$fila->NormaReparto.'</td>';
 										echo '<td class="hidden-md hidden-lg">'.$fila->NumDoc.'</td>';
+										echo '<td>'.$i++.'</td>';
+										echo '<td align="center"> <input type="checkbox" name="myTextEditBox" value="checked" ></td>';
 										echo '<td>'.$fila->CodProducto.'</td>';
 										echo '<td>'.$fila->NumFabricante.'</td>';
 										echo '<td>'.$fila->DescripcionProducto.'</td>';
