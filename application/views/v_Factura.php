@@ -152,7 +152,7 @@
 								</thead>
 								<tbody>
 									<?php
-									$i = 0;
+									$i = 1;
 									foreach($rs_DetalleFactura as $fila){	
 										echo '<tr>';
 										echo '<td class="hidden-md hidden-lg">'.$fila->IdDetFac.'</td>';
@@ -162,7 +162,7 @@
 										echo '<td class="hidden-md hidden-lg">'.$fila->CuentaCoste.'</td>';
 										echo '<td class="hidden-md hidden-lg">'.$fila->NormaReparto.'</td>';
 										echo '<td class="hidden-md hidden-lg">'.$fila->NumDoc.'</td>';
-										echo '<td>'.$i++.'</td>';
+										echo '<td>'.$i.'</td>';
 										echo '<td align="center"> <input type="checkbox" name="myTextEditBox" value="checked" ></td>';
 										echo '<td>'.$fila->CodProducto.'</td>';
 										echo '<td>'.$fila->NumFabricante.'</td>';
@@ -171,6 +171,7 @@
 										echo '<td>'.$fila->PrecioConIva.'</td>';
 										echo '<td>'.$fila->Afecto.'</td>';
 										echo '</tr>';
+										 $i++;
 									}
 									?>
 								</tbody>
