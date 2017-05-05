@@ -9,13 +9,17 @@
 						</div>
 						<div class="col-lg-4 col-xs-11 well">
 							<fieldset>
+							<?php 	
+							     $i = 1;
+								foreach($rs_Venta as $fila){	
+							?>
 								<div class="form-group">
 									<div class="row colbox">
 										<div class="col-lg-4 col-xs-12">
 											<label for="txt_Cliente" class="control-label">Cliente</label>
 										</div>
-										<div class="col-lg-6 col-xs-12">
-											<input class="form-control" id="txt_Cliente" name="txt_Cliente" placeholder="C99999" type="text" value="<?php echo set_value('txt_Cliente'); ?>" />
+										<div class="col-lg-8 col-xs-12">
+											<input class="form-control" id="txt_Cliente" name="txt_Cliente" placeholder="C99999" type="text" value="<?php echo $fila->Cliente; ?>" />
 											<span class="text-danger"><?php echo form_error('txt_Nombre'); ?></span>
 										</div>
 									</div>
@@ -25,8 +29,8 @@
 										<div class="col-lg-4 col-xs-12">
 											<label for="txt_Nombre" class="control-lable">Nombre</label>
 										</div>
-										<div class="col-lg-6 col-xs-12">
-											<input class="form-control" id="txt_Nombre" name="txt_Nombre" placeholder="Nombre" type="text" value="<?php echo set_value('txt_Nombre'); ?>"/>
+										<div class="col-lg-8 col-xs-12">
+											<input class="form-control" id="txt_Nombre" name="txt_Nombre" placeholder="Nombre" type="text" value="<?php echo $fila->Nombre; ?>"/>
 											<span class="text-danger"><?php echo form_error('txt_Nombre'); ?></span>
 										</div>     
 									</div>
@@ -36,8 +40,8 @@
 										<div class="col-lg-4 col-xs-12">
 											<label for="txt_Cajero" class="control-label">Cajero</label>
 										</div>
-										<div class="col-lg-6 col-xs-12">
-											<input class="form-control" id="txt_Cajero" name="txt_Cajero" placeholder="Cajero" type="text" value="<?php echo set_value('txt_Cajero'); ?>" />
+										<div class="col-lg-8 col-xs-12">
+											<input class="form-control" id="txt_Cajero" name="txt_Cajero" placeholder="Cajero" type="text" value="<?php echo $fila->Cajero; ?>" />
 											<span class="text-danger"><?php echo form_error('txt_Cajero'); ?></span>
 										</div>
 									</div>
@@ -47,8 +51,8 @@
 										<div class="col-lg-4 col-xs-12">
 											<label for="txt_NumCaja" class="control-lable">Caja #</label>
 										</div>
-										<div class="col-lg-6 col-xs-12">
-											<input class="form-control" id="txt_NumCaja" name="txt_NumCaja" placeholder="Caja #" type="text" value="<?php echo set_value('txt_NumCaja'); ?>"/>
+										<div class="col-lg-8 col-xs-12">
+											<input class="form-control" id="txt_NumCaja" name="txt_NumCaja" placeholder="Caja #" type="text" value="<?php echo $fila->NumCaja; ?>"/>
 											<span class="text-danger"><?php echo form_error('txt_NumCaja'); ?></span>
 										</div>     
 									</div>
@@ -58,8 +62,8 @@
 										<div class="col-lg-4 col-xs-12">
 											<label for="txt_DocType" class="control-lable">Documento</label>
 										</div>
-										<div class="col-lg-6 col-xs-12">
-											<input class="form-control" id="txt_DocType" name="txt_DocType" placeholder="Tipo" type="text" value="<?php echo set_value('txt_DocType'); ?>"/>
+										<div class="col-lg-8 col-xs-12">
+											<input class="form-control" id="txt_DocType" name="txt_DocType" placeholder="Tipo" type="text" value="<?php echo $fila->DocType; ?>"/>
 											<span class="text-danger"><?php echo form_error('txt_DocType'); ?></span>
 										</div>     
 									</div>
@@ -68,7 +72,7 @@
 						</div>
 						<div class="col-lg-1 col-xs-2"> 
 						</div>
-						<div class="col-lg-3 col-xs-11 well">
+						<div class="col-lg-4 col-xs-11 well">
 							<fieldset>
 								<div class="form-group">
 									<div class="row colbox">
@@ -76,7 +80,7 @@
 											<label for="txt_IdTipo" class="control-label">Serie</label>
 										</div>
 										<div class="col-lg-6 col-xs-12">
-											<input class="form-control" id="txt_IdTipo" name="txt_IdTipo" placeholder="Tipo" type="text" value="<?php echo set_value('txt_IdTipo'); ?>" />
+											<input class="form-control" id="txt_IdTipo" name="txt_IdTipo" placeholder="Tipo" type="text" value="<?php echo $fila->Documento; ?>" />
 											<span class="text-danger"><?php echo form_error('txt_IdTipo'); ?></span>
 										</div>
 									</div>
@@ -87,7 +91,7 @@
 											<label for="txt_FechaContable" class="control-lable">Fecha</label>
 										</div>
 										<div class="col-lg-6 col-xs-12">
-											<input class="form-control" id="txt_FechaContable" name="txt_FechaContable" placeholder="Contable" type="text" value="<?php echo set_value('txt_FechaContable'); ?>"/>
+											<input class="form-control" id="txt_FechaContable" name="txt_FechaContable" placeholder="Contable" type="text" value="<?php echo $fila->FechaContable; ?>"/>
 											<span class="text-danger"><?php echo form_error('txt_FechaContable'); ?></span>	
 										</div>     
 									</div>
@@ -98,7 +102,7 @@
 											<label for="txt_CodVendedor" class="control-label">Código Vendedor</label>
 										</div>
 										<div class="col-lg-6 col-xs-12">
-											<input class="form-control" id="txt_CodVendedor" name="txt_CodVendedor" placeholder="Código" type="text" value="<?php echo set_value('txt_CodVendedor'); ?>" />
+											<input class="form-control" id="txt_CodVendedor" name="txt_CodVendedor" placeholder="Código" type="text" value="<?php echo $fila->CodVendedor; ?>" />
 											<span class="text-danger"><?php echo form_error('txt_CodVendedor'); ?></span>
 										</div>
 									</div>
@@ -109,7 +113,7 @@
 											<label for="txt_Vendedor" class="control-lable">Vendedor</label>
 										</div>
 										<div class="col-lg-6 col-xs-12">
-											<input class="form-control" id="txt_Porcentaje" name="txt_Vendedor" placeholder="Vendedor" type="text" value="<?php echo set_value('txt_Vendedor'); ?>"/>
+											<input class="form-control" id="txt_Vendedor" name="txt_Vendedor" placeholder="Vendedor" type="text" value="<?php echo $fila->Vendedor; ?>"/>
 											<span class="text-danger"><?php echo form_error('txt_Vendedor'); ?></span>
 										</div>     
 									</div>
@@ -141,6 +145,7 @@
 									<th class="hidden-md hidden-lg">CuentaCoste</th>
 									<th class="hidden-md hidden-lg">NormaReparto</th>
 									<th class="hidden-md hidden-lg">NumDoc</th>
+									<th class="hidden-md hidden-lg">Afecto</th>
 									<th>#</th>
 									<th></th>
 									<th>Código</th>
@@ -148,12 +153,10 @@
 									<th>Descripción</th>
 									<th>Cantidad</th>
 									<th>Precio con IVA</th>
-									<th>Afecto</th>
+									<th>Ventas Afectas</th>
 								</thead>
 								<tbody>
 									<?php
-									$i = 1;
-									foreach($rs_DetalleFactura as $fila){	
 										echo '<tr>';
 										echo '<td class="hidden-md hidden-lg">'.$fila->IdDetFac.'</td>';
 										echo '<td class="hidden-md hidden-lg">'.$fila->IdFac.'</td>';
@@ -162,14 +165,15 @@
 										echo '<td class="hidden-md hidden-lg">'.$fila->CuentaCoste.'</td>';
 										echo '<td class="hidden-md hidden-lg">'.$fila->NormaReparto.'</td>';
 										echo '<td class="hidden-md hidden-lg">'.$fila->NumDoc.'</td>';
+										echo '<td class="hidden-md hidden-lg">'.$fila->Afecto.'</td>';
 										echo '<td>'.$i.'</td>';
 										echo '<td align="center"> <input type="checkbox" name="myTextEditBox" value="checked" ></td>';
 										echo '<td>'.$fila->CodProducto.'</td>';
 										echo '<td>'.$fila->NumFabricante.'</td>';
 										echo '<td>'.$fila->DescripcionProducto.'</td>';
 										echo '<td>'.$fila->Cantidad.'</td>';
-										echo '<td>'.$fila->PrecioConIva.'</td>';
-										echo '<td>'.$fila->Afecto.'</td>';
+										echo '<td>'.number_format($fila->PrecioConIva,2,".",",").'</td>';
+										echo '<td></td>';
 										echo '</tr>';
 										 $i++;
 									}
