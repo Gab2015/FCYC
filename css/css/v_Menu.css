@@ -11,7 +11,7 @@ nav.sidebar, .main{
 /*CSS para pantalla larga*/
 @media (min-width: 765px) {
 body,html{
-  height:95%;
+  height:calc(100% + 15%); 
 }
   .main{
     position: absolute;
@@ -193,8 +193,6 @@ header {
  background-color:#363b3f;  
 }
 footer{
-  position:absolute;
-  bottom:0;
   width:100%;
 }
 .Cerrar{

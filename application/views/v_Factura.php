@@ -173,7 +173,7 @@
 										echo '<td>'.$fila->DescripcionProducto.'</td>';
 										echo '<td>'.$fila->Cantidad.'</td>';
 										echo '<td>'.number_format($fila->PrecioConIva,2,".",",").'</td>';
-										echo '<td></td>';
+										echo '<td>'.number_format($fila->PrecioConIva*$fila->Cantidad,2,".",",").'</td>';
 										echo '</tr>';
 										 $i++;
 									}
@@ -185,12 +185,79 @@
 					<hr class="Linea">
 					<br>
 					<div class="row">
+					<div class="col-lg-6 col-xs-2"> 
+					</div>
+						<div class="col-lg-4 col-xs-11 well">
+							<fieldset>
+								<div class="form-group">
+									<div class="row colbox">
+										<div class="col-lg-4 col-xs-12">
+											<label for="txt_VentaGravada" class="control-label">Venta Gravada</label>
+										</div>
+										<div class="col-lg-6 col-xs-12">
+											<input class="form-control" id="txt_VentaGravada" name="txt_VentaGravada" placeholder="Venta Gravada" type="text" value="<?php echo number_format($fila->VentaGravada,2,".",","); ?>" />
+											<span class="text-danger"><?php echo form_error('txt_VentaGravada'); ?></span>
+										</div>
+									</div>
+								</div> 
+								<div class="form-group">
+									<div class="row colbox">
+										<div class="col-lg-4 col-xs-12">
+											<label for="txt_VentaExenta" class="control-lable">Venta Exenta</label>
+										</div>
+										<div class="col-lg-6 col-xs-12">
+											<input class="form-control" id="txt_VentaExenta" name="txt_VentaExenta" placeholder="Venta Exenta" type="text" value="<?php echo number_format($fila->VentaExenta,2,".",","); ?>"/>
+											<span class="text-danger"><?php echo form_error('txt_VentaExenta'); ?></span>	
+										</div>     
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="row colbox">
+										<div class="col-lg-4 col-xs-12">
+											<label for="txt_VentaNoSujeta" class="control-label">Venta No Sujeta</label>
+										</div>
+										<div class="col-lg-6 col-xs-12">
+											<input class="form-control" id="txt_VentaNoSujeta" name="txt_VentaNoSujeta" placeholder="No Sujeta" type="text" value="<?php echo number_format($fila->VentaNoSujeta,2,".",","); ?>" />
+											<span class="text-danger"><?php echo form_error('txt_VentaNoSujeta'); ?></span>
+										</div>
+									</div>
+								</div> 
+								<div class="form-group">
+									<div class="row colbox">
+										<div class="col-lg-4 col-xs-12">
+											<label for="txt_Iva" class="control-lable">IVA</label>
+										</div>
+										<div class="col-lg-6 col-xs-12">
+											<input class="form-control" id="txt_Iva" name="txt_Iva" placeholder="IVA" type="text" value="<?php echo number_format($fila->Iva,2,".",","); ?>"/>
+											<span class="text-danger"><?php echo form_error('txt_Iva'); ?></span>
+										</div>     
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="row colbox">
+										<div class="col-lg-4 col-xs-12">
+											<label for="txt_Total" class="control-lable">Total</label>
+										</div>
+										<div class="col-lg-6 col-xs-12">
+											<input class="form-control" id="txt_Total" name="txt_Total" placeholder="Total" type="text" value="<?php echo number_format($fila->Total,2,".",","); ?>"/>
+											<span class="text-danger"><?php echo form_error('txt_Total'); ?></span>
+										</div>     
+									</div>
+								</div>
+							</fieldset>
+						</div>
+					</div>
+					<br>	
+					<hr class="Linea">
+					<br>
+					<div class="row">
 						<div class="col-lg-6 col-xs-12">
 							<span style="float:left"><a class="btn btn-primary" href="<?php echo base_url('c_Cuadros/c_Cuadros_i');?>"> Cancelar</a>&nbsp;</span>	 
 							<span style="float:left"><a class="btn btn-warning" href="<?php echo base_url('c_Cuadros/c_Cuadros_i');?>"> Actualizar</a>&nbsp;</span>	 
 							<span style="float:left"><a class="btn btn-success" href="<?php echo base_url('c_Cuadros/c_Cuadros_i');?>"> Guardar</a>&nbsp;</span>	 	
 						</div>
-					</div> 
+					</div>
+					<br> 
 				</div>
 			</form>
 			<footer>    
