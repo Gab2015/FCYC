@@ -1,5 +1,5 @@
 			<div class="AreaTrabajo">
-				<form method="post" action="<?php echo base_url('exportarcyc.php')?>" target="_blank">            
+				<form method="post" action="<?php echo base_url('factura.php')?>" target="_blank">            
 					<br>
 					<legend> 
 						<span class="inicio">FACTURA CLIENTE</span>
