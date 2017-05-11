@@ -1,5 +1,6 @@
 			<div class="AreaTrabajo">
-				<form method="post" action="<?php echo base_url('factura.php')?>" target="_blank">            
+                    <?php   $attributes = array("class" => "form-horizontal", "id" => "FacturaForm", "name" => "FacturaForm");
+                    echo form_open("c_Factura/set_Factura", $attributes);?>       
 					<br>
 					<legend> 
 						<span class="inicio">FACTURA CLIENTE</span>
@@ -128,7 +129,7 @@
 						<div class="col-lg-6 col-xs-12">
 							<span style="float:left"><a class="btn btn-primary" href="<?php echo base_url('c_Cuadros/c_Cuadros_i');?>"><span id="Herramienta" class="glyphicon glyphicon-plus"></span> Agregar</a>&nbsp;</span>	 
 							<span style="float:left"><a class="btn btn-warning" href="<?php echo base_url('c_Cuadros/c_Cuadros_i');?>"><span id="Herramienta" class="glyphicon glyphicon-trash"></span> Remover</a>&nbsp;</span>	 
-							<button type="submit" name="Imprimir" class="btn btn-success"><span id="Herramienta" class="glyphicon glyphicon-print"></span> Imprimir</button>		
+                            <span style="float:left"><a class="btn btn-success" href="<?php echo base_url('factura.php?Imprimir=true');?>" target="_blank"><span id="Herramienta" class="glyphicon glyphicon-print"></span> Imprimir</a>&nbsp;</span>	 
 						</div>
 					</div>
 					<br>
@@ -259,7 +260,8 @@
 					</div>
 					<br> 
 				</div>
-			</form>
+                <?php echo form_close();
+                echo $this->session->flashdata('msg'); ?>
 			<footer>    
 				<div class="col-lg-8 col-xs-12 Foot">
 					<h1 id="Foot">SISTEMAS C&C
