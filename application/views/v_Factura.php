@@ -57,7 +57,7 @@
 										</div>     
 									</div>
 								</div>
-								<div class="form-group">
+								<div class="hidden-md hidden-lg">
 									<div class="row colbox">
 										<div class="col-lg-4 col-xs-12">
 											<label for="txt_DocType" class="control-lable">Documento</label>
