@@ -255,7 +255,7 @@
 						<div class="col-lg-6 col-xs-12">
 							<span style="float:left"><a class="btn btn-primary" href="<?php echo base_url('c_Cuadros/c_Cuadros_i');?>"> Cancelar</a>&nbsp;</span>	 
 							<span style="float:left"><a class="btn btn-warning" href="<?php echo base_url('c_Cuadros/c_Cuadros_i');?>"> Actualizar</a>&nbsp;</span>	 
-							<span style="float:left"><a class="btn btn-success" href="<?php echo base_url('c_Cuadros/c_Cuadros_i');?>"> Guardar</a>&nbsp;</span>	 	
+						    <input id="btn_guardar" name="btn_guardar" type="submit" class="btn btn-success" value="Guardar" />
 						</div>
 					</div>
 					<br> 

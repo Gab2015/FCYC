@@ -244,3 +244,8 @@ th {
     margin-left:420px;
     text-align:center;
   }
+.form-horizontal .control-label {
+    padding-top: 7px;
+    margin-bottom: 0;
+    text-align: left;
+}
