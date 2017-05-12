@@ -11,7 +11,7 @@ nav.sidebar, .main{
 /*CSS para pantalla larga*/
 @media (min-width: 765px) {
 body,html{
-  height:calc(100% + 15%); 
+  height:calc(100% + 17%); 
 }
   .main{
     position: absolute;

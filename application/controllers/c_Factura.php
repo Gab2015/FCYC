@@ -77,7 +77,7 @@ class c_Factura extends CI_Controller {
 		}	
 	}
 	public function set_Factura(){
-		$NumDoc         = 2;
+		$NumDoc         = $this->input->post("txt_NumDoc");
 		$Cliente        = $this->input->post("txt_Cliente");
 		$Nombre         = $this->input->post("txt_Nombre");
 		$IdTipo         = 1;
