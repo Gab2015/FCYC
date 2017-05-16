@@ -189,7 +189,7 @@
 										echo '<td>'.$filaDetalle->DescripcionProducto.'</td>';
 										echo '<td><input class="form-control" id="txt_Cantidad" name="txt_Cantidad" placeholder="Cantidad" type="text" value=""/></td>';
 										echo '<td class="txt_PrecioConIva">'.number_format($filaDetalle->PrecioConIva,2,".",",").'</td>';
-										echo '<td><input class="form-control" id="txt_Total" name="txt_Total" placeholder="Total" type="text" value="" readonly/></td>';
+										echo '<td><input class="form-control" id="txt_Afecta" name="txt_Afecta" placeholder="Total" type="text" value="" readonly/></td>';
 										echo '</tr>';
 										 $i++;
 									}
@@ -215,7 +215,7 @@
 											<label for="txt_VentaGravada" class="control-label">Venta Gravada</label>
 										</div>
 										<div class="col-lg-6 col-xs-12">
-											<input class="form-control" id="txt_VentaGravada" name="txt_VentaGravada" placeholder="Venta Gravada" type="text" value="<?php echo number_format($filaPie->VentaGravada,2,".",","); ?>" readonly/>
+											<input class="form-control" id="txt_VentaGravada" name="txt_VentaGravada" placeholder="Venta Gravada" type="text" value="" readonly/>
 											<span class="text-danger"><?php echo form_error('txt_VentaGravada'); ?></span>
 										</div>
 									</div>
@@ -226,7 +226,7 @@
 											<label for="txt_VentaExenta" class="control-lable">Venta Exenta</label>
 										</div>
 										<div class="col-lg-6 col-xs-12">
-											<input class="form-control" id="txt_VentaExenta" name="txt_VentaExenta" placeholder="Venta Exenta" type="text" value="<?php echo number_format($filaPie->VentaExenta,2,".",","); ?>" readonly/>
+											<input class="form-control" id="txt_VentaExenta" name="txt_VentaExenta" placeholder="Venta Exenta" type="text" value="" readonly/>
 											<span class="text-danger"><?php echo form_error('txt_VentaExenta'); ?></span>	
 										</div>     
 									</div>
@@ -237,7 +237,7 @@
 											<label for="txt_VentaNoSujeta" class="control-label">Venta No Sujeta</label>
 										</div>
 										<div class="col-lg-6 col-xs-12">
-											<input class="form-control" id="txt_VentaNoSujeta" name="txt_VentaNoSujeta" placeholder="No Sujeta" type="text" value="<?php echo number_format($filaPie->VentaNoSujeta,2,".",","); ?>" readonly/>
+											<input class="form-control" id="txt_VentaNoSujeta" name="txt_VentaNoSujeta" placeholder="No Sujeta" type="text" value="" readonly/>
 											<span class="text-danger"><?php echo form_error('txt_VentaNoSujeta'); ?></span>
 										</div>
 									</div>
@@ -248,7 +248,7 @@
 											<label for="txt_Iva" class="control-lable">IVA</label>
 										</div>
 										<div class="col-lg-6 col-xs-12">
-											<input class="form-control" id="txt_Iva" name="txt_Iva" placeholder="IVA" type="text" value="<?php echo number_format($filaPie->Iva,2,".",","); ?>" readonly/>
+											<input class="form-control" id="txt_Iva" name="txt_Iva" placeholder="IVA" type="text" value="" readonly/>
 											<span class="text-danger"><?php echo form_error('txt_Iva'); ?></span>
 										</div>     
 									</div>
@@ -259,7 +259,7 @@
 											<label for="txt_Total" class="control-lable">Total</label>
 										</div>
 										<div class="col-lg-6 col-xs-12">
-											<input class="form-control" id="txt_Total" name="txt_Total" placeholder="Total" type="text" value="<?php echo number_format($filaPie->Total,2,".",","); ?>" readonly/>
+											<input class="form-control" id="txt_Total" name="txt_Total" placeholder="Total" type="text" value="" readonly/>
 											<span class="text-danger"><?php echo form_error('txt_Total'); ?></span>
 										</div>     
 									</div>
