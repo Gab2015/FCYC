@@ -3,14 +3,9 @@ class c_Factura extends CI_Controller {
 	public function __construct(){
 		parent::__construct();
     //cargo las librerias
-		$this->load->library('session');
-		$this->load->library('form_validation');
-		$this->load->library("multi_menu");
-
+		$this->load->library(array('session','form_validation','multi_menu'));
 	//cargo el helper de url, con funciones para trabajo con URL del sitio
-		$this->load->helper('url');
-		$this->load->helper('form');
-		$this->load->helper('html');
+		$this->load->helper(array('url','form','html'));
     //cargo los modelos
 		$this->load->model('m_Factura');
 		$this->load->model("m_Menu", "menu");
@@ -63,8 +58,7 @@ class c_Factura extends CI_Controller {
 					$data['activeTabInventario'] = $this->multi_menu->render();
 				}
 			}
-      //creo el array con datos de configuración para la vista
-			
+      //creo el array con datos de configuración para la vista			
 			$datos_vista['rs_Factura'] = $this->m_Factura->get_Factura();
 			$datos_vista['rs_DetalleFactura'] = $this->m_Factura->get_DetalleFactura();
       //cargo la vista pasando los datos de configuracion
@@ -89,8 +83,8 @@ class c_Factura extends CI_Controller {
 		$NumCaja        = 1;
 		$FechaContable  = $this->input->post("txt_FechaContable");
 		$VentaGravada   = $this->input->post("txt_VentaGravada");
-		$VentaExenta    = $this->input->post("txt_VentaExenta");
-		$VentaNoSujeta  = $this->input->post("txt_VentaNoSujeta");
+		$VentaExenta    = 0;
+		$VentaNoSujeta  = 0;
 		$Iva            = $this->input->post("txt_Iva");
 		$Total          = $this->input->post("txt_Total");
 		$DocType        = $this->input->post("txt_DocType");
@@ -102,8 +96,6 @@ class c_Factura extends CI_Controller {
 		$this->form_validation->set_rules("txt_CodVendedor", "Codigo", "trim|required");
 		$this->form_validation->set_rules("txt_FechaContable", "Fecha", "trim|required");
 		$this->form_validation->set_rules("txt_VentaGravada", "Gravada", "trim|required");
-		$this->form_validation->set_rules("txt_VentaExenta", "Exenta", "trim|required");
-		$this->form_validation->set_rules("txt_VentaNoSujeta", "No Sujeta", "trim|required");
 		$this->form_validation->set_rules("txt_Iva", "IVA", "trim|required");
 		$this->form_validation->set_rules("txt_Total", "Total", "trim|required");
 
@@ -156,7 +148,8 @@ class c_Factura extends CI_Controller {
 					}
 				}
       //creo el array con datos de configuración para la vista
-				$datos_vista = $this->m_Factura->get_Venta();
+			$datos_vista['rs_Factura'] = $this->m_Factura->get_Factura();
+			$datos_vista['rs_DetalleFactura'] = $this->m_Factura->get_DetalleFactura();
       //cargo la vista pasando los datos de configuracion
 				$this->load->view('v_Head');
 				$this->load->view('v_Header');
@@ -220,7 +213,8 @@ class c_Factura extends CI_Controller {
 							}
 						}
       //creo el array con datos de configuración para la vista
-						$datos_vista = $this->m_Factura->get_Venta();
+						$datos_vista['rs_Factura'] = $this->m_Factura->get_Factura();
+			            $datos_vista['rs_DetalleFactura'] = $this->m_Factura->get_DetalleFactura();
       //cargo la vista pasando los datos de configuracion
 						$this->load->view('v_Head');
 						$this->load->view('v_Header');
