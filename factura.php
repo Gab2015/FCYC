@@ -1,5 +1,5 @@
 <?php
-if ( isset( $_POST['Exportar'] ) ) { 
+if ( $_GET['Imprimir'] == 'true') { 
 define ('BASEPATH','./');
 //Import the PhpJasperLibrary
 include ('PhpJasperLibrary/tcpdf/tcpdf.php');
@@ -19,12 +19,15 @@ $pchartfolder="./class/pchart2";
     ob_end_clean();
     ob_start();
     //setting the path to the created jrxml file
-    $xml =  simplexml_load_file('reportes/reportecyc.jrxml');
+    $xml =  simplexml_load_file('reportes/factura.jrxml');
     $PHPJasperXML = new PHPJasperXML();
     $PHPJasperXML->debugsql=false;
     //$PHPJasperXML->arrayParameter=array("parameter1"=>1);
     $PHPJasperXML->xml_dismantle($xml);
     $PHPJasperXML->transferDBtoArray($server,$user,$pass,$bd,"odbc");
     $PHPJasperXML->outpage("I");
+}
+else {
+    if ( ! defined('BASEPATH')) exit('Acceso no permitido');
 }
 ?> 

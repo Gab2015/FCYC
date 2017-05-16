@@ -2,7 +2,7 @@
 <script src="<?php echo base_url("js/v_Login.js");?>"></script>
 </head>
 <body>
-  <header>
+  <header class="Head">
      <div class="container">
           <nav class="row">     
                <div class="col-lg-12 col-xs-12 Head">

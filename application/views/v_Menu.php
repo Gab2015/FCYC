@@ -1,8 +1,6 @@
-<script src="<?php echo base_url("js/v_Menu.js");?>"></script> 
-</head>
 <body>
   <nav class="navbar navbar-default sidebar" role="navigation">
-    <div class="container-fluid">
+      <div class="container-fluid">
       <div class="navbar-header">
         <button type="button" class="pull-left navbar-toggle" data-toggle="collapse" data-target="#bs-sidebar-navbar-collapse-1">
           <span class="sr-only">Toggle navigation</span>
@@ -57,7 +55,5 @@
         </a></li>
       </ul>
     </div>
-  </div>
-</nav>
-</body>
-</html>
+    </div>
+    </nav>  
