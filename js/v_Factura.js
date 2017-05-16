@@ -1,9 +1,8 @@
 $(document).ready(function() {
-                $('#DetalleFac tr:not(:first)').each(function (i,e) {
-                var tds = $(this).find('td');
-                var vPrecionConIva = parseFloat($(tds[14]).html());
-                var vCantidad = parseFloat($(tds[13]).find('#txt_Cantidad').val());
-                var rtotal = vCantidad * vPrecionConIva;
-                $(tds[15]).find('#txt_Total').val(rtotal.toFixed(2));
-            });
+$('#DetalleFac tr:not(:first)').on('change', 'input[type="text"]', function(i,e) {
+  var cells = $(this).closest('tr').children('td');
+  var vCantidad = cells.eq(13).find('input').val();
+  var vPrecionConIva = parseFloat(cells.eq(14).html());
+  cells.eq(15).text(vCantidad * vPrecionConIva);
+});
 });

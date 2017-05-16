@@ -187,7 +187,7 @@
 										echo '<td>'.$filaDetalle->CodProducto.'</td>';
 										echo '<td>'.$filaDetalle->NumFabricante.'</td>';
 										echo '<td>'.$filaDetalle->DescripcionProducto.'</td>';
-										echo '<td><input class="form-control" id="txt_Cantidad" name="txt_Cantidad" placeholder="Cantidad" type="text" value="'.number_format($filaDetalle->Cantidad,2,".",",").'"/></td>';
+										echo '<td><input class="form-control" id="txt_Cantidad" name="txt_Cantidad" placeholder="Cantidad" type="text" value=""/></td>';
 										echo '<td class="txt_PrecioConIva">'.number_format($filaDetalle->PrecioConIva,2,".",",").'</td>';
 										echo '<td><input class="form-control" id="txt_Total" name="txt_Total" placeholder="Total" type="text" value="" readonly/></td>';
 										echo '</tr>';
