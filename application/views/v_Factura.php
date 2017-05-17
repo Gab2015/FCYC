@@ -140,8 +140,8 @@
 					<br>
 					<div class="row">
 						<div class="col-lg-6 col-xs-12">
-							<span style="float:left"><a class="btn btn-primary" href="<?php echo base_url('c_Cuadros/c_Cuadros_i');?>"><span id="Herramienta" class="glyphicon glyphicon-plus"></span> Agregar</a>&nbsp;</span>	 
-							<span style="float:left"><a class="btn btn-warning" href="<?php echo base_url('c_Cuadros/c_Cuadros_i');?>"><span id="Herramienta" class="glyphicon glyphicon-trash"></span> Remover</a>&nbsp;</span>	 
+							<span style="float:left"><a id="Agregar" class="btn btn-primary" href="#"><span id="Herramienta" class="glyphicon glyphicon-plus"></span> Agregar</a>&nbsp;</span>	 
+							<span style="float:left"><a id="Remover" class="btn btn-warning" href="#"><span id="Herramienta" class="glyphicon glyphicon-trash"></span> Remover</a>&nbsp;</span>	 
                             <span style="float:left"><a class="btn btn-success" href="<?php echo base_url('factura.php?Imprimir=true');?>" target="_blank"><span id="Herramienta" class="glyphicon glyphicon-print"></span> Imprimir</a>&nbsp;</span>	 
 						</div>
 					</div>
@@ -161,7 +161,7 @@
 									<th class="hidden-md hidden-lg">NumDoc</th>
 									<th class="hidden-md hidden-lg">Afecto</th>
 									<th>#</th>
-									<th></th>
+									<th><input class='check_Todas' type="checkbox"/></th>
 									<th>Código</th>
 									<th>Numero de Parte</th>
 									<th>Descripción</th>
@@ -183,7 +183,7 @@
 										echo '<td class="hidden-md hidden-lg">'.$filaDetalle->NumDoc.'</td>';
 										echo '<td class="hidden-md hidden-lg">'.$filaDetalle->Afecto.'</td>';
 										echo '<td>'.$i.'</td>';
-										echo '<td align="center"> <input type="checkbox" name="txt_Checkbox" value="checked" ></td>';
+										echo '<td> <input type="checkbox" class="FilaMarcada"></td>';
 										echo '<td>'.$filaDetalle->CodProducto.'</td>';
 										echo '<td>'.$filaDetalle->NumFabricante.'</td>';
 										echo '<td>'.$filaDetalle->DescripcionProducto.'</td>';
