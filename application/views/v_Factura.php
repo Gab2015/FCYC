@@ -182,7 +182,7 @@
 										echo '<td class="hidden-md hidden-lg">'.$filaDetalle->NormaReparto.'</td>';
 										echo '<td class="hidden-md hidden-lg">'.$filaDetalle->NumDoc.'</td>';
 										echo '<td class="hidden-md hidden-lg">'.$filaDetalle->Afecto.'</td>';
-										echo '<td><span id="snum"></span></td>';
+										echo '<td><span id="snum">'.$i.'</span></td>';
 										echo '<td> <input type="checkbox" class="FilaMarcada"></td>';
 										echo '<td>'.$filaDetalle->CodProducto.'</td>';
 										echo '<td>'.$filaDetalle->NumFabricante.'</td>';

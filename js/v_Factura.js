@@ -5,20 +5,20 @@ $(document).ready(function() {
 	var vFila;
 	// tr:not(:first)
 	$('#DetalleFac').on('change', 'input[type="text"]', function(i,e) {
-	if($('input[class=FilaMarcada]:checkbox:checked').length == 0){ 
-		var cells = $(this).closest('tr').children('td');
-		var vCantidad = cells.eq(13).find('input').val();
-		var vPrecionConIva = parseFloat(cells.eq(14).html());
-		var vIva = 0;
-		var vTotal = 0;
-		cells.eq(15).text(vCantidad * vPrecionConIva);
-		vtGravada += vCantidad * vPrecionConIva;
-		$("input:text#txt_VentaGravada").val(vtGravada);
-		vIva = vtGravada*0.13;
-		$("input:text#txt_Iva").val(vIva.toFixed(2));
-		vTotal = vtGravada*1.13;
-		$("input:text#txt_Total").val(vTotal.toFixed(2));
-       }
+		if($('input[class=FilaMarcada]:checkbox:checked').length == 0){ 
+			var cells = $(this).closest('tr').children('td');
+			var vCantidad = cells.eq(13).find('input').val();
+			var vPrecionConIva = parseFloat(cells.eq(14).html());
+			var vIva = 0;
+			var vTotal = 0;
+			cells.eq(15).text(vCantidad * vPrecionConIva);
+			vtGravada += vCantidad * vPrecionConIva;
+			$("input:text#txt_VentaGravada").val(vtGravada);
+			vIva = vtGravada*0.13;
+			$("input:text#txt_Iva").val(vIva.toFixed(2));
+			vTotal = vtGravada*1.13;
+			$("input:text#txt_Total").val(vTotal.toFixed(2));
+		}
 	}); 
 	//=========FIN=========//
 	//=========Traduce el DataTable=========//
@@ -70,14 +70,25 @@ $(document).ready(function() {
 		check();
 	});	
     //=========FIN=========//
-    //=========Borra las filas marcadas en la tabla=========//
+    //=========Genera el numero de fila=========//
 	//=========INICI0=========//
-function check(){
-	obj=$('table tr:not(:first)').find('span');
-	$.each( obj, function( key, value ) {
-	id=value.id;
-	$('#'+id).html(key+1);
-	});
+	function check(){
+		obj=$('table tr:not(:first)').find('span');
+		$.each( obj, function( key, value ) {
+			id=value.id;
+			$('#'+id).html(key+1);
+		});
 	}
+   //=========FIN=========//
+   //=========Genera una fila y la coloca al final=========//
+   //=========INICI0=========//
+   // var i=2;
+   // $(".addmore").on('click',function(){
+   // 	count=$('table tr').length;
+   // 	var data="<tr><td><input type='checkbox' class='case'/></td><td><span id='snum"+i+"'>"+count+".</span></td>";
+   // 	data +="<td><input type='text' id='first_name"+i+"' name='first_name[]'/></td> <td><input type='text' id='last_name"+i+"' name='last_name[]'/></td><td><input type='text' id='tamil"+i+"' name='tamil[]'/></td><td><input type='text' id='english"+i+"' name='english[]'/></td><td><input type='text' id='computer"+i+"' name='computer[]'/></td><td><input type='text' id='total"+i+"' name='total[]'/></td></tr>";
+   // 	$('table').append(data);
+   // 	i++;
+   // });
    //=========FIN=========//
 });
