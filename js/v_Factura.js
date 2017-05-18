@@ -3,7 +3,8 @@ $(document).ready(function() {
 	//=========INICI0=========//
 	var vtGravada = 0;
 	var vFila;
-	$('#DetalleFac tr:not(:first)').on('change', 'input[type="text"]', function(i,e) {
+	// tr:not(:first)
+	$('#DetalleFac').on('change', 'input[type="text"]', function(i,e) {
 	if($('input[class=FilaMarcada]:checkbox:checked').length == 0){ 
 		var cells = $(this).closest('tr').children('td');
 		var vCantidad = cells.eq(13).find('input').val();
@@ -66,6 +67,17 @@ $(document).ready(function() {
 	$("#Remover").on('click', function() {
 		$('.FilaMarcada:checkbox:checked').parents("tr").remove();
 		$('.check_Todas').prop("checked", false); 
+		check();
 	});	
     //=========FIN=========//
+    //=========Borra las filas marcadas en la tabla=========//
+	//=========INICI0=========//
+function check(){
+	obj=$('table tr:not(:first)').find('span');
+	$.each( obj, function( key, value ) {
+	id=value.id;
+	$('#'+id).html(key+1);
+	});
+	}
+   //=========FIN=========//
 });
