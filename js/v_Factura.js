@@ -82,13 +82,13 @@ $(document).ready(function() {
    //=========FIN=========//
    //=========Genera una fila y la coloca al final=========//
    //=========INICI0=========//
-   // var i=2;
-   // $(".addmore").on('click',function(){
-   // 	count=$('table tr').length;
-   // 	var data="<tr><td><input type='checkbox' class='case'/></td><td><span id='snum"+i+"'>"+count+".</span></td>";
-   // 	data +="<td><input type='text' id='first_name"+i+"' name='first_name[]'/></td> <td><input type='text' id='last_name"+i+"' name='last_name[]'/></td><td><input type='text' id='tamil"+i+"' name='tamil[]'/></td><td><input type='text' id='english"+i+"' name='english[]'/></td><td><input type='text' id='computer"+i+"' name='computer[]'/></td><td><input type='text' id='total"+i+"' name='total[]'/></td></tr>";
-   // 	$('table').append(data);
-   // 	i++;
-   // });
+   var i=2;
+   $("#Agregar").on('click',function(){
+   	count=$('table tr').length;
+    var data="<tr><td class='hidden-md hidden-lg'></td><td class='hidden-md hidden-lg'></td><td class='hidden-md hidden-lg'></td><td class='hidden-md hidden-lg'></td><td class='hidden-md hidden-lg'></td><td class='hidden-md hidden-lg'></td><td class='hidden-md hidden-lg'></td><td class='hidden-md hidden-lg'></td><td><span id='snum'>"+$i+"</span></td><td><input type='checkbox' class='FilaMarcada'></td>";
+        data +="<td></td><td></td><td></td><td><input class='form-control' id='txt_Cantidad' name='txt_Cantidad' placeholder='Cantidad' type='text' value=''/></td><td class='txt_PrecioConIva'></td><td><input class='form-control' id='txt_Afecta' name='txt_Afecta' placeholder='Total' type='text' value='' readonly/></td></tr>";
+   	$('table').append(data);
+   	i++;
+   });
    //=========FIN=========//
 });
