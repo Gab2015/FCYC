@@ -16,7 +16,12 @@ $(document).ready(function() {
 		var vtGravada = 0;
 		$('table tr:not(:first)').each(function()  {
 			var cells = $(this).closest('tr').children('td');
-			vtGravada  += parseFloat(cells.eq(15).html());	
+			if(!isNaN(parseFloat(cells.eq(15).html()))){
+			   vtGravada  += parseFloat(cells.eq(15).html());	
+			}else{
+				vtGravada  +=0;
+			}
+
 		});
 			$("input:text#txt_VentaGravada").val(vtGravada);
 			vIva = vtGravada*0.13;
