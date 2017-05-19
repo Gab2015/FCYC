@@ -166,7 +166,7 @@
 								<th>Numero de Parte</th>
 								<th>Descripción</th>
 								<th>Cantidad</th>
-								<th>Precio con IVA</th>
+								<th>Precio Unitario</th>
 								<th>Ventas Afectas</th>
 							</thead>
 							<tbody>
