@@ -82,13 +82,11 @@ $(document).ready(function() {
    //=========FIN=========//
    //=========Genera una fila y la coloca al final=========//
    //=========INICI0=========//
-   var i=2;
    $("#Agregar").on('click',function(){
-   	count=$('table tr').length;
-    var data="<tr><td class='hidden-md hidden-lg'></td><td class='hidden-md hidden-lg'></td><td class='hidden-md hidden-lg'></td><td class='hidden-md hidden-lg'></td><td class='hidden-md hidden-lg'></td><td class='hidden-md hidden-lg'></td><td class='hidden-md hidden-lg'></td><td class='hidden-md hidden-lg'></td><td><span id='snum'>"+$i+"</span></td><td><input type='checkbox' class='FilaMarcada'></td>";
-        data +="<td></td><td></td><td></td><td><input class='form-control' id='txt_Cantidad' name='txt_Cantidad' placeholder='Cantidad' type='text' value=''/></td><td class='txt_PrecioConIva'></td><td><input class='form-control' id='txt_Afecta' name='txt_Afecta' placeholder='Total' type='text' value='' readonly/></td></tr>";
-   	$('table').append(data);
-   	i++;
+   	var vNumFilaAgregada=$('table tr').length;
+    var vFilaAgregada="<tr><td class='hidden-md hidden-lg'></td><td class='hidden-md hidden-lg'></td><td class='hidden-md hidden-lg'></td><td class='hidden-md hidden-lg'></td><td class='hidden-md hidden-lg'></td><td class='hidden-md hidden-lg'></td><td class='hidden-md hidden-lg'></td><td class='hidden-md hidden-lg'></td><td><span id='snum'>"+vNumFilaAgregada+"</span></td><td><input type='checkbox' class='FilaMarcada'></td>";
+        vFilaAgregada +="<td><input class='form-control' id='txt_CodProducto' name='txt_CodProducto' placeholder='Producto' type='text' value=''/></td><td></td><td></td><td><input class='form-control' id='txt_Cantidad' name='txt_Cantidad' placeholder='Cantidad' type='text' value=''/></td><td class='txt_PrecioConIva'></td><td><input class='form-control' id='txt_Afecta' name='txt_Afecta' placeholder='Total' type='text' value='' readonly/></td></tr>";
+   	$('table').append(vFilaAgregada);
    });
    //=========FIN=========//
 });
