@@ -4,8 +4,7 @@ class c_Menu extends CI_Controller {
 
 	public function __construct(){
 		parent::__construct();
-		$this->load->library("multi_menu");
-		$this->load->library('session');
+		$this->load->library(array('multi_menu','session'));
 		$this->load->helper('form');
 		$this->load->model("m_Menu", "menu");
 	}

@@ -241,6 +241,11 @@ th {
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.15);
   text-align: center;
 } 
+
+td,th{
+    white-space: nowrap;
+    width: 1%;
+}
   span.inicio{
     margin-left:420px;
     text-align:center;
