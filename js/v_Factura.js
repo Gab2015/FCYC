@@ -1,36 +1,29 @@
 $(document).ready(function() {
 	//=========Calcula los montos totales de la Factura o Tikect=========//
 	//=========INICI0=========//
-	var vtGravada = 0;
-	var vFila;
-	var vResetAfecta =0;
 	$('#DetalleFac').on('change', 'input[type="text"]', function(i,e) {
 		if($('input[class=FilaMarcada]:checkbox:checked').length == 0){ 
 			var cells = $(this).closest('tr').children('td');
 			var vCantidad = cells.eq(13).find('input').val();
 			var vPrecionConIva = parseFloat(cells.eq(14).html());
-			var vIva = 0;
-			var vTotal = 0;
-			if(vCantidad ==""){
-				vResetAfecta = parseFloat(cells.eq(15).html());
-				vtGravada -= vResetAfecta;
-				$("input:text#txt_VentaGravada").val(vtGravada);
-				vIva = vtGravada*0.13;
-				$("input:text#txt_Iva").val(vIva.toFixed(2));
-				vTotal = vtGravada*1.13;
-				$("input:text#txt_Total").val(vTotal.toFixed(2));
-				cells.eq(15).text("");
-			}else{
-					cells.eq(15).text(vCantidad * vPrecionConIva);
-					vtGravada += vCantidad * vPrecionConIva;
-					$("input:text#txt_VentaGravada").val(vtGravada);
-					vIva = vtGravada*0.13;
-					$("input:text#txt_Iva").val(vIva.toFixed(2));
-					vTotal = vtGravada*1.13;
-					$("input:text#txt_Total").val(vTotal.toFixed(2));		
-			}
+			cells.eq(15).text(vCantidad * vPrecionConIva);
+			sumaFila();	
 		}
 	}); 
+	function sumaFila(){
+		var vIva = 0;
+		var vTotal = 0;
+		var vtGravada = 0;
+		$('table tr:not(:first)').each(function()  {
+			var cells = $(this).closest('tr').children('td');
+			vtGravada  += parseFloat(cells.eq(15).html());	
+		});
+			$("input:text#txt_VentaGravada").val(vtGravada);
+			vIva = vtGravada*0.13;
+			$("input:text#txt_Iva").val(vIva.toFixed(2));
+			vTotal = vtGravada*1.13;
+			$("input:text#txt_Total").val(vTotal.toFixed(2));
+	}
 	//=========FIN=========//
 	//=========Traduce el DataTable=========//
 	//=========INICI0=========//
