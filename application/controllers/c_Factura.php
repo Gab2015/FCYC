@@ -61,11 +61,14 @@ class c_Factura extends CI_Controller {
       //creo el array con datos de configuración para la vista			
 			$datos_vista['rs_Factura'] = $this->m_Factura->get_Factura();
 			$datos_vista['rs_DetalleFactura'] = $this->m_Factura->get_DetalleFactura();
+            $datos_articulo['rs_articulo'] = $this->m_Factura->get_DetalleArticulo();
       //cargo la vista pasando los datos de configuracion
 			$this->load->view('v_Head');
 			$this->load->view('v_Header');
 			$this->load->view("v_Menu",$data);
 			$this->load->view('v_Factura',$datos_vista);
+			$this->load->view("v_Factura_Model",$datos_articulo);
+			$this->load->view('v_Foot');
 		}
 		else{
 			$this->session->set_flashdata('msg', '<div class="alert alert-danger text-center">¡Datos incorrectos!</div>');
@@ -155,6 +158,8 @@ class c_Factura extends CI_Controller {
 				$this->load->view('v_Header');
 				$this->load->view("v_Menu",$data);
 				$this->load->view('v_Factura',$datos_vista);
+				$this->load->view("v_Factura_Model",$datos_articulo);
+				$this->load->view('v_Foot');
 			}
 			else{
 				$this->session->set_flashdata('msg', '<div class="alert alert-danger text-center">¡Datos incorrectos!</div>');
@@ -220,6 +225,8 @@ class c_Factura extends CI_Controller {
 						$this->load->view('v_Header');
 						$this->load->view("v_Menu",$data);
 						$this->load->view('v_Factura',$datos_vista);
+						$this->load->view("v_Factura_Model",$datos_articulo);
+						$this->load->view('v_Foot');
 					}
 					else{
 						$this->session->set_flashdata('msg', '<div class="alert alert-danger text-center">¡Datos incorrectos!</div>');

@@ -163,7 +163,7 @@
 								<th>#</th>
 								<th><input class='check_Todas' type="checkbox"/></th>
 								<th>Código</th>
-								<th>Numero de Parte</th>
+								<th class="hidden-md hidden-lg">Numero de Parte</th>
 								<th>Descripción</th>
 								<th>Cantidad</th>
 								<th>Precio Unitario</th>
@@ -185,7 +185,7 @@
 									echo '<td><span id="snum">'.$i.'</span></td>';
 									echo '<td> <input type="checkbox" class="FilaMarcada"></td>';
 									echo '<td><input class="form-control" id="txt_CodProducto" name="txt_CodProducto" placeholder="Producto" type="text" value="'.$filaDetalle->CodProducto.'"/></td>';
-									echo '<td>'.$filaDetalle->NumFabricante.'</td>';
+									echo '<td class="hidden-md hidden-lg">'.$filaDetalle->NumFabricante.'</td>';
 									echo '<td>'.$filaDetalle->DescripcionProducto.'</td>';
 									echo '<td><input class="form-control" id="txt_Cantidad" name="txt_Cantidad" placeholder="Cantidad" type="text" value=""/></td>';
 									echo '<td class="txt_PrecioConIva">'.number_format($filaDetalle->PrecioConIva,2,".",",").'</td>';
@@ -275,7 +275,7 @@
 				<br>
 				<div class="row">
 					<div class="col-lg-6 col-xs-12">
-						<span style="float:left"><a class="btn btn-primary" href="<?php echo base_url('c_Cuadros/c_Cuadros_i');?>"> Cancelar</a>&nbsp;</span>	 
+						<span style="float:left"><a class="btn btn-danger" href="<?php echo base_url('c_Cuadros/c_Cuadros_i');?>"> Cancelar</a>&nbsp;</span>	 
 						<span style="float:left"><a class="btn btn-warning" href="<?php echo base_url('c_Cuadros/c_Cuadros_i');?>"> Actualizar</a>&nbsp;</span>	 
 						<input id="btn_guardar" name="btn_guardar" type="submit" class="btn btn-success" value="Guardar" />
 					</div>
@@ -284,12 +284,3 @@
 			</div>
 			<?php echo form_close();
 			echo $this->session->flashdata('msg'); ?>
-			<footer>    
-				<div class="col-lg-8 col-xs-12 Foot">
-					<h1 id="Foot">SISTEMAS C&C
-						<br>
-						Derechos de Información 2017</h1>
-					</div>
-				</footer>	
-			</body>
-			</html>
