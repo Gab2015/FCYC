@@ -21,7 +21,6 @@ $(document).ready(function() {
 			}else{
 				vtGravada  +=0;
 			}
-
 		});
 			$("input:text#txt_VentaGravada").val(vtGravada);
 			vIva = vtGravada*0.13;
