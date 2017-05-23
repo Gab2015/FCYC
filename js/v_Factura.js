@@ -85,6 +85,7 @@ $("#Remover").on('click', function() {
 	$('.FilaMarcada:checkbox:checked').parents("tr").remove();
 	$('.check_Todas').prop("checked", false); 
 	check();
+	sumaFila();
 });	
 //=========FIN=========//
 //=========Genera el numero de fila=========//
