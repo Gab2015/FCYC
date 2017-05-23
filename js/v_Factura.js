@@ -109,6 +109,9 @@ $("#btn_insertar").on('click',function(){
 	$('input[class=Marcada]:checkbox:checked').each(function(i,e){ 
 				var vNumFilaAgregada=$('#DetalleFac tr').length;
 				var celda = $(this).closest('tr').children('td');
+				var vCodigo = celda.eq(4).html();
+                var vDescripcion = celda.eq(5).html();
+                var vPrecioUnitario = celda.eq(6).html();
 				var vFilaAgregada="<tr><td class='hidden-md hidden-lg'></td>";
 				vFilaAgregada +="<td class='hidden-md hidden-lg'></td>";
 				vFilaAgregada +="<td class='hidden-md hidden-lg'></td>";
@@ -119,10 +122,11 @@ $("#btn_insertar").on('click',function(){
 				vFilaAgregada +="<td class='hidden-md hidden-lg'></td>";
 				vFilaAgregada +="<td><span id='snum'>"+vNumFilaAgregada+"</span></td>";
 				vFilaAgregada +="<td><input type='checkbox' class='FilaMarcada'></td>";
-				vFilaAgregada +="<td><input class='form-control' id='txt_CodProducto' name='txt_CodProducto' placeholder='Producto' type='text' value=''/></td>";
-				vFilaAgregada +="<td></td>";
+				vFilaAgregada +="<td><input class='form-control' id='txt_CodProducto' name='txt_CodProducto' placeholder='Producto' type='text' value='"+vCodigo+"'/></td>";
+				vFilaAgregada +="<td>"+vDescripcion+"</td>";
 				vFilaAgregada +="<td><input class='form-control' id='txt_Cantidad' name='txt_Cantidad' placeholder='Cantidad' type='text' value=''/></td>";
-				vFilaAgregada +="<td class='txt_PrecioConIva'></td><td><input class='form-control' id='txt_Afecta' name='txt_Afecta' placeholder='Total' type='text' value='' readonly/></td></tr>";				
+				vFilaAgregada +="<td class='txt_PrecioConIva'>"+vPrecioUnitario+"</td>";
+				vFilaAgregada +="<td><input class='form-control' id='txt_Afecta' name='txt_Afecta' placeholder='Total' type='text' value='' readonly/></td></tr>";				
 				$('#DetalleFac').append(vFilaAgregada);
 				$('#modal_Articulo').modal('hide');
     });
