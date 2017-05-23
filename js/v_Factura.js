@@ -123,6 +123,7 @@ $("#btn_insertar").on('click',function(){
 				vFilaAgregada +="<td><span id='snum'>"+vNumFilaAgregada+"</span></td>";
 				vFilaAgregada +="<td><input type='checkbox' class='FilaMarcada'></td>";
 				vFilaAgregada +="<td>"+vCodigo+"</td>";
+				vFilaAgregada +="<td class='hidden-md hidden-lg'></td>";
 				vFilaAgregada +="<td>"+vDescripcion+"</td>";
 				vFilaAgregada +="<td><input class='form-control' id='txt_Cantidad' name='txt_Cantidad' placeholder='Cantidad' type='text' value=''/></td>";
 				vFilaAgregada +="<td class='txt_PrecioConIva'>"+vPrecioUnitario+"</td>";
