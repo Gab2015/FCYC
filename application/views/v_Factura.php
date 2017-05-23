@@ -184,7 +184,7 @@
 									echo '<td class="hidden-md hidden-lg">'.$filaDetalle->Afecto.'</td>';
 									echo '<td><span id="snum">'.$i.'</span></td>';
 									echo '<td> <input type="checkbox" class="FilaMarcada"></td>';
-									echo '<td><input class="form-control" id="txt_CodProducto" name="txt_CodProducto" placeholder="Producto" type="text" value="'.$filaDetalle->CodProducto.'"/></td>';
+									echo '<td>'.$filaDetalle->CodProducto.'</td>';
 									echo '<td class="hidden-md hidden-lg">'.$filaDetalle->NumFabricante.'</td>';
 									echo '<td>'.$filaDetalle->DescripcionProducto.'</td>';
 									echo '<td><input class="form-control" id="txt_Cantidad" name="txt_Cantidad" placeholder="Cantidad" type="text" value=""/></td>';
