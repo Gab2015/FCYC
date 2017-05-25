@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="factura" language="groovy" pageWidth="240" pageHeight="841" columnWidth="240" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="3b7ac3e6-cba5-4095-b9d5-15e4aea18ea7">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="144"/>
+	<property name="ireport.y" value="0"/>
 	<queryString>
 		<![CDATA[EXECUTE pc_m_Venta 1,1]]>
 	</queryString>
@@ -78,14 +78,6 @@ AFECTAS]]></text>
 			</band>
 		</groupHeader>
 	</group>
-	<background>
-		<band height="841" splitType="Stretch">
-			<image scaleImage="FillFrame">
-				<reportElement mode="Opaque" x="75" y="9" width="76" height="112" uuid="713c9009-3c8a-4cdf-ba80-9aafa8fa71fe"/>
-				<imageExpression><![CDATA["C:\\xampp\\htdocs\\FCYC\\imagenes\\marcaaguacyc.jpg"]]></imageExpression>
-			</image>
-		</band>
-	</background>
 	<pageHeader>
 		<band height="187">
 			<textField>

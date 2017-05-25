@@ -51,8 +51,11 @@
 										<div class="col-lg-4 col-xs-12">
 											<label for="txt_NumCaja" class="control-lable">Caja #</label>
 										</div>
-										<div class="col-lg-8 col-xs-12">
-											<input class="form-control" id="txt_NumCaja" name="txt_NumCaja" placeholder="Caja #" type="text" value="<?php echo $filaFactura->NumCaja; ?>"/>
+										<div class="col-lg-6 col-xs-12">
+											<select class="form-control" id="txt_NumCaja" name="txt_NumCaja">
+												<option>1</option>
+												<option>2</option>
+											</select>
 											<span class="text-danger"><?php echo form_error('txt_NumCaja'); ?></span>
 										</div>     
 									</div>
@@ -123,7 +126,7 @@
 										<div class="col-lg-4 col-xs-12">
 											<label for="txt_Vendedor" class="control-lable">Vendedor</label>
 										</div>
-										<div class="col-lg-6 col-xs-12">
+										<div class="col-lg-8 col-xs-12">
 											<input class="form-control" id="txt_Vendedor" name="txt_Vendedor" placeholder="Vendedor" type="text" value="<?php echo $filaFactura->Vendedor; ?>"/>
 											<span class="text-danger"><?php echo form_error('txt_Vendedor'); ?></span>
 										</div>     

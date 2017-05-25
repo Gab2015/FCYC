@@ -61,7 +61,7 @@ class c_Factura extends CI_Controller {
       //creo el array con datos de configuración para la vista			
 			$datos_vista['rs_Factura'] = $this->m_Factura->get_Factura();
 			$datos_vista['rs_DetalleFactura'] = $this->m_Factura->get_DetalleFactura();
-            $datos_articulo['rs_articulo'] = $this->m_Factura->get_DetalleArticulo();
+			$datos_articulo['rs_articulo'] = $this->m_Factura->get_DetalleArticulo();
       //cargo la vista pasando los datos de configuracion
 			$this->load->view('v_Head');
 			$this->load->view('v_Header');
@@ -83,7 +83,7 @@ class c_Factura extends CI_Controller {
 		$Cajero         = $this->input->post("txt_Cajero");
 		$Vendedor       = $this->input->post("txt_Vendedor");
 		$CodVendedor    = $this->input->post("txt_CodVendedor");
-		$NumCaja        = 1;
+		$NumCaja        = $this->input->post("txt_NumCaja");
 		$FechaContable  = $this->input->post("txt_FechaContable");
 		$VentaGravada   = $this->input->post("txt_VentaGravada");
 		$VentaExenta    = 0;
@@ -94,6 +94,7 @@ class c_Factura extends CI_Controller {
 
 		$this->form_validation->set_rules("txt_Cliente", "Cliente", "trim|required");
 		$this->form_validation->set_rules("txt_Nombre", "Nombre", "trim|required");
+		$this->form_validation->set_rules("txt_NumCaja", "NumCaja", "trim|required");
 		$this->form_validation->set_rules("txt_Cajero", "Cajero", "trim|required");
 		$this->form_validation->set_rules("txt_Vendedor", "Vendedor", "trim|required");
 		$this->form_validation->set_rules("txt_CodVendedor", "Codigo", "trim|required");
@@ -123,7 +124,7 @@ class c_Factura extends CI_Controller {
 						$config["item_divider"]          = "<li class='divider'></li>";
 						$this->multi_menu->initialize($config);
 						$data['activeTabVenta'] = $this->multi_menu->render();
-						
+
 					}
 					if ($fila['usuario'] == 'T')
 					{
@@ -151,8 +152,9 @@ class c_Factura extends CI_Controller {
 					}
 				}
       //creo el array con datos de configuración para la vista
-			$datos_vista['rs_Factura'] = $this->m_Factura->get_Factura();
-			$datos_vista['rs_DetalleFactura'] = $this->m_Factura->get_DetalleFactura();
+				$datos_vista['rs_Factura'] = $this->m_Factura->get_Factura();
+				$datos_vista['rs_DetalleFactura'] = $this->m_Factura->get_DetalleFactura();
+				$datos_articulo['rs_articulo'] = $this->m_Factura->get_DetalleArticulo();
       //cargo la vista pasando los datos de configuracion
 				$this->load->view('v_Head');
 				$this->load->view('v_Header');
@@ -190,7 +192,7 @@ class c_Factura extends CI_Controller {
 								$config["item_divider"]          = "<li class='divider'></li>";
 								$this->multi_menu->initialize($config);
 								$data['activeTabVenta'] = $this->multi_menu->render();
-								
+
 							}
 							if ($fila['usuario'] == 'T')
 							{
@@ -217,9 +219,29 @@ class c_Factura extends CI_Controller {
 								$data['activeTabInventario'] = $this->multi_menu->render();
 							}
 						}
+						unset($_POST['txt_Cliente']);
+						unset($_POST['txt_Nombre']);
+						unset($_POST['txt_Cajero']);
+						unset($_POST['txt_NumCaja']);
+						unset($_POST['txt_DocType']);
+						unset($_POST['txt_NumDoc']);
+						unset($_POST['txt_IdTipo']);
+						unset($_POST['txt_FechaContable']);
+						unset($_POST['txt_CodVendedor']);
+						unset($_POST['txt_Vendedor']);
+						unset($_POST['DetalleFac_length']);
+						unset($_POST['txt_Cantidad']);
+						unset($_POST['txt_Afecta']);
+						unset($_POST['txt_VentaGravada']);
+						unset($_POST['txt_VentaExenta']);
+						unset($_POST['txt_VentaNoSujeta']);
+						unset($_POST['txt_Iva']);
+						unset($_POST['txt_Total']);
+						unset($_POST['btn_guardar']);
       //creo el array con datos de configuración para la vista
 						$datos_vista['rs_Factura'] = $this->m_Factura->get_Factura();
-			            $datos_vista['rs_DetalleFactura'] = $this->m_Factura->get_DetalleFactura();
+						$datos_vista['rs_DetalleFactura'] = $this->m_Factura->get_DetalleFactura();
+						$datos_articulo['rs_articulo'] = $this->m_Factura->get_DetalleArticulo();
       //cargo la vista pasando los datos de configuracion
 						$this->load->view('v_Head');
 						$this->load->view('v_Header');
