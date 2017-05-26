@@ -155,7 +155,6 @@
 					<div class="col-lg-6 col-xs-12">
 						<table id="DetalleFac" class="table-bordered table-striped table-condensed table-hover">
 							<thead>
-								<th class="hidden-md hidden-lg">IdDetFac</th>
 								<th class="hidden-md hidden-lg">IdFac</th>
 								<th class="hidden-md hidden-lg">IdProducto</th>
 								<th class="hidden-md hidden-lg">CuentaMayor</th>
@@ -177,17 +176,16 @@
 								$i = 1;
 								foreach($rs_DetalleFactura['rs_DetalleFactura'] as $filaDetalle){
 									echo '<tr>';
-									echo '<td class="hidden-md hidden-lg">'.$filaDetalle->IdDetFac.'</td>';
-									echo '<td class="hidden-md hidden-lg">'.$filaDetalle->IdFac.'</td>';
-									echo '<td class="hidden-md hidden-lg">'.$filaDetalle->IdProducto.'</td>';
-									echo '<td class="hidden-md hidden-lg">'.$filaDetalle->CuentaMayor.'</td>';
-									echo '<td class="hidden-md hidden-lg">'.$filaDetalle->CuentaCoste.'</td>';
-									echo '<td class="hidden-md hidden-lg">'.$filaDetalle->NormaReparto.'</td>';
-									echo '<td class="hidden-md hidden-lg">'.$filaDetalle->NumDoc.'</td>';
-									echo '<td class="hidden-md hidden-lg">'.$filaDetalle->Afecto.'</td>';
+					                echo '<td class="hidden-md hidden-lg"><input class="form-control" id="txt_IdFac" name="txt_IdFac" placeholder="IdFac" type="text" value="'.$filaDetalle->IdFac.'" readonly/></td>';
+									echo '<td class="hidden-md hidden-lg"><input class="form-control" id="txt_IdFac" name="txt_IdFac" placeholder="IdFac" type="text" value="'.$filaDetalle->IdProducto.'" readonly/></td>';
+									echo '<td class="hidden-md hidden-lg"><input class="form-control" id="txt_IdFac" name="txt_IdFac" placeholder="IdFac" type="text" value="'.$filaDetalle->CuentaMayor.'" readonly/></td>';
+									echo '<td class="hidden-md hidden-lg"><input class="form-control" id="txt_IdFac" name="txt_IdFac" placeholder="IdFac" type="text" value="'.$filaDetalle->CuentaCoste.'" readonly/></td>';
+									echo '<td class="hidden-md hidden-lg"><input class="form-control" id="txt_IdFac" name="txt_IdFac" placeholder="IdFac" type="text" value="'.$filaDetalle->NormaReparto.'" readonly/></td>';
+									echo '<td class="hidden-md hidden-lg"><input class="form-control" id="txt_IdFac" name="txt_IdFac" placeholder="IdFac" type="text" value="'.$filaDetalle->NumDoc.'" readonly/></td>';
+									echo '<td class="hidden-md hidden-lg"><input class="form-control" id="txt_IdFac" name="txt_IdFac" placeholder="IdFac" type="text" value="'.$filaDetalle->Afecto.'" readonly/></td>';
 									echo '<td><span id="snum">'.$i.'</span></td>';
 									echo '<td> <input type="checkbox" class="FilaMarcada"></td>';
-									echo '<td>'.$filaDetalle->CodProducto.'</td>';
+									echo '<td><input class="LineaCampo" id="txt_CodProducto" name="txt_CodProducto" placeholder="Codigo" type="text" value="'.$filaDetalle->CodProducto.'" readonly/></td>';
 									echo '<td class="hidden-md hidden-lg">'.$filaDetalle->NumFabricante.'</td>';
 									echo '<td>'.$filaDetalle->DescripcionProducto.'</td>';
 									echo '<td><input class="form-control" id="txt_Cantidad" name="txt_Cantidad" placeholder="Cantidad" type="text" value=""/></td>';

@@ -120,7 +120,6 @@ $("#btn_insertar").on('click',function(){
 				vFilaAgregada +="<td class='hidden-md hidden-lg'></td>";
 				vFilaAgregada +="<td class='hidden-md hidden-lg'></td>";
 				vFilaAgregada +="<td class='hidden-md hidden-lg'></td>";
-				vFilaAgregada +="<td class='hidden-md hidden-lg'></td>";
 				vFilaAgregada +="<td><span id='snum'>"+vNumFilaAgregada+"</span></td>";
 				vFilaAgregada +="<td><input type='checkbox' class='FilaMarcada'></td>";
 				vFilaAgregada +="<td>"+vCodigo+"</td>";

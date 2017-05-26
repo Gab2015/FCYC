@@ -36,5 +36,11 @@ class m_Factura extends CI_Model {
         $rs_DetalleArticulos['rs_DetalleArticulo'] = $rs_DetalleArticulo->result();
         return  $rs_DetalleArticulos;
     }    
+    function pc_m_DetalleFactura_i($IdFac,$NumDoc,$IdProducto,$CodProducto,$NumFabricante,$DescripcionProducto,$Cantidad,$PrecioConIva,$Afecto,$CuentaMayor,$CuentaCoste,$NormaReparto){
+        $ssql ="EXECUTE pc_m_DetalleFactura_i ?,?,?,?,?,?,?,?,?,?,?,?";
+        $params = array($IdFac,$NumDoc,$IdProducto,$CodProducto,$NumFabricante,$DescripcionProducto,$Cantidad,$PrecioConIva,$Afecto,$CuentaMayor,$CuentaCoste,$NormaReparto);
+        $rs_Fac= $this->db->query($ssql,$params);
+        return  $rs_Fac->result();
+    }
 }
 ?> 
