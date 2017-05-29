@@ -4,9 +4,9 @@ $(document).ready(function() {
 $('#DetalleFac').on('change', 'input[type="text"]', function(i,e) {
 	if($('input[class=FilaMarcada]:checkbox:checked').length == 0){ 
 		var cells = $(this).closest('tr').children('td');
-		var vCantidad = cells.eq(13).find('input').val();
-		var vPrecionConIva = parseFloat(cells.eq(14).html());
-		cells.eq(15).text(vCantidad * vPrecionConIva);
+		var vCantidad = cells.eq(12).find('input').val();
+		var vPrecionConIva = parseFloat(cells.eq(13).find('input').val());
+		cells.eq(14).find('input').val(vCantidad * vPrecionConIva);
 		sumaFila();	
 	}
 }); 
@@ -16,8 +16,8 @@ function sumaFila(){
 	var vtGravada = 0;
 	$('#DetalleFac tr:not(:first)').each(function()  {
 		var cells = $(this).closest('tr').children('td');
-		if(!isNaN(parseFloat(cells.eq(15).html()))){
-			vtGravada  += parseFloat(cells.eq(15).html());	
+		if(!isNaN(parseFloat(cells.eq(14).find('input').val()))){
+			vtGravada  += parseFloat(cells.eq(14).find('input').val());	
 		}else{
 			vtGravada  +=0;
 		}
@@ -113,20 +113,20 @@ $("#btn_insertar").on('click',function(){
 				var vCodigo = celda.eq(4).html();
                 var vDescripcion = celda.eq(5).html();
                 var vPrecioUnitario = celda.eq(6).html();
-				var vFilaAgregada="<tr><td class='hidden-md hidden-lg'></td>";
-				vFilaAgregada +="<td class='hidden-md hidden-lg'></td>";
-				vFilaAgregada +="<td class='hidden-md hidden-lg'></td>";
-				vFilaAgregada +="<td class='hidden-md hidden-lg'></td>";
-				vFilaAgregada +="<td class='hidden-md hidden-lg'></td>";
-				vFilaAgregada +="<td class='hidden-md hidden-lg'></td>";
-				vFilaAgregada +="<td class='hidden-md hidden-lg'></td>";
+				var vFilaAgregada="<tr><td class='hidden-md hidden-lg'><input class='LineaCampo' id='txt_IdFac' name='txt_IdFac' placeholder='IdFac' type='text' value='' readonly/></td>";
+				vFilaAgregada +="<td class='hidden-md hidden-lg'><input class='LineaCampo' id='txt_IdProducto' name='txt_IdProducto' placeholder='IdProducto' type='text' value='' readonly/></td>";
+                vFilaAgregada +="<td class='hidden-md hidden-lg'><input class='LineaCampo' id='txt_CuentaMayor' name='txt_CuentaMayor' placeholder='CuentaMayor' type='text' value='' readonly/></td>";
+                vFilaAgregada +="<td class='hidden-md hidden-lg'><input class='LineaCampo' id='txt_CuentaCoste' name='txt_CuentaCoste' placeholder='CuentaCoste' type='text' value='' readonly/></td>";
+                vFilaAgregada +="<td class='hidden-md hidden-lg'><input class='LineaCampo' id='txt_NormaReparto' name='txt_NormaReparto' placeholder='NormaReparto' type='text' value='' readonly/></td>";
+                vFilaAgregada +="<td class='hidden-md hidden-lg'><input class='LineaCampo' id='txt_NumDoc' name='txt_NumDoc' placeholder='NumDoc' type='text' value='' readonly/></td>";
+                vFilaAgregada +="<td class='hidden-md hidden-lg'><input class='LineaCampo' id='txt_Afecto' name='txt_Afecto' placeholder='Afecto' type='text' value='' readonly/></td>";
 				vFilaAgregada +="<td><span id='snum'>"+vNumFilaAgregada+"</span></td>";
 				vFilaAgregada +="<td><input type='checkbox' class='FilaMarcada'></td>";
-				vFilaAgregada +="<td>"+vCodigo+"</td>";
-				vFilaAgregada +="<td class='hidden-md hidden-lg'></td>";
-				vFilaAgregada +="<td>"+vDescripcion+"</td>";
+				vFilaAgregada +="<td><input class='LineaCampo' id='txt_CodProducto' name='txt_CodProducto' placeholder='Codigo' type='text' value='"+vCodigo+"' readonly/></td>";
+				vFilaAgregada +="<td class='hidden-md hidden-lg'><input class='LineaCampo' id='txt_NumFabricante' name='txt_NumFabricante' placeholder='NumFabricante' type='text' value='' readonly/></td>";
+				vFilaAgregada +="<td><input class='LineaCampo' id='txt_DescripcionProducto' name='txt_DescripcionProducto' placeholder='DescripcionProducto' type='text' value='"+vDescripcion+"' readonly/></td>";
 				vFilaAgregada +="<td><input class='form-control' id='txt_Cantidad' name='txt_Cantidad' placeholder='Cantidad' type='text' value=''/></td>";
-				vFilaAgregada +="<td class='txt_PrecioConIva'>"+vPrecioUnitario+"</td>";
+				vFilaAgregada +="<td><input class='LineaCampo' id='txt_PrecioConIva' name='txt_PrecioConIva' placeholder='PrecioConIva' type='text' value='"+vPrecioUnitario+"' readonly/></td>";
 				vFilaAgregada +="<td><input class='form-control' id='txt_Afecta' name='txt_Afecta' placeholder='Total' type='text' value='' readonly/></td></tr>";				
 				$('#DetalleFac').append(vFilaAgregada);
 				$('#modal_Articulo').modal('hide');
