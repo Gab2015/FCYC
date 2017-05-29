@@ -76,6 +76,7 @@ class c_Factura extends CI_Controller {
 		}	
 	}
 	public function set_Factura(){
+		/*======Campos para inertar en la tabla factura======*/
 		$NumDoc         = $this->input->post("txt_NumDoc");
 		$Cliente        = $this->input->post("txt_Cliente");
 		$Nombre         = $this->input->post("txt_Nombre");
@@ -102,6 +103,20 @@ class c_Factura extends CI_Controller {
 		$this->form_validation->set_rules("txt_VentaGravada", "Gravada", "trim|required");
 		$this->form_validation->set_rules("txt_Iva", "IVA", "trim|required");
 		$this->form_validation->set_rules("txt_Total", "Total", "trim|required");
+       
+        /*======Campos para inertar en la tabla DetalleFactura======*/
+        $IdFac = $this->input->post("txt_IdFac");
+        $NumDoc = $this->input->post("txt_NumDoc");
+        $IdProducto = $this->input->post("txt_IdProducto");
+        $CodProducto = $this->input->post("txt_CodProducto");
+        $NumFabricante = $this->input->post("txt_NumFabricante");
+        $DescripcionProducto = $this->input->post("txt_DescripcionProducto");
+        $Cantidad = $this->input->post("txt_Cantidad");
+        $PrecioConIva = $this->input->post("txt_PrecioConIva");
+        $Afecto = $this->input->post("txt_Afecto");
+        $CuentaMayor = $this->input->post("txt_CuentaMayor");
+        $CuentaCoste = $this->input->post("txt_CuentaCoste");
+        $NormaReparto = $this->input->post("txt_NormaReparto");
 
 		if ($this->form_validation->run() == FALSE){
 			$usuario   = $this->session->userdata('username');
@@ -170,8 +185,23 @@ class c_Factura extends CI_Controller {
 		}
 		else{
 			if ($this->input->post('btn_guardar') == "Guardar"){
-				$Factura_result = $this->m_Factura->pc_m_Factura_i($NumDoc,$Cliente,$Nombre,$IdTipo,$Cajero,$Vendedor,$CodVendedor,$FechaContable,$NumCaja,$VentaGravada,$VentaExenta,$VentaNoSujeta,$Iva,$Total,$DocType);
-						unset($_POST['txt_Cliente']);
+				$Factura_result = $this->m_Factura->pc_m_Factura_i($NumDoc,$Cliente,$Nombre,$IdTipo,$Cajero,$Vendedor,$CodVendedor,$FechaContable,$NumCaja,$VentaGravada,$VentaExenta,$VentaNoSujeta,$Iva,$Total,$DocType);            
+                $tablaDetalle = array(
+                    'IdFac' =>  $IdFac,
+                    'NumDoc' =>  $NumDoc,
+                    'IdProducto' =>  $IdProducto,
+                    'CodProducto' =>  $CodProducto,
+                    'NumFabricante' =>  $NumFabricante,
+                    'DescripcionProducto' =>  $DescripcionProducto,
+                    'Cantidad' =>  $Cantidad,
+                    'PrecioConIva' =>  $PrecioConIva,
+                    'Afecto' =>  $Afecto,
+                    'CuentaMayor ' =>  $CuentaMayor,
+                    'CuentaCoste ' =>  $CuentaCoste,
+                    'NormaReparto ' =>  $NormaReparto    
+                );
+                $Detalle_result = $this->m_Factura->pc_m_DetalleFactura_i($tablaDetalle);
+                        unset($_POST['txt_Cliente']);
 						unset($_POST['txt_Nombre']);
 						unset($_POST['txt_Cajero']);
 						unset($_POST['txt_NumCaja']);

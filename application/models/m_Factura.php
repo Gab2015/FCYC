@@ -36,11 +36,21 @@ class m_Factura extends CI_Model {
         $rs_DetalleArticulos['rs_DetalleArticulo'] = $rs_DetalleArticulo->result();
         return  $rs_DetalleArticulos;
     }    
-    function pc_m_DetalleFactura_i($IdFac,$NumDoc,$IdProducto,$CodProducto,$NumFabricante,$DescripcionProducto,$Cantidad,$PrecioConIva,$Afecto,$CuentaMayor,$CuentaCoste,$NormaReparto){
+    function pc_m_DetalleFactura_i($tablaDetalle){
+        // $ssql ="EXECUTE pc_m_DetalleFactura_i ?,?,?,?,?,?,?,?,?,?,?,?";
+        // $params = array($IdFac,$NumDoc,$IdProducto,$CodProducto,$NumFabricante,$DescripcionProducto,$Cantidad,$PrecioConIva,$Afecto,$CuentaMayor,$CuentaCoste,$NormaReparto);
+        // $rs_Fac= $this->db->query($ssql,$params);
+    $i=0;
+    foreach($tablaDetalle as $filaInsertar){
+        // $this->db->insert('DetalleFactura', $tablaDetalle);
+        //  $rs_Det = $this->db->insert_id();
+
         $ssql ="EXECUTE pc_m_DetalleFactura_i ?,?,?,?,?,?,?,?,?,?,?,?";
-        $params = array($IdFac,$NumDoc,$IdProducto,$CodProducto,$NumFabricante,$DescripcionProducto,$Cantidad,$PrecioConIva,$Afecto,$CuentaMayor,$CuentaCoste,$NormaReparto);
-        $rs_Fac= $this->db->query($ssql,$params);
-        return  $rs_Fac->result();
+        $params = array($filaInsertar->$IdFac[$i],$filaInsertar->$NumDoc,$filaInsertar->$IdProducto[$i],$filaInsertar->$CodProducto[$i],$filaInsertar->$NumFabricante[$i],$filaInsertar->$DescripcionProducto[$i],$filaInsertar->$Cantidad[$i],$filaInsertar->$PrecioConIva[$i],$filaInsertar->$Afecto[$i],$filaInsertar->$CuentaMayor[$i],$filaInsertar->$CuentaCoste[$i],$filaInsertar->$NormaReparto[$i]);
+        $rs_Det = $this->db->query($ssql,$params);
+        $i++;
+       }
+    return $rs_Det;
     }
 }
 ?> 

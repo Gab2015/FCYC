@@ -176,21 +176,21 @@
 								$i = 1;
 								foreach($rs_DetalleFactura['rs_DetalleFactura'] as $filaDetalle){
 									echo '<tr>';
-					                echo '<td class="hidden-md hidden-lg"><input class="LineaCampo" id="txt_IdFac" name="txt_IdFac" placeholder="IdFac" type="text" value="'.$filaDetalle->IdFac.'" readonly/></td>';
-									echo '<td class="hidden-md hidden-lg"><input class="LineaCampo" id="txt_IdProducto" name="txt_IdProducto" placeholder="IdProducto" type="text" value="'.$filaDetalle->IdProducto.'" readonly/></td>';
-									echo '<td class="hidden-md hidden-lg"><input class="LineaCampo" id="txt_CuentaMayor" name="txt_CuentaMayor" placeholder="CuentaMayor" type="text" value="'.$filaDetalle->CuentaMayor.'" readonly/></td>';
-									echo '<td class="hidden-md hidden-lg"><input class="LineaCampo" id="txt_CuentaCoste" name="txt_CuentaCoste" placeholder="CuentaCoste" type="text" value="'.$filaDetalle->CuentaCoste.'" readonly/></td>';
-									echo '<td class="hidden-md hidden-lg"><input class="LineaCampo" id="txt_NormaReparto" name="txt_NormaReparto" placeholder="NormaReparto" type="text" value="'.$filaDetalle->NormaReparto.'" readonly/></td>';
+					                echo '<td class="hidden-md hidden-lg"><input class="LineaCampo" id="txt_IdFac" name="txt_IdFac[]" placeholder="IdFac" type="text" value="'.$filaDetalle->IdFac.'" readonly/></td>';
+									echo '<td class="hidden-md hidden-lg"><input class="LineaCampo" id="txt_IdProducto" name="txt_IdProducto[]" placeholder="IdProducto" type="text" value="'.$filaDetalle->IdProducto.'" readonly/></td>';
+									echo '<td class="hidden-md hidden-lg"><input class="LineaCampo" id="txt_CuentaMayor" name="txt_CuentaMayor[]" placeholder="CuentaMayor" type="text" value="'.$filaDetalle->CuentaMayor.'" readonly/></td>';
+									echo '<td class="hidden-md hidden-lg"><input class="LineaCampo" id="txt_CuentaCoste" name="txt_CuentaCoste[]" placeholder="CuentaCoste" type="text" value="'.$filaDetalle->CuentaCoste.'" readonly/></td>';
+									echo '<td class="hidden-md hidden-lg"><input class="LineaCampo" id="txt_NormaReparto" name="txt_NormaReparto[]" placeholder="NormaReparto" type="text" value="'.$filaDetalle->NormaReparto.'" readonly/></td>';
 									echo '<td class="hidden-md hidden-lg"><input class="LineaCampo" id="txt_NumDoc" name="txt_NumDoc" placeholder="NumDoc" type="text" value="'.$filaDetalle->NumDoc.'" readonly/></td>';
-									echo '<td class="hidden-md hidden-lg"><input class="LineaCampo" id="txt_Afecto" name="txt_Afecto" placeholder="Afecto" type="text" value="'.$filaDetalle->Afecto.'" readonly/></td>';
+									echo '<td class="hidden-md hidden-lg"><input class="LineaCampo" id="txt_Afecto" name="txt_Afecto[]" placeholder="Afecto" type="text" value="'.$filaDetalle->Afecto.'" readonly/></td>';
 									echo '<td><span id="snum">'.$i.'</span></td>';
 									echo '<td> <input type="checkbox" class="FilaMarcada"></td>';
-									echo '<td><input class="LineaCampo" id="txt_CodProducto" name="txt_CodProducto" placeholder="Codigo" type="text" value="'.$filaDetalle->CodProducto.'" readonly/></td>';
-									echo '<td class="hidden-md hidden-lg"><input class="LineaCampo" id="txt_NumFabricante" name="txt_NumFabricante" placeholder="NumFabricante" type="text" value="'.$filaDetalle->NumFabricante.'" readonly/></td>';
-									echo '<td><input class="LineaCampo" id="txt_DescripcionProducto" name="txt_DescripcionProducto" placeholder="DescripcionProducto" type="text" value="'.$filaDetalle->DescripcionProducto.'" readonly/></td>';
-									echo '<td><input class="form-control" id="txt_Cantidad" name="txt_Cantidad" placeholder="Cantidad" type="text" value=""/></td>';
-									echo '<td><input class="LineaCampo" id="txt_PrecioConIva" name="txt_PrecioConIva" placeholder="PrecioConIva" type="text" value="'.number_format($filaDetalle->PrecioConIva,2,".",",").'" readonly/></td>';
-									echo '<td><input class="form-control" id="txt_Afecta" name="txt_Afecta" placeholder="Total" type="text" value="" readonly/></td>';
+									echo '<td><input class="LineaCampo" id="txt_CodProducto" name="txt_CodProducto[]" placeholder="Codigo" type="text" value="'.$filaDetalle->CodProducto.'" readonly/></td>';
+									echo '<td class="hidden-md hidden-lg"><input class="LineaCampo" id="txt_NumFabricante" name="txt_NumFabricante[]" placeholder="NumFabricante" type="text" value="'.$filaDetalle->NumFabricante.'" readonly/></td>';
+									echo '<td><input class="LineaCampo" id="txt_DescripcionProducto" name="txt_DescripcionProducto[]" placeholder="DescripcionProducto" type="text" value="'.$filaDetalle->DescripcionProducto.'" readonly/></td>';
+									echo '<td><input class="form-control" id="txt_Cantidad" name="txt_Cantidad[]" placeholder="Cantidad" type="text" value=""/></td>';
+									echo '<td><input class="LineaCampo" id="txt_PrecioConIva" name="txt_PrecioConIva[]" placeholder="PrecioConIva" type="text" value="'.number_format($filaDetalle->PrecioConIva,2,".",",").'" readonly/></td>';
+									echo '<td><input class="form-control" id="txt_Afecta" name="txt_Afecta[]" placeholder="Total" type="text" value="" readonly/></td>';
 									echo '</tr>';
 									$i++;
 								}
