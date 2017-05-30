@@ -196,10 +196,10 @@ class c_Factura extends CI_Controller {
                     'Cantidad' =>  $Cantidad,
                     'PrecioConIva' =>  $PrecioConIva,
                     'Afecto' =>  $Afecto,
-                    'CuentaMayor ' =>  $CuentaMayor,
-                    'CuentaCoste ' =>  $CuentaCoste,
-                    'NormaReparto ' =>  $NormaReparto    
-                );
+                    'CuentaMayor' =>  $CuentaMayor,
+                    'CuentaCoste' =>  $CuentaCoste,
+                    'NormaReparto' =>  $NormaReparto    
+                );      
                 $Detalle_result = $this->m_Factura->pc_m_DetalleFactura_i($tablaDetalle);
                         unset($_POST['txt_Cliente']);
 						unset($_POST['txt_Nombre']);
