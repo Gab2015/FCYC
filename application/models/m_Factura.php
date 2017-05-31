@@ -37,37 +37,10 @@ class m_Factura extends CI_Model {
         return  $rs_DetalleArticulos;
     }    
     function pc_m_DetalleFactura_i($tablaDetalle){
-        // $ssql ="EXECUTE pc_m_DetalleFactura_i ?,?,?,?,?,?,?,?,?,?,?,?";
-        // $params = array($IdFac,$NumDoc,$IdProducto,$CodProducto,$NumFabricante,$DescripcionProducto,$Cantidad,$PrecioConIva,$Afecto,$CuentaMayor,$CuentaCoste,$NormaReparto);
-        // $rs_Fac= $this->db->query($ssql,$params);
-    // foreach($tablaDetalle as $filaInsertar){
-    //     // $this->db->insert('DetalleFactura', $tablaDetalle);
-    //     //  $rs_Det = $this->db->insert_id();
-    //     $ssql ="EXECUTE pc_m_DetalleFactura_i ?,?,?,?,?,?,?,?,?,?,?,?";
-    //     $params = array($filaInsertar->$IdFac,$filaInsertar->$NumDoc,$filaInsertar->$IdProducto,$filaInsertar->$CodProducto,$filaInsertar->$NumFabricante,$filaInsertar->$DescripcionProducto,$filaInsertar->$Cantidad,$filaInsertar->$PrecioConIva,$filaInsertar->$Afecto,$filaInsertar->$CuentaMayor,$filaInsertar->$CuentaCoste,$filaInsertar->$NormaReparto);
-    //     $rs_Det = $this->db->query($ssql,$params);
-    //    }
-        // for( $i = 0 ; $i < count($tablaDetalle['CodProducto']) ; $i++){
-        //         $insert = array(
-        //             'IdFac' =>  $tablaDetalle['IdFac'][$i],
-        //             'NumDoc' =>  $tablaDetalle['NumDoc'][0],
-        //             'IdProducto' =>  $tablaDetalle['IdProducto'][$i],
-        //             'CodProducto' =>  $tablaDetalle['CodProducto'][$i],
-        //             'NumFabricante' =>  $tablaDetalle['NumFabricante'][$i],
-        //             'DescripcionProducto' =>  $tablaDetalle['DescripcionProducto'][$i],
-        //             'Cantidad' =>  $tablaDetalle['Cantidad'][$i],
-        //             'PrecioConIva' =>  $tablaDetalle['PrecioConIva'][$i],
-        //             'Afecto' =>  $tablaDetalle['Afecto'][$i],
-        //             'CuentaMayor' =>  $tablaDetalle['CuentaMayor'][$i],
-        //             'CuentaCoste' =>  $tablaDetalle['CuentaCoste'][$i],
-        //             'NormaReparto' =>  $tablaDetalle['NormaReparto'][$i]    
-        //         );   
-        //         $rs_Det = $this->db->insert('DetalleFactura', $insert);
-        //     }
         for( $i = 0 ; $i < count($tablaDetalle['CodProducto']) ; $i++){
                 $params = array(
                     'IdFac' =>  $tablaDetalle['IdFac'][$i],
-                    'NumDoc' =>  $tablaDetalle['NumDoc'][0],
+                    'LineaNumDoc' =>  $tablaDetalle['LineaNumDoc'][$i],
                     'IdProducto' =>  $tablaDetalle['IdProducto'][$i],
                     'CodProducto' =>  $tablaDetalle['CodProducto'][$i],
                     'NumFabricante' =>  $tablaDetalle['NumFabricante'][$i],

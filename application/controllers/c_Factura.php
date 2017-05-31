@@ -106,7 +106,7 @@ class c_Factura extends CI_Controller {
        
         /*======Campos para inertar en la tabla DetalleFactura======*/
         $IdFac = $this->input->post("txt_IdFac");
-        $NumDoc = $this->input->post("txt_NumDoc");
+        $LineaNumDoc = $this->input->post("txt_LineaNumDoc");
         $IdProducto = $this->input->post("txt_IdProducto");
         $CodProducto = $this->input->post("txt_CodProducto");
         $NumFabricante = $this->input->post("txt_NumFabricante");
@@ -188,7 +188,7 @@ class c_Factura extends CI_Controller {
 				$Factura_result = $this->m_Factura->pc_m_Factura_i($NumDoc,$Cliente,$Nombre,$IdTipo,$Cajero,$Vendedor,$CodVendedor,$FechaContable,$NumCaja,$VentaGravada,$VentaExenta,$VentaNoSujeta,$Iva,$Total,$DocType);            
                 $tablaDetalle = array(
                     'IdFac' =>  $IdFac,
-                    'NumDoc' =>  $NumDoc,
+                    'LineaNumDoc' =>  $LineaNumDoc,
                     'IdProducto' =>  $IdProducto,
                     'CodProducto' =>  $CodProducto,
                     'NumFabricante' =>  $NumFabricante,

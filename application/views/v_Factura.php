@@ -181,7 +181,7 @@
 									echo '<td class="hidden-md hidden-lg"><input class="LineaCampo" id="txt_CuentaMayor" name="txt_CuentaMayor[]" placeholder="CuentaMayor" type="text" value="'.$filaDetalle->CuentaMayor.'" readonly/></td>';
 									echo '<td class="hidden-md hidden-lg"><input class="LineaCampo" id="txt_CuentaCoste" name="txt_CuentaCoste[]" placeholder="CuentaCoste" type="text" value="'.$filaDetalle->CuentaCoste.'" readonly/></td>';
 									echo '<td class="hidden-md hidden-lg"><input class="LineaCampo" id="txt_NormaReparto" name="txt_NormaReparto[]" placeholder="NormaReparto" type="text" value="'.$filaDetalle->NormaReparto.'" readonly/></td>';
-									echo '<td class="hidden-md hidden-lg"><input class="LineaCampo" id="txt_NumDoc" name="txt_NumDoc" placeholder="NumDoc" type="text" value="'.$filaDetalle->NumDoc.'" readonly/></td>';
+									echo '<td class="hidden-md hidden-lg"><input class="LineaCampo" id="txt_LineaNumDoc" name="txt_LineaNumDoc[]" placeholder="LineaNumDoc" type="text" value="'.$filaDetalle->NumDoc.'" readonly/></td>';
 									echo '<td class="hidden-md hidden-lg"><input class="LineaCampo" id="txt_Afecto" name="txt_Afecto[]" placeholder="Afecto" type="text" value="'.$filaDetalle->Afecto.'" readonly/></td>';
 									echo '<td><span id="snum">'.$i.'</span></td>';
 									echo '<td> <input type="checkbox" class="FilaMarcada"></td>';
