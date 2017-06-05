@@ -38,14 +38,17 @@
 								<div class="form-group">
 									<div class="row colbox">
 										<div class="col-lg-4 col-xs-12">
-											<label for="txt_Cajero" class="control-label">Cajero</label>
+											<label for="txt_Cajero" class="control-lable">Cajero</label>
 										</div>
 										<div class="col-lg-8 col-xs-12">
-											<input class="form-control" id="txt_Cajero" name="txt_Cajero" placeholder="Cajero" type="text" value="<?php echo $filaFactura->Cajero; ?>" />
+											<select class="form-control" id="txt_Cajero" name="txt_Cajero">
+												<option>ALICIA VASQUEZ</option>
+												<option>YANET OSORIO</option>
+											</select>
 											<span class="text-danger"><?php echo form_error('txt_Cajero'); ?></span>
-										</div>
+										</div>     
 									</div>
-								</div> 
+								</div>
 								<div class="form-group">
 									<div class="row colbox">
 										<div class="col-lg-4 col-xs-12">
@@ -276,8 +279,7 @@
 				<br>
 				<div class="row">
 					<div class="col-lg-6 col-xs-12">
-						<span style="float:left"><a class="btn btn-danger" href="<?php echo base_url('c_Cuadros/c_Cuadros_i');?>"> Cancelar</a>&nbsp;</span>	 
-						<span style="float:left"><a class="btn btn-warning" href="<?php echo base_url('c_Cuadros/c_Cuadros_i');?>"> Actualizar</a>&nbsp;</span>	 
+						<span style="float:left"><a class="btn btn-warning" href="<?php echo base_url('c_Cuadros/c_Cuadros_i');?>"> Nuevo</a>&nbsp;</span>	 
 						<input id="btn_guardar" name="btn_guardar" type="submit" class="btn btn-success" value="Guardar" />
 					</div>
 				</div>

@@ -133,4 +133,7 @@ $("#btn_insertar").on('click',function(){
     });
 });
 //=========FIN=========//
+ //=========INICIO de calendario=========//
+ $("#txt_FechaContable").datepicker({format: 'dd/mm/yyyy'});
+ //=========FIN=========//
 });
