@@ -83,7 +83,7 @@
 											<label for="txt_NumDoc" class="control-label">N° Documento</label>
 										</div>
 										<div class="col-lg-6 col-xs-12">
-											<input class="form-control" id="txt_NumDoc" name="txt_NumDoc" placeholder="Numero" type="text" value="<?php echo $filaFactura->NumDoc; ?>" readonly/>
+											<input class="form-control" id="txt_NumDoc" name="txt_NumDoc" placeholder="Numero" type="text" value="<?php echo $filaFactura->NumDoc + 1; ?>" readonly/>
 											<span class="text-danger"><?php echo form_error('txt_NumDoc'); ?></span>
 										</div>
 									</div>
@@ -133,9 +133,6 @@
 									</div>
 								</div>
 							</fieldset>
-							<?php 
-						}
-						?>
 					</div>
 				</div>
 				<div style="clear: both;"></div>  
@@ -145,9 +142,12 @@
 					<div class="col-lg-6 col-xs-12">
 						<span style="float:left"><a id="Agregar" class="btn btn-primary" href="#"><span id="Herramienta" class="glyphicon glyphicon-plus"></span> Agregar</a>&nbsp;</span>	 
 						<span style="float:left"><a id="Remover" class="btn btn-warning" href="#"><span id="Herramienta" class="glyphicon glyphicon-trash"></span> Remover</a>&nbsp;</span>	 
-						<span style="float:left"><a class="btn btn-success" href="<?php echo base_url('factura.php?Imprimir=true');?>" target="_blank"><span id="Herramienta" class="glyphicon glyphicon-print"></span> Imprimir</a>&nbsp;</span>	 
+						<span style="float:left"><a class="btn btn-success" href="<?php echo base_url('');?>factura.php?Imprimir=true&vNumDoc=<?php echo $filaFactura->NumDoc; ?>" target="_blank"><span id="Herramienta" class="glyphicon glyphicon-print"></span> Imprimir</a>&nbsp;</span>	 
 					</div>
 				</div>
+				<?php 
+					}
+				?>
 				<br>
 				<hr class="Linea">
 				<br>

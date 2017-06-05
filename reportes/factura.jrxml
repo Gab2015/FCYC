@@ -3,8 +3,9 @@
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
+	<parameter name="vNumDoc" class="java.lang.Integer"/>
 	<queryString>
-		<![CDATA[EXECUTE pc_m_Venta 1,1]]>
+		<![CDATA[EXECUTE pc_m_Venta $P{vNumDoc}]]>
 	</queryString>
 	<field name="NumDoc" class="java.lang.Integer"/>
 	<field name="Cliente" class="java.lang.String"/>

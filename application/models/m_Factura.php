@@ -5,20 +5,17 @@ class m_Factura extends CI_Model {
     }
     function get_Factura(){
 	//Variables
-        $IdFact  = 1;
-        $ssqlNumDoc = "EXECUTE pc_m_Factura ?";
-        $paramsNumDoc = array($IdFact);
-        $rs_Factura = $this->db->query($ssqlNumDoc,$paramsNumDoc);
+        $ssqlNumDoc = "EXECUTE pc_m_Factura";
+        $rs_Factura = $this->db->query($ssqlNumDoc);
         $rs_Facturas['rs_Factura'] = $rs_Factura->result();
         return  $rs_Facturas;
     }
 
     function get_DetalleFactura(){
 	//Variables
-        $NumDoc  = 1;
-        $IdFact  = 1;
-        $ssqlNumDoc = "EXECUTE pc_m_DetalleFactura ?,?";
-        $paramsNumDoc = array($NumDoc,$IdFact);
+        $NumDoc  = 120;
+        $ssqlNumDoc = "EXECUTE pc_m_DetalleFactura ?";
+        $paramsNumDoc = array($NumDoc);
         $rs_DetalleFactura = $this->db->query($ssqlNumDoc,$paramsNumDoc);
         $rs_DetalleFacturas['rs_DetalleFactura'] = $rs_DetalleFactura->result();
         return  $rs_DetalleFacturas;

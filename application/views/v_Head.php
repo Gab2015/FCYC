@@ -15,5 +15,4 @@
 	<script src="<?php echo base_url("js/jquery.dataTables.min.js");?>"></script>
 	<script src="<?php echo base_url("js/dataTables.bootstrap.min.js");?>"></script>
 	<script src="<?php echo base_url("js/v_Menu.js");?>"></script>
-	<script src="<?php echo base_url("js/v_Factura.js");?>"></script> 
-</head>
+	<script src="<?php echo base_url("js/v_Factura.js");?>"></script>
