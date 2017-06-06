@@ -19,7 +19,7 @@
 											<label for="txt_Cliente" class="control-label">Cliente</label>
 										</div>
 										<div class="col-lg-8 col-xs-12">
-											<input class="form-control" id="txt_Cliente" name="txt_Cliente" placeholder="C99999" type="text" value="<?php echo $filaFactura->Cliente; ?>" />
+											<input class="form-control" id="txt_Cliente" name="txt_Cliente" placeholder="C99999" type="text" value="<?php echo $filaFactura->Cliente; ?>" readonly/>
 											<span class="text-danger"><?php echo form_error('txt_Nombre'); ?></span>
 										</div>
 									</div>
@@ -86,7 +86,7 @@
 											<label for="txt_NumDoc" class="control-label">N° Documento</label>
 										</div>
 										<div class="col-lg-6 col-xs-12">
-											<input class="form-control" id="txt_NumDoc" name="txt_NumDoc" placeholder="Numero" type="text" value="<?php echo $filaFactura->NumDoc + 1; ?>" readonly/>
+											<input class="form-control" id="txt_NumDoc" name="txt_NumDoc" placeholder="Numero" type="text" value="<?php echo $filaFactura->NumDoc; ?>" readonly/>
 											<span class="text-danger"><?php echo form_error('txt_NumDoc'); ?></span>
 										</div>
 									</div>
@@ -97,7 +97,7 @@
 											<label for="txt_IdTipo" class="control-label">Serie</label>
 										</div>
 										<div class="col-lg-6 col-xs-12">
-											<input class="form-control" id="txt_IdTipo" name="txt_IdTipo" placeholder="Tipo" type="text" value="<?php echo $filaFactura->Documento; ?>" />
+											<input class="form-control" id="txt_IdTipo" name="txt_IdTipo" placeholder="Tipo" type="text" value="<?php echo $filaFactura->Documento; ?>" readonly/>
 											<span class="text-danger"><?php echo form_error('txt_IdTipo'); ?></span>
 										</div>
 									</div>
@@ -119,7 +119,7 @@
 											<label for="txt_CodVendedor" class="control-label">Código Vendedor</label>
 										</div>
 										<div class="col-lg-6 col-xs-12">
-											<input class="form-control" id="txt_CodVendedor" name="txt_CodVendedor" placeholder="Código" type="text" value="<?php echo $filaFactura->CodVendedor; ?>" />
+											<input class="form-control" id="txt_CodVendedor" name="txt_CodVendedor" placeholder="Código" type="text" value="<?php echo $filaFactura->CodVendedor; ?>" readonly/>
 											<span class="text-danger"><?php echo form_error('txt_CodVendedor'); ?></span>
 										</div>
 									</div>
@@ -130,7 +130,7 @@
 											<label for="txt_Vendedor" class="control-lable">Vendedor</label>
 										</div>
 										<div class="col-lg-8 col-xs-12">
-											<input class="form-control" id="txt_Vendedor" name="txt_Vendedor" placeholder="Vendedor" type="text" value="<?php echo $filaFactura->Vendedor; ?>"/>
+											<input class="form-control" id="txt_Vendedor" name="txt_Vendedor" placeholder="Vendedor" type="text" value="<?php echo $filaFactura->Vendedor; ?>" readonly/>
 											<span class="text-danger"><?php echo form_error('txt_Vendedor'); ?></span>
 										</div>     
 									</div>
@@ -279,7 +279,7 @@
 				<br>
 				<div class="row">
 					<div class="col-lg-6 col-xs-12">
-						<span style="float:left"><a class="btn btn-warning" href="<?php echo base_url('c_Cuadros/c_Cuadros_i');?>"> Nuevo</a>&nbsp;</span>	 
+						<input id="btn_cancel" name="btn_cancel" type="reset" class="btn btn-warning" value="Nuevo" />&nbsp;
 						<input id="btn_guardar" name="btn_guardar" type="submit" class="btn btn-success" value="Guardar" />
 					</div>
 				</div>

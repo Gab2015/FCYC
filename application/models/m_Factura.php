@@ -10,12 +10,16 @@ class m_Factura extends CI_Model {
         $rs_Facturas['rs_Factura'] = $rs_Factura->result();
         return  $rs_Facturas;
     }
-
-    function get_DetalleFactura(){
+    function get_UltimoDoc(){
+    //Variables
+        $ssqlNumDoc = "EXECUTE pc_m_UltimoDoc";
+        $rs_UltimoDoc = $this->db->query($ssqlNumDoc);
+        return  $rs_UltimoDoc->row()->NumDoc;
+    }
+    function get_DetalleFactura($UltimoDoc){
 	//Variables
-        $NumDoc  = 120;
         $ssqlNumDoc = "EXECUTE pc_m_DetalleFactura ?";
-        $paramsNumDoc = array($NumDoc);
+        $paramsNumDoc = array($UltimoDoc);
         $rs_DetalleFactura = $this->db->query($ssqlNumDoc,$paramsNumDoc);
         $rs_DetalleFacturas['rs_DetalleFactura'] = $rs_DetalleFactura->result();
         return  $rs_DetalleFacturas;

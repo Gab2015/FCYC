@@ -1,6 +1,7 @@
 $(document).ready(function() {
 //=========Calcula los montos totales de la Factura o Tikect=========//
 //=========INICI0=========//
+var vNumDoc = 0;
 $('#DetalleFac').on('change', 'input[type="text"]', function(i,e) {
 	if($('input[class=FilaMarcada]:checkbox:checked').length == 0){ 
 		var cells = $(this).closest('tr').children('td');
@@ -106,6 +107,7 @@ $("#Agregar").on('click',function(){
 //=========FIN=========//
 //=========Genera una fila y la coloca al final=========//
 //=========INICI0=========//
+vNumDoc = $("input:text#txt_NumDoc").val();
 $("#btn_insertar").on('click',function(){
 	$('input[class=Marcada]:checkbox:checked').each(function(i,e){ 
 				var vNumFilaAgregada=$('#DetalleFac tr').length;
@@ -118,7 +120,7 @@ $("#btn_insertar").on('click',function(){
                 vFilaAgregada +="<td class='hidden-md hidden-lg'><input class='LineaCampo' id='txt_CuentaMayor' name='txt_CuentaMayor[]' placeholder='CuentaMayor' type='text' value='401050101-SV-GP' readonly/></td>";
                 vFilaAgregada +="<td class='hidden-md hidden-lg'><input class='LineaCampo' id='txt_CuentaCoste' name='txt_CuentaCoste[]' placeholder='CuentaCoste' type='text' value='501050101SVGP' readonly/></td>";
                 vFilaAgregada +="<td class='hidden-md hidden-lg'><input class='LineaCampo' id='txt_NormaReparto' name='txt_NormaReparto[]' placeholder='NormaReparto' type='text' value='GRAFIPRO' readonly/></td>";
-                vFilaAgregada +="<td class='hidden-md hidden-lg'><input class='LineaCampo' id='txt_LineaNumDoc' name='txt_LineaNumDoc[]' placeholder='NumDoc' type='text' value='1' readonly/></td>";
+                vFilaAgregada +="<td class='hidden-md hidden-lg'><input class='LineaCampo' id='txt_LineaNumDoc' name='txt_LineaNumDoc[]' placeholder='NumDoc' type='text' value='"+vNumDoc+"' readonly/></td>";
                 vFilaAgregada +="<td class='hidden-md hidden-lg'><input class='LineaCampo' id='txt_Afecto' name='txt_Afecto[]' placeholder='Afecto' type='text' value='IVA' readonly/></td>";
 				vFilaAgregada +="<td><span id='snum'>"+vNumFilaAgregada+"</span></td>";
 				vFilaAgregada +="<td><input type='checkbox' class='FilaMarcada'></td>";
