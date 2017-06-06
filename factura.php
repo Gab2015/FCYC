@@ -32,4 +32,5 @@ $vNumDoc = $_GET['vNumDoc'];
 else {
     if ( ! defined('BASEPATH')) exit('Acceso no permitido');
 }
+
 ?> 
