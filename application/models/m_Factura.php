@@ -25,9 +25,10 @@ class m_Factura extends CI_Model {
         return  $rs_DetalleFacturas;
     }
     function pc_m_Factura_i($NumDoc,$Cliente,$Nombre,$IdTipo,$Cajero,$Vendedor,$CodVendedor,$FechaContable,$NumCaja,$VentaGravada,$VentaExenta,$VentaNoSujeta,$Iva,$Total,$DocType){
+        $vSiguienteDoc = $NumDoc + 1; 
         $Fecha   = date('Y-m-d H:i:s', strtotime(strtr($FechaContable, '/', '-')));
         $ssql ="EXECUTE pc_m_Factura_i ?,?,?,?,?,?,?,?,?,?,?,?,?,?,?";
-        $params = array($NumDoc,$Cliente,$Nombre,$IdTipo,$Cajero,$Vendedor,$CodVendedor,$Fecha,$NumCaja,$VentaGravada,$VentaExenta,$VentaNoSujeta,$Iva,$Total,$DocType);
+        $params = array($vSiguienteDoc,$Cliente,$Nombre,$IdTipo,$Cajero,$Vendedor,$CodVendedor,$Fecha,$NumCaja,$VentaGravada,$VentaExenta,$VentaNoSujeta,$Iva,$Total,$DocType);
         $rs_Fac= $this->db->query($ssql,$params);
         return  $rs_Fac->result();
     }
@@ -41,7 +42,7 @@ class m_Factura extends CI_Model {
         for( $i = 0 ; $i < count($tablaDetalle['CodProducto']) ; $i++){
                 $params = array(
                     'IdFac' =>  $tablaDetalle['IdFac'][$i],
-                    'LineaNumDoc' =>  $tablaDetalle['LineaNumDoc'][$i],
+                    'LineaNumDoc' =>  $tablaDetalle['LineaNumDoc'][$i] + 1,
                     'IdProducto' =>  $tablaDetalle['IdProducto'][$i],
                     'CodProducto' =>  $tablaDetalle['CodProducto'][$i],
                     'NumFabricante' =>  $tablaDetalle['NumFabricante'][$i],

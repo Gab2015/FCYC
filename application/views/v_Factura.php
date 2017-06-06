@@ -191,7 +191,7 @@
 									echo '<td><input class="LineaCampo" id="txt_CodProducto" name="txt_CodProducto[]" placeholder="Codigo" type="text" value="'.$filaDetalle->CodProducto.'" readonly/></td>';
 									echo '<td class="hidden-md hidden-lg"><input class="LineaCampo" id="txt_NumFabricante" name="txt_NumFabricante[]" placeholder="NumFabricante" type="text" value="'.$filaDetalle->NumFabricante.'" readonly/></td>';
 									echo '<td><input class="LineaCampo" id="txt_DescripcionProducto" name="txt_DescripcionProducto[]" placeholder="DescripcionProducto" type="text" value="'.$filaDetalle->DescripcionProducto.'" readonly/></td>';
-									echo '<td><input class="form-control" id="txt_Cantidad" name="txt_Cantidad[]" placeholder="Cantidad" type="text" value=""/></td>';
+									echo '<td><input class="form-control" id="txt_Cantidad" name="txt_Cantidad[]" placeholder="Cantidad" type="text" value="'.$filaDetalle->Cantidad.'"/></td>';
 									echo '<td><input class="LineaCampo" id="txt_PrecioConIva" name="txt_PrecioConIva[]" placeholder="PrecioConIva" type="text" value="'.number_format($filaDetalle->PrecioConIva,2,".",",").'" readonly/></td>';
 									echo '<td><input class="form-control" id="txt_Afecta" name="txt_Afecta[]" placeholder="Total" type="text" value="" readonly/></td>';
 									echo '</tr>';

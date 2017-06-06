@@ -23,8 +23,9 @@ $vNumDoc = $_GET['vNumDoc'];
     $xml =  simplexml_load_file('reportes/factura.jrxml');
     $PHPJasperXML = new PHPJasperXML();
     $PHPJasperXML->debugsql=false;
-    $PHPJasperXML->arrayParameter=array("vNumDoc"=>$vNumDoc);
+    //$PHPJasperXML->arrayParameter=array("vNumDoc"=>$vNumDoc);
     $PHPJasperXML->xml_dismantle($xml);
+    $PHPJasperXML->sql ="EXECUTE pc_m_Venta $vNumDoc";
     $PHPJasperXML->transferDBtoArray($server,$user,$pass,$bd,"odbc");
     $PHPJasperXML->outpage("I");
 }
