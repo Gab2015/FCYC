@@ -5,7 +5,6 @@ define ('BASEPATH','./');
 include ('PhpJasperLibrary/tcpdf/tcpdf.php');
 include ('PhpJasperLibrary/PHPJasperXML.inc.php');
 require_once('application/config/database.php');
-require_once('reportes/setting.php');
 //database connection details
 
 $server= $db['default']['hostname'];
