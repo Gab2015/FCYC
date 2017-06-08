@@ -61,7 +61,13 @@ class c_Factura extends CI_Controller {
       //creo el array con datos de configuración para la vista			
 			$datos_vista['rs_Factura'] = $this->m_Factura->get_Factura();
 			$UltimoDoc = $this->m_Factura->get_UltimoDoc();
+		  if ( isset( $_GET['Nuevo'] ) ) { 
+		  	$UltimoDoc = 0;
 			$datos_vista['rs_DetalleFactura'] = $this->m_Factura->get_DetalleFactura($UltimoDoc);
+			}
+		  else{
+		  	$datos_vista['rs_DetalleFactura'] = $this->m_Factura->get_DetalleFactura($UltimoDoc);
+		  } 
 			$datos_articulo['rs_articulo'] = $this->m_Factura->get_DetalleArticulo();
       //cargo la vista pasando los datos de configuracion
 			$this->load->view('v_Head');

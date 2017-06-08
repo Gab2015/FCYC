@@ -193,7 +193,7 @@
 									echo '<td><input class="LineaCampo" id="txt_DescripcionProducto" name="txt_DescripcionProducto[]" placeholder="DescripcionProducto" type="text" value="'.$filaDetalle->DescripcionProducto.'" readonly/></td>';
 									echo '<td><input class="form-control" id="txt_Cantidad" name="txt_Cantidad[]" placeholder="Cantidad" type="text" value="'.$filaDetalle->Cantidad.'"/></td>';
 									echo '<td><input class="LineaCampo" id="txt_PrecioConIva" name="txt_PrecioConIva[]" placeholder="PrecioConIva" type="text" value="'.number_format($filaDetalle->PrecioConIva,2,".",",").'" readonly/></td>';
-									echo '<td><input class="form-control" id="txt_Afecta" name="txt_Afecta[]" placeholder="Total" type="text" value="" readonly/></td>';
+									echo '<td><input class="form-control" id="txt_Afecta" name="txt_Afecta[]" placeholder="Total" type="text" value="'.$filaDetalle->Cantidad*number_format($filaDetalle->PrecioConIva,2,".",",").'" readonly/></td>';
 									echo '</tr>';
 									$i++;
 								}
@@ -219,7 +219,7 @@
 											<label for="txt_VentaGravada" class="control-label">Venta Gravada</label>
 										</div>
 										<div class="col-lg-6 col-xs-12">
-											<input class="form-control" id="txt_VentaGravada" name="txt_VentaGravada" placeholder="Venta Gravada" type="text" value="" readonly/>
+											<input class="form-control" id="txt_VentaGravada" name="txt_VentaGravada" placeholder="Venta Gravada" type="text" value="<?php echo $filaPie->VentaGravada; ?>" readonly/>
 											<span class="text-danger"><?php echo form_error('txt_VentaGravada'); ?></span>
 										</div>
 									</div>
@@ -230,7 +230,7 @@
 											<label for="txt_VentaExenta" class="control-lable">Venta Exenta</label>
 										</div>
 										<div class="col-lg-6 col-xs-12">
-											<input class="form-control" id="txt_VentaExenta" name="txt_VentaExenta" placeholder="Venta Exenta" type="text" value="" readonly/>
+											<input class="form-control" id="txt_VentaExenta" name="txt_VentaExenta" placeholder="Venta Exenta" type="text" value="<?php echo $filaPie->VentaExenta; ?>" readonly/>
 											<span class="text-danger"><?php echo form_error('txt_VentaExenta'); ?></span>	
 										</div>     
 									</div>
@@ -241,7 +241,7 @@
 											<label for="txt_VentaNoSujeta" class="control-label">Venta No Sujeta</label>
 										</div>
 										<div class="col-lg-6 col-xs-12">
-											<input class="form-control" id="txt_VentaNoSujeta" name="txt_VentaNoSujeta" placeholder="No Sujeta" type="text" value="" readonly/>
+											<input class="form-control" id="txt_VentaNoSujeta" name="txt_VentaNoSujeta" placeholder="No Sujeta" type="text" value="<?php echo $filaPie->VentaNoSujeta; ?>" readonly/>
 											<span class="text-danger"><?php echo form_error('txt_VentaNoSujeta'); ?></span>
 										</div>
 									</div>
@@ -252,7 +252,7 @@
 											<label for="txt_Iva" class="control-lable">IVA</label>
 										</div>
 										<div class="col-lg-6 col-xs-12">
-											<input class="form-control" id="txt_Iva" name="txt_Iva" placeholder="IVA" type="text" value="" readonly/>
+											<input class="form-control" id="txt_Iva" name="txt_Iva" placeholder="IVA" type="text" value="<?php echo $filaPie->Iva; ?>" readonly/>
 											<span class="text-danger"><?php echo form_error('txt_Iva'); ?></span>
 										</div>     
 									</div>
@@ -263,7 +263,7 @@
 											<label for="txt_Total" class="control-lable">Total</label>
 										</div>
 										<div class="col-lg-6 col-xs-12">
-											<input class="form-control" id="txt_Total" name="txt_Total" placeholder="Total" type="text" value="" readonly/>
+											<input class="form-control" id="txt_Total" name="txt_Total" placeholder="Total" type="text" value="<?php echo $filaPie->Total; ?>" readonly/>
 											<span class="text-danger"><?php echo form_error('txt_Total'); ?></span>
 										</div>     
 									</div>
@@ -279,7 +279,7 @@
 				<br>
 				<div class="row">
 					<div class="col-lg-6 col-xs-12">
-						<input id="btn_cancel" name="btn_cancel" type="reset" class="btn btn-warning" value="Nuevo" />&nbsp;
+						<span style="float:left"><a id="btn_nuevo" class="btn btn-warning" href="<?php echo base_url('');?>c_Factura/index?Nuevo=true" ><span id="Herramienta"></span> Nuevo</a>&nbsp;</span>	 
 						<input id="btn_guardar" name="btn_guardar" type="submit" class="btn btn-success" value="Guardar" />
 					</div>
 				</div>
