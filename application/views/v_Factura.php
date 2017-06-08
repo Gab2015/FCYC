@@ -11,7 +11,7 @@
 					<div class="col-lg-4 col-xs-11 well">
 						<fieldset>
 							<?php 	
-							foreach($rs_Factura['rs_Factura'] as $filaFactura){	
+							foreach($rs_FacturaEnc['rs_Factura'] as $filaFactura){	
 								?>
 								<div class="form-group">
 									<div class="row colbox">
@@ -209,8 +209,7 @@
 					</div>
 					<div class="col-lg-4 col-xs-11 well">
 						<?php
-
-						foreach($rs_Factura['rs_Factura'] as $filaPie){
+						foreach($rs_FacturaPie['rs_Factura'] as $filaPie){
 							?>
 							<fieldset>
 								<div class="form-group">
