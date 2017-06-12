@@ -138,4 +138,10 @@ $("#btn_insertar").on('click',function(){
 //=========INICIO de calendario=========//
  $("#txt_FechaContable").datepicker({format: 'dd/mm/yyyy'});
 //=========FIN=========//
+$("input[type=text]#txt_DescripcionProducto").attr('size', function() {
+    return this.value.length;
+});
+$("input[type=text]#txt_DescripcionProducto").on('keyup', function() {
+    $(this).attr('size', this.value.length);
+}).trigger('keyup');
 });

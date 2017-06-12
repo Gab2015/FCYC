@@ -19,3 +19,6 @@ hr.Linea{
     outline:transparent;
     background: none !important;
 }
+.modal-dialog {
+    width: 800px;
+}

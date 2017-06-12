@@ -242,7 +242,7 @@ th {
   text-align: center;
 } 
 
-td,th{
+td,th {
     white-space: nowrap;
     width: 1%;
 }
@@ -254,4 +254,8 @@ td,th{
     padding-top: 7px;
     margin-bottom: 0;
     text-align: left;
+}
+input {
+  white-space:pre;
+  display: inline;
 }
