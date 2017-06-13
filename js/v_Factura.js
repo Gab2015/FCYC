@@ -26,7 +26,7 @@ function sumaFila(){
 	$("input:text#txt_VentaGravada").val(vtGravada);
 	vIva = vtGravada*0.13;
 	$("input:text#txt_Iva").val(vIva.toFixed(2));
-	vTotal = vtGravada*1.13;
+	vTotal = vtGravada;
 	$("input:text#txt_Total").val(vTotal.toFixed(2));
 }
 //=========FIN=========//
