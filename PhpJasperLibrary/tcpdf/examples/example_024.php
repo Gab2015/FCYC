@@ -2,19 +2,19 @@
 //============================================================+
 // File name   : example_024.php
 // Begin       : 2008-03-04
-// Last Update : 2009-09-30
-// 
+// Last Update : 2010-08-08
+//
 // Description : Example 024 for TCPDF class
-//               Object Visibility
-// 
+//               Object Visibility and Layers
+//
 // Author: Nicola Asuni
-// 
+//
 // (c) Copyright:
 //               Nicola Asuni
-//               Tecnick.com s.r.l.
-//               Via Della Pace, 11
-//               09044 Quartucciu (CA)
-//               ITALY
+//               Tecnick.com LTD
+//               Manor Coach House, Church Hill
+//               Aldershot, Hants, GU12 4RQ
+//               UK
 //               www.tecnick.com
 //               info@tecnick.com
 //============================================================+
@@ -22,11 +22,8 @@
 /**
  * Creates an example PDF TEST document using TCPDF
  * @package com.tecnick.tcpdf
- * @abstract TCPDF - Example: Object Visibility
+ * @abstract TCPDF - Example: Object Visibility and Layers
  * @author Nicola Asuni
- * @copyright 2004-2009 Nicola Asuni - Tecnick.com S.r.l (www.tecnick.com) Via Della Pace, 11 - 09044 - Quartucciu (CA) - ITALY - www.tecnick.com - info@tecnick.com
- * @link http://tcpdf.org
- * @license http://www.gnu.org/copyleft/lesser.html LGPL
  * @since 2008-03-04
  */
 
@@ -34,7 +31,7 @@ require_once('../config/lang/eng.php');
 require_once('../tcpdf.php');
 
 // create new PDF document
-$pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false); 
+$pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
 
 // set document information
 $pdf->SetCreator(PDF_CREATOR);
@@ -44,7 +41,7 @@ $pdf->SetSubject('TCPDF Tutorial');
 $pdf->SetKeywords('TCPDF, PDF, example, test, guide');
 
 // set default header data
-$pdf->SetHeaderData(PDF_HEADER_LOGO, PDF_HEADER_LOGO_WIDTH, PDF_HEADER_TITLE, PDF_HEADER_STRING);
+$pdf->SetHeaderData(PDF_HEADER_LOGO, PDF_HEADER_LOGO_WIDTH, PDF_HEADER_TITLE.' 024', PDF_HEADER_STRING);
 
 // set header and footer fonts
 $pdf->setHeaderFont(Array(PDF_FONT_NAME_MAIN, '', PDF_FONT_SIZE_MAIN));
@@ -62,36 +59,76 @@ $pdf->SetFooterMargin(PDF_MARGIN_FOOTER);
 $pdf->SetAutoPageBreak(TRUE, PDF_MARGIN_BOTTOM);
 
 //set image scale factor
-$pdf->setImageScale(PDF_IMAGE_SCALE_RATIO); 
+$pdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
 
 //set some language-dependent strings
-$pdf->setLanguageArray($l); 
+$pdf->setLanguageArray($l);
 
 // ---------------------------------------------------------
 
 // set font
-$pdf->SetFont('times', '', 40);
+$pdf->SetFont('times', '', 18);
 
 // add a page
 $pdf->AddPage();
 
 /*
- * setVisibility() allows to restrict the rendering of some 
- * elements to screen or printout. This can be useful, for 
- * instance, to put a background image or color that will 
+ * setVisibility() allows to restrict the rendering of some
+ * elements to screen or printout. This can be useful, for
+ * instance, to put a background image or color that will
  * show on screen but won't print.
  */
-    
+
+$txt = 'You can limit the visibility of PDF objects to screen or printer by using the setVisibility() method.
+Check the print preview of this document to display the alternative text.';
+
+$pdf->Write(0, $txt, '', 0, '', true, 0, false, false, 0);
+
+// change font size
+$pdf->SetFontSize(40);
+
+// change text color
+$pdf->SetTextColor(0,63,127);
+
 // set visibility only for screen
 $pdf->setVisibility('screen');
-$pdf->Write(6, "This line is for display.\n");
+
+// write something only for screen
+$pdf->Write(0, '[This line is for display]', '', 0, 'C', true, 0, false, false, 0);
 
 // set visibility only for print
 $pdf->setVisibility('print');
-$pdf->Write(6, "This line is for printout.\n");
+
+// change text color
+$pdf->SetTextColor(127,0,0);
+
+// write something only for print
+$pdf->Write(0, '[This line is for printout]', '', 0, 'C', true, 0, false, false, 0);
 
 // restore visibility
 $pdf->setVisibility('all');
+
+// ---------------------------------------------------------
+
+// LAYERS
+
+// start a new layer
+$pdf->startLayer('layer1', true, true);
+
+// change font size
+$pdf->SetFontSize(18);
+
+// change text color
+$pdf->SetTextColor(0,127,0);
+
+$txt = 'Using the startLayer() method you can group PDF objects into layers.
+This text is on "layer1".';
+
+// write something
+$pdf->Write(0, $txt, '', 0, 'L', true, 0, false, false, 0);
+
+// close the current layer
+$pdf->endLayer();
 
 // ---------------------------------------------------------
 
@@ -99,6 +136,5 @@ $pdf->setVisibility('all');
 $pdf->Output('example_024.pdf', 'I');
 
 //============================================================+
-// END OF FILE                                                 
+// END OF FILE                                                
 //============================================================+
-?>

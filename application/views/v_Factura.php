@@ -42,8 +42,8 @@
 										</div>
 										<div class="col-lg-8 col-xs-12">
 											<select class="form-control" id="txt_Cajero" name="txt_Cajero">
-												<option>ALICIA VASQUEZ</option>
-												<option>YANET OSORIO</option>
+												<option>EDWIN PORTILLO</option>
+												<option>XAVIER JUAREZ</option>
 											</select>
 											<span class="text-danger"><?php echo form_error('txt_Cajero'); ?></span>
 										</div>     

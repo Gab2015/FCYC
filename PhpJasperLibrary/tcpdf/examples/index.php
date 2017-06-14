@@ -8,7 +8,6 @@ echo '<'.'?'.'xml version="1.0" encoding="UTF-8"'.'?'.'>';
 <head>
 <title>TCPDF Examples</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<meta name="aiocp_level" content="0" />
 <meta name="description" content="TCPDF is a PHP class for generating PDF documents on the fly" />
 <meta name="author" content="Nicola Asuni" />
 <meta name="keywords" content="Examples, TCPDF, PDF, PHP class" />
@@ -40,12 +39,12 @@ echo '<'.'?'.'xml version="1.0" encoding="UTF-8"'.'?'.'>';
 <li>Non unicode / Alternative config file: [<a href="example_019.php" title="PDF [new window]" target="_blank">PDF</a>]</li>
 <li>Multicell complex alignment: [<a href="example_020.php" title="PDF [new window]" target="_blank">PDF</a>]</li>
 <li>writeHTML alignment: [<a href="example_021.php" title="PDF [new window]" target="_blank">PDF</a>]</li>
-<li>CMYK colors: [[<a href="example_022.php" title="PDF [new window]" target="_blank">PDF</a>]</li>
+<li>CMYK colors: [<a href="example_022.php" title="PDF [new window]" target="_blank">PDF</a>]</li>
 <li>Page Groups: [<a href="example_023.php" title="PDF [new window]" target="_blank">PDF</a>]</li>
-<li>Object Visibility: [<a href="example_024.php" title="PDF [new window]" target="_blank">PDF</a>]</li>
+<li>Object Visibility and Layers: [<a href="example_024.php" title="PDF [new window]" target="_blank">PDF</a>]</li>
 <li>Object Transparency: [<a href="example_025.php" title="PDF [new window]" target="_blank">PDF</a>]</li>
-<li>Text Clipping: [<a href="example_026.php" title="PDF [new window]" target="_blank">PDF</a>]</li>
-<li>Barcodes: [<a href="example_027.php" title="PDF [new window]" target="_blank">PDF</a>]</li>
+<li>Text Rendering Modes and Text Clipping: [<a href="example_026.php" title="PDF [new window]" target="_blank">PDF</a>]</li>
+<li>1D Barcodes: [<a href="example_027.php" title="PDF [new window]" target="_blank">PDF</a>]</li>
 <li>Multiple page formats: [<a href="example_028.php" title="PDF [new window]" target="_blank">PDF</a>]</li>
 <li>Set PDF viewer display preferences: [<a href="example_029.php" title="PDF [new window]" target="_blank">PDF</a>]</li>
 <li>Colour gradients: [<a href="example_030.php" title="PDF [new window]" target="_blank">PDF</a>]</li>
@@ -62,18 +61,28 @@ echo '<'.'?'.'xml version="1.0" encoding="UTF-8"'.'?'.'>';
 <li>File attachment: [<a href="example_041.php" title="PDF [new window]" target="_blank">PDF</a>]</li>
 <li>Image with Alpha Channel Transparency: [<a href="example_042.php" title="PDF [new window]" target="_blank">PDF</a>]</li>
 <li>Disk caching: [<a href="example_043.php" title="PDF [new window]" target="_blank">PDF</a>]</li>
-<li>Move and delete page: [<a href="example_044.php" title="PDF [new window]" target="_blank">PDF</a>]</li>
+<li>Move, Copy and Delete page: [<a href="example_044.php" title="PDF [new window]" target="_blank">PDF</a>]</li>
 <li>Table Of Content with Bookmarks: [<a href="example_045.php" title="PDF [new window]" target="_blank">PDF</a>]</li>
 <li>Text hyphenation: [<a href="example_046.php" title="PDF [new window]" target="_blank">PDF</a>]</li>
 <li>Transactions and UNDO: [<a href="example_047.php" title="PDF [new window]" target="_blank">PDF</a>]</li>
 <li>Table header and rowspan: [<a href="example_048.php" title="PDF [new window]" target="_blank">PDF</a>]</li>
 <li>TCPDF methods in HTML: [<a href="example_049.php" title="PDF [new window]" target="_blank">PDF</a>]</li>
-<li>Experimental 2D Barcode: [<a href="example_050.php" title="PDF [new window]" target="_blank">PDF</a>]</li>
+<li>2D Barcode (QR-Code, Datamatrix ECC200 and PDF417): [<a href="example_050.php" title="PDF [new window]" target="_blank">PDF</a>]</li>
 <li>Full page background: [<a href="example_051.php" title="PDF [new window]" target="_blank">PDF</a>]</li>
 <li>Digital Signature Certification: [<a href="example_052.php" title="PDF [new window]" target="_blank">PDF</a>]</li>
 <li>Javascript functions: [<a href="example_053.php" title="PDF [new window]" target="_blank">PDF</a>]</li>
 <li>XHTML Form: [<a href="example_054.php" title="PDF [new window]" target="_blank">PDF</a>]</li>
 <li>Font Dump: [<a href="example_055.php" title="PDF [new window]" target="_blank">PDF</a>]</li>
+<li>Crop Marks and Registration Marks: [<a href="example_056.php" title="PDF [new window]" target="_blank">PDF</a>]</li>
+<li>Cell vertical alignments and borders: [<a href="example_057.php" title="PDF [new window]" target="_blank">PDF</a>]</li>
+<li>SVG Image: [<a href="example_058.php" title="PDF [new window]" target="_blank">PDF</a>]</li>
+<li>Table Of Content with HTML templates: [<a href="example_059.php" title="PDF [new window]" target="_blank">PDF</a>]</li>
+<li>Advanced page settings: [<a href="example_060.php" title="PDF [new window]" target="_blank">PDF</a>]</li>
+<li>XHTML + CSS: [<a href="example_061.php" title="PDF [new window]" target="_blank">PDF</a>]</li>
+<li>XObject Templates: [<a href="example_062.php" title="PDF [new window]" target="_blank">PDF</a>]</li>
+<li>Text stretching and spacing (tracking/kerning): [<a href="example_063.php" title="PDF [new window]" target="_blank">PDF</a>]</li>
+<li>No-write page regions: [<a href="example_064.php" title="PDF [new window]" target="_blank">PDF</a>]</li>
+<li>PDF/A-1b (ISO 19005-1:2005) document: [<a href="example_065.php" title="PDF [new window]" target="_blank">PDF</a>]</li>
 </ol>
 
 </body>

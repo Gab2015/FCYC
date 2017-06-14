@@ -15,12 +15,18 @@ class PHPJasperXMLSubReport{
     private $groupno=0;
     private $footershowed=true;
     private $titleheight=0;
+    public $allowprintuntill=0;
+    public $maxy=0;
+    public $maxpage=0;
+    public $parentcurrentband="";
 	private $report_count=0;		//### New declaration (variable exists in original too)
 	private $group_count = array(); //### New declaration
-    public function PHPJasperXMLSubReport($lang="en",$pdflib="FPDF"){
+	private $xoffset=0;
+    public function PHPJasperXMLSubReport($lang="en",$pdflib="FPDF",$xoffset=0){
         $this->lang=$lang;
         error_reporting(1);
         $this->pdflib=$pdflib;
+        $this->xoffset=$xoffset;
     }
 
     public function connect($db_host,$db_user,$db_pass,$db_or_dsn_name,$cndriver="mysql") {
@@ -166,7 +172,8 @@ class PHPJasperXMLSubReport{
             $this->arrayPageSetting["orientation"]=substr($xml_path["orientation"],0,1);
         }
         $this->arrayPageSetting["columnWidth"]=$xml_path["columnWidth"];
-        $this->arrayPageSetting["leftMargin"]=$xml_path["leftMargin"];
+       $this->arrayPageSetting["leftMargin"]=$xml_path["leftMargin"]+$this->xoffset;
+    
         $this->arrayPageSetting["rightMargin"]=$xml_path["rightMargin"];
         $this->arrayPageSetting["topMargin"]=$xml_path["topMargin"];
         $this->y_axis=$xml_path["topMargin"];
@@ -262,13 +269,10 @@ class PHPJasperXMLSubReport{
                 case "line":
                     $this->element_line($out);
                     break;
-   case "rectangle":
+                case "rectangle":
                     $this->element_rectangle($out);
                     break;
-            case "ellipse":
-                    $this->element_ellipse($out);
-                    break;
-                                    case "textField":
+                case "textField":
                     $this->element_textField($out);
                     break;
 //                case "stackedBarChart":
@@ -310,10 +314,102 @@ class PHPJasperXMLSubReport{
                 case "subreport":
                     $this->element_subReport($out);
                     break;
+                case "componentElement":
+                    $this->element_componentElement($out);
+                    break;
+
                 default:
                     break;
             }
         };		
+    }
+  public function element_componentElement($data) {
+//        $imagepath=$data->imageExpression;
+//        //$imagepath= substr($data->imageExpression, 1, -1);
+//        //$imagetype= substr($imagepath,-3);
+//        $data->hyperlinkReferenceExpression=" ".$this->analyse_expression($data->hyperlinkReferenceExpression);
+
+        $x=$data->reportElement["x"];
+        $y=$data->reportElement["y"];
+        $width=$data->reportElement["width"];
+        $height=$data->reportElement["height"];
+        
+               //simplexml_tree( $data);
+       // echo "<br/><br/>";
+       //simplexml_tree( $data->children('jr',true));
+        //echo "<br/><br/>";
+//SimpleXML object (1 item) [0] // ->codeExpression[0] ->attributes('xsi', true) ->schemaLocation ->attributes('', true) ->type ->drawText ->checksumRequired barbecue: 
+       foreach($data->children('jr',true) as $barcodetype =>$content){
+           
+           
+           $barcodemethod="";
+           $textposition="";
+            if($barcodetype=="barbecue"){
+                $barcodemethod=$data->children('jr',true)->attributes('', true) ->type;
+                $textposition="";
+                $checksum=$data->children('jr',true)->attributes('', true) ->checksumRequired;
+                $code=$content->codeExpression;
+                if($content->attributes('', true) ->drawText=='true')
+                        $textposition="bottom";
+                
+                $modulewidth=$content->attributes('', true) ->moduleWidth;
+                
+            }else{
+                
+                 $barcodemethod=$barcodetype;
+                 $textposition=$content->attributes('', true)->textPosition;
+                 //$data->children('jr',true)->textPosition;
+//$content['textPosition'];
+                  $code=$content->codeExpression;
+                $modulewidth=$content->attributes('', true)->moduleWidth;
+                 
+
+                
+            }
+            if($modulewidth=="")
+                $modulewidth=0.4;
+//                            echo "Barcode: $code,position: $textposition <br/><br/>";
+            $this->pointer[]=array("type"=>"Barcode","barcodetype"=>$barcodemethod,"x"=>$x,"y"=>$y,"width"=>$width,"height"=>$height,'textposition'=>$textposition,'code'=>$code,'modulewidth'=>$modulewidth);
+                            
+                    /*
+                     	<jr:barbecue xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" 
+                     * xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" 
+                     * type="2of7" drawText="false" checksumRequired="false">
+					<jr:codeExpression><![CDATA["1234"]]></jr:codeExpression>
+				</jr:barbecue>
+                     * <jr:Code128 xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" 
+                     * xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd"
+                     *  textPosition="bottom">
+					<jr:codeExpression><![CDATA[]]></jr:codeExpression>
+				</jr:Code128>
+                     */
+
+           
+       }
+       
+       
+        //if(isset(  $data->children('jr',true)->barbecue)){
+           
+       //}
+       //elseif(isset(  $data->children('jr',true)->barbecue))
+      // print_r( $data->children('jr',true));
+      // type="2of7" drawText="false" checksumRequired="false"
+       /*
+        * 				
+        * <jr:barbecue xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" type="2of7" drawText="false" checksumRequired="false">
+                    <jr:codeExpression><![CDATA["1234"]]></jr:codeExpression>
+		</jr:barbecue>
+
+        */
+        //die;                
+//        switch($data[scaleImage]) {
+//            case "FillFrame":
+//                $this->pointer[]=array("type"=>"Image","path"=>$imagepath,"x"=>$data->reportElement["x"]+0,"y"=>$data->reportElement["y"]+0,"width"=>$data->reportElement["width"]+0,"height"=>$data->reportElement["height"]+0,"imgtype"=>$imagetype,"link"=>substr($data->hyperlinkReferenceExpression,1,-1),"hidden_type"=>"image");
+//                break;
+//            default:
+//                $this->pointer[]=array("type"=>"Image","path"=>$imagepath,"x"=>$data->reportElement["x"]+0,"y"=>$data->reportElement["y"]+0,"width"=>$data->reportElement["width"]+0,"height"=>$data->reportElement["height"]+0,"imgtype"=>$imagetype,"link"=>substr($data->hyperlinkReferenceExpression,1,-1),"hidden_type"=>"image");
+//                break;
+//        }
     }
 
     public function element_staticText($data) {
@@ -390,12 +486,11 @@ class PHPJasperXMLSubReport{
 //        $this->pointer[]=array("type"=>"MultiCell","width"=>$data->reportElement["width"],"height"=>$height,"txt"=>$data->text,"border"=>$border,"align"=>$align,"fill"=>$fill,"hidden_type"=>"statictext","soverflow"=>$stretchoverflow,"poverflow"=>$printoverflow,"rotation"=>$rotation);
 
     }
-
-    public function element_image($data) {
+ public function element_image($data) {
         $imagepath=$data->imageExpression;
         //$imagepath= substr($data->imageExpression, 1, -1);
         //$imagetype= substr($imagepath,-3);
-
+$data->hyperlinkReferenceExpression=" ".$this->analyse_expression($data->hyperlinkReferenceExpression);
         switch($data[scaleImage]) {
             case "FillFrame":
                 $this->pointer[]=array("type"=>"Image","path"=>$imagepath,"x"=>$data->reportElement["x"]+0,"y"=>$data->reportElement["y"]+0,"width"=>$data->reportElement["width"]+0,"height"=>$data->reportElement["height"]+0,"imgtype"=>$imagetype,"link"=>substr($data->hyperlinkReferenceExpression,1,-1),"hidden_type"=>"image");
@@ -405,6 +500,8 @@ class PHPJasperXMLSubReport{
                 break;
         }
     }
+    
+    
 
     public function element_line($data) {	//default line width=0.567(no detect line width)
         $drawcolor=array("r"=>0,"g"=>0,"b"=>0);
@@ -427,47 +524,18 @@ class PHPJasperXMLSubReport{
         $this->pointer[]=array("type"=>"SetDrawColor","r"=>0,"g"=>0,"b"=>0,"hidden_type"=>"drawcolor");
     }
 
-   public function element_rectangle($data) {
-		$radius=$data['radius'];
-        $drawcolor=array("r"=>0,"g"=>0,"b"=>0);
-        $fillcolor=array("r"=>0,"g"=>0,"b"=>0);
+    public function element_rectangle($data) {
 
+        $drawcolor=array("r"=>0,"g"=>0,"b"=>0);
         if(isset($data->reportElement["forecolor"])) {
-            $drawcolor=array("r"=>hexdec(substr($data->reportElement["forecolor"],1,2)),"g"=>hexdec(substr($data->reportElement["forecolor"],3,2)),"b"=>hexdec(substr($data->reportElement["forecolor"],5,2)));			
-        }
-        if(isset($data->reportElement["backcolor"])) {
-            $fillcolor=array("r"=>hexdec(substr($data->reportElement["backcolor"],1,2)),"g"=>hexdec(substr($data->reportElement["backcolor"],3,2)),"b"=>hexdec(substr($data->reportElement["backcolor"],5,2)));			
+            $drawcolor=array("r"=>hexdec(substr($data->reportElement["forecolor"],1,2)),"g"=>hexdec(substr($data->reportElement["forecolor"],3,2)),"b"=>hexdec(substr($data->reportElement["forecolor"],5,2)));
         }
 
         $this->pointer[]=array("type"=>"SetDrawColor","r"=>$drawcolor["r"],"g"=>$drawcolor["g"],"b"=>$drawcolor["b"],"hidden_type"=>"drawcolor");
-        $this->pointer[]=array("type"=>"SetFillColor","r"=>$fillcolor["r"],"g"=>$fillcolor["g"],"b"=>$fillcolor["b"],"hidden_type"=>"fillcolor");
-
-        if($radius=='')
-        $this->pointer[]=array("type"=>"Rect","x"=>$data->reportElement["x"],"y"=>$data->reportElement["y"],"width"=>$data->reportElement["width"],"height"=>$data->reportElement["height"],"hidden_type"=>"rect","drawcolor"=>$drawcolor,"fillcolor"=>$fillcolor);
-        else
-        $this->pointer[]=array("type"=>"RoundedRect","x"=>$data->reportElement["x"],"y"=>$data->reportElement["y"],"width"=>$data->reportElement["width"],"height"=>$data->reportElement["height"],"hidden_type"=>"roundedrect","radius"=>$radius,"drawcolor"=>$drawcolor,"fillcolor"=>$fillcolor);
+        $this->pointer[]=array("type"=>"Rect","x"=>$data->reportElement["x"],"y"=>$data->reportElement["y"],"width"=>$data->reportElement["width"],"height"=>$data->reportElement["height"],"hidden_type"=>"rect");
         $this->pointer[]=array("type"=>"SetDrawColor","r"=>0,"g"=>0,"b"=>0,"hidden_type"=>"drawcolor");
-        $this->pointer[]=array("type"=>"SetFillColor","r"=>255,"g"=>255,"b"=>255,"hidden_type"=>"fillcolor");
     }
 
-  public function element_ellipse($data) {
-        $drawcolor=array("r"=>0,"g"=>0,"b"=>0);
-        $fillcolor=array("r"=>0,"g"=>0,"b"=>0);
-        if(isset($data->reportElement["forecolor"])) {
-            $drawcolor=array("r"=>hexdec(substr($data->reportElement["forecolor"],1,2)),"g"=>hexdec(substr($data->reportElement["forecolor"],3,2)),"b"=>hexdec(substr($data->reportElement["forecolor"],5,2)));			
-        }
-        if(isset($data->reportElement["backcolor"])) {
-            $fillcolor=array("r"=>hexdec(substr($data->reportElement["backcolor"],1,2)),"g"=>hexdec(substr($data->reportElement["backcolor"],3,2)),"b"=>hexdec(substr($data->reportElement["backcolor"],5,2)));			
-        }
-        
-		//$color=array("r"=>$drawcolor["r"],"g"=>$drawcolor["g"],"b"=>$drawcolor["b"]);
-        $this->pointer[]=array("type"=>"SetFillColor","r"=>$fillcolor["r"],"g"=>$fillcolor["g"],"b"=>$fillcolor["b"],"hidden_type"=>"fillcolor");
-        $this->pointer[]=array("type"=>"SetDrawColor","r"=>$drawcolor["r"],"g"=>$drawcolor["g"],"b"=>$drawcolor["b"],"hidden_type"=>"drawcolor");
-        $this->pointer[]=array("type"=>"Ellipse","x"=>$data->reportElement["x"],"y"=>$data->reportElement["y"],"width"=>$data->reportElement["width"],"height"=>$data->reportElement["height"],"hidden_type"=>"ellipse","drawcolor"=>$drawcolor,"fillcolor"=>$fillcolor);
-        $this->pointer[]=array("type"=>"SetDrawColor","r"=>0,"g"=>0,"b"=>0,"hidden_type"=>"drawcolor");
-        $this->pointer[]=array("type"=>"SetFillColor","r"=>255,"g"=>255,"b"=>255,"hidden_type"=>"fillcolor");
-    }
- 
     public function element_textField($data) {
         $align="L";
         $fill=0;
@@ -2518,6 +2586,7 @@ foreach($this->arrayVariable as $name=>$value){
 
     public function detail() {
         $this->arraydetail[0]["y_axis"]=$this->arraydetail[0]["y_axis"]- $this->titleheight+$this->TopHeightFromMainPage;
+        //echo $this->arraydetail[0]["y_axis"]."- $this->titleheight+$this->TopHeightFromMainPage;<br/>";
         $field_pos_y=$this->arraydetail[0]["y_axis"];
 
         $biggestY=0;
@@ -2716,6 +2785,9 @@ foreach($this->arrayVariable as $name=>$value){
 
             $this->pageFooter($checkpoint);
         }
+        $this->pdf->Ln();
+         if($this->maxy<$this->pdf->GetY())
+             $this->maxy=$this->pdf->GetY();
     }
 
     public function detailNewPage() {
@@ -2920,6 +2992,9 @@ if(isset($this->arraygroup)&&($this->global_pointer>0)&&($this->arraysqltable[$t
     public function display($arraydata,$y_axis=0,$fielddata=false) {
   //print_r($arraydata);echo "<br/>";
     //    $this->pdf->Cell(10,10,"SSSS");
+    
+            
+            
     $this->Rotate($arraydata["rotation"]);
 
     if($arraydata["rotation"]!=""){
@@ -2962,14 +3037,21 @@ if(isset($this->arraygroup)&&($this->global_pointer>0)&&($this->arraysqltable[$t
             $this->runSubReport($arraydata);
         }
         elseif($arraydata["type"]=="MultiCell") { 
-           
+            $currenty=$this->pdf->GetY();
             if($fielddata==false) {
+        if(($this->allowprintuntill>=$currenty))            
                 $this->checkoverflow($arraydata,$this->updatePageNo($arraydata["txt"]));
             }
             elseif($fielddata==true) {
-
-
-                $this->checkoverflow($arraydata,$this->updatePageNo($this->analyse_expression($arraydata["txt"],$arraydata["isPrintRepeatedValues"] )));
+                  
+                    
+                  if(($this->allowprintuntill>=$currenty) )
+                      $this->checkoverflow($arraydata,$this->updatePageNo($this->analyse_expression($arraydata["txt"],$arraydata["isPrintRepeatedValues"] )));
+                  elseif($this->parentcurrentband=="detail")
+                      $this->pdf->Cell(40,10,"SADSD");
+//                  echo $arraydata["txt"]."+\"|(".$y_axis.",".print_r($arraydata,true)."),$this->allowprintuntill,$newy\"<br/><br/>";
+                  
+                  
             }
         }
         elseif($arraydata["type"]=="SetXY") {
@@ -2977,27 +3059,54 @@ if(isset($this->arraygroup)&&($this->global_pointer>0)&&($this->arraysqltable[$t
             $this->pdf->SetXY($arraydata["x"]+$this->arrayPageSetting["leftMargin"],$arraydata["y"]+$y_axis);
         }
         elseif($arraydata["type"]=="Cell") {
-
+           $currenty=$this->pdf->GetY();
+           if(($this->allowprintuntill>=$currenty))                
             $this->pdf->Cell($arraydata["width"],$arraydata["height"],$this->updatePageNo($arraydata["txt"]),$arraydata["border"],$arraydata["ln"],$arraydata["align"],$arraydata["fill"],$arraydata["link"]);
-
+           elseif($this->parentcurrentband=="detail")
+            $this->pdf->Cell(40,10,"SADSD");
+           
         }
-       elseif($arraydata["type"]=="Rect"){
-			$this->pdf->Rect($arraydata["x"]+$this->arrayPageSetting["leftMargin"],$arraydata["y"]+$y_axis,$arraydata["width"],$arraydata["height"],
-			'FD');
-                }
-        elseif($arraydata["type"]=="RoundedRect"){
-			 $this->pdf->RoundedRect($arraydata["x"]+$this->arrayPageSetting["leftMargin"], $arraydata["y"]+$y_axis, $arraydata["width"],$arraydata["height"], $arraydata["radius"], '1111', 
-			 'FD',array('color'=>$arraydata['drawcolor']),$arraydata['fillcolor']);
-			}
-        elseif($arraydata["type"]=="Ellipse"){
-			 $this->pdf->Ellipse($arraydata["x"]+$arraydata["width"]/2+$this->arrayPageSetting["leftMargin"], $arraydata["y"]+$y_axis+$arraydata["height"]/2, $arraydata["width"]/2,$arraydata["height"]/2,
-				0,0,360,'FD',array('color'=>$arraydata['drawcolor']),$arraydata['fillcolor']);
-			}
-         elseif($arraydata["type"]=="Image") {
-            $path=$this->analyse_expression($arraydata["path"]);
+        elseif($arraydata["type"]=="Rect") {
+            $this->pdf->Rect($arraydata["x"]+$this->arrayPageSetting["leftMargin"],$arraydata["y"]+$y_axis,$arraydata["width"],$arraydata["height"]);
+        }
+        elseif($arraydata["type"]=="Image") {
+            
+          
+             $path=$this->analyse_expression($arraydata["path"]);
             $imgtype=substr($path,-3);
-        if(file_exists($path))
-            $this->pdf->Image($path,$arraydata["x"]+$this->arrayPageSetting["leftMargin"],$arraydata["y"]+$y_axis,$arraydata["width"],$arraydata["height"],$imgtype,$arraydata["link"]);
+            
+            if($imgtype=='jpg' || right($path,3)=='jpg' || right($path,4)=='jpeg')
+		$imgtype="JPEG";
+            elseif($imgtype=='png'|| $imgtype=='PNG')
+                  $imgtype="PNG";
+          
+        if(file_exists($path) || left($path,4)=='http' ){            
+            $this->pdf->Image($path,$arraydata["x"]+$this->arrayPageSetting["leftMargin"],$arraydata["y"]+$y_axis,
+                    $arraydata["width"],$arraydata["height"],$imgtype,$arraydata["link"]); 
+        }
+        elseif(left($path,22)==  "data:image/jpeg;base64"){
+            $imgtype="JPEG";
+            $img=  str_replace('data:image/jpeg;base64,', '', $path);
+            $imgdata = base64_decode($img);
+            $this->pdf->Image('@'.$imgdata,$arraydata["x"]+$this->arrayPageSetting["leftMargin"],$arraydata["y"]+$y_axis,$arraydata["width"],
+                    $arraydata["height"]);//,$imgtype,$arraydata["link"]); 
+            
+        }
+        elseif(left($path,22)==  "data:image/png;base64,"){
+                  $imgtype="PNG";
+                 // $this->pdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
+
+                 $img= str_replace('data:image/png;base64,', '', $path);
+                             $imgdata = base64_decode($img);
+
+           
+            $this->pdf->Image('@'.$imgdata,$arraydata["x"]+$this->arrayPageSetting["leftMargin"],$arraydata["y"]+$y_axis,
+                    $arraydata["width"],$arraydata["height"]);//,$imgtype,$arraydata["link"]); 
+    
+            
+        }
+        
+        
         }
 
         elseif($arraydata["type"]=="SetTextColor") {
@@ -3031,6 +3140,111 @@ if(isset($this->arraygroup)&&($this->global_pointer>0)&&($this->arraysqltable[$t
 
             $this->showAreaChart($arraydata, $y_axis,$arraydata["type"]);
         }
+          elseif($arraydata["type"]=="Barcode"){
+            
+            $this->showBarcode($arraydata, $y_axis);
+        }
+
+    }
+    
+    public function printParentHeaderFooter(){
+        
+    }
+    
+    
+    public function showBarcode($data,$y){
+        $type=  strtoupper($data['barcodetype']);
+        $height=$data['height'];
+        $width=$data['width'];
+        $x=$data['x'];
+        $y=$data['y']+$y;
+        $textposition=$data['textposition'];
+        $code=$data['code'];
+        $code=$this->analyse_expression($code);
+        $modulewidth=$data['modulewidth'];
+        if($textposition=="" || $textposition=="none")
+         $withtext = false;
+        else
+            $withtext = true;
+     $style = array(
+    'border' => false,
+    'vpadding' => 'auto',
+    'hpadding' => 'auto',
+         'text'=>$withtext,
+    'fgcolor' => array(0,0,0),
+    'bgcolor' => false, //array(255,255,255)
+    'module_width' => 1, // width of a single module in points
+    'module_height' => 1 // height of a single module in points
+);
+
+        
+//[2D barcode section]        
+//DATAMATRIX
+//QRCODE,H or Q or M or L (H=high level correction, L=low level correction)
+// -------------------------------------------------------------------
+// PDF417 (ISO/IEC 15438:2006)
+
+/*
+
+ The $type parameter can be simple 'PDF417' or 'PDF417' followed by a
+ number of comma-separated options:
+
+ 'PDF417,a,e,t,s,f,o0,o1,o2,o3,o4,o5,o6'
+
+ Possible options are:
+
+     a  = aspect ratio (width/height);
+     e  = error correction level (0-8);
+
+     Macro Control Block options:
+
+     t  = total number of macro segments;
+     s  = macro segment index (0-99998);
+     f  = file ID;
+     o0 = File Name (text);
+     o1 = Segment Count (numeric);
+     o2 = Time Stamp (numeric);
+     o3 = Sender (text);
+     o4 = Addressee (text);
+     o5 = File Size (numeric);
+     o6 = Checksum (numeric).
+
+ Parameters t, s and f are required for a Macro Control Block, all other parametrs are optional.
+ To use a comma character ',' on text options, replace it with the character 255: "\xff".
+
+*/ 
+        switch($type){
+          case "PDF417":
+               $this->pdf->write2DBarcode($code, 'PDF417', $x, $y, $width, $height, $style, 'N');
+              break;
+          case "DATAMATRIX":
+              //$this->pdf->Cell( $width,10,$code);
+              if(left($code,3)=="QR:"){
+              $code=  right($code,strlen($code)-3);
+              $this->pdf->write2DBarcode($code, 'QRCODE', $x, $y, $width, $height, $style, 'N');
+              }
+              else
+                  $this->pdf->write2DBarcode($code, 'DATAMATRIX', $x, $y, $width, $height, $style, 'N');
+              break;
+            case "CODE128":
+                $this->pdf->write1DBarcode($code, 'C128',  $x, $y, $width, $height, $modulewidth, $style, 'N');
+
+              // $this->pdf->write1DBarcode($code, 'C128', $x, $y, $width, $height,"", $style, 'N');
+              break;
+          case  "EAN8":
+                 $this->pdf->write1DBarcode($code, 'EAN8', $x, $y, $width, $height, $modulewidth,$style, 'N');
+              break;
+          case  "EAN13":
+                 $this->pdf->write1DBarcode($code, 'EAN13', $x, $y, $width, $height, $modulewidth,$style, 'N');
+              break;
+          case  "CODE39":
+                 $this->pdf->write1DBarcode($code, 'C39', $x, $y, $width, $height, $modulewidth,$style, 'N');
+              break;
+           case  "CODE93":
+                 $this->pdf->write1DBarcode($code, 'C93', $x, $y, $width, $height, $modulewidth,$style, 'N');
+              break;
+        }
+        
 
     }
 
