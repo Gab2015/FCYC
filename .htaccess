@@ -4,5 +4,5 @@ RewriteBase /FCYC
 RewriteCond $1 !^(index.php|resources|robots.txt)
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^(.*)$ ticket/fcyc/index.php/$1 [L,QSA]
+RewriteRule ^(.*)$ /FCYC/index.php/$1 [L,QSA]
 </IfModule>
