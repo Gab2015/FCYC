@@ -45,42 +45,41 @@
 	<group name="Ticket">
 		<groupExpression><![CDATA[$F{NumDoc}]]></groupExpression>
 		<groupHeader>
-			<band height="23" splitType="Immediate">
+			<band height="26" splitType="Immediate">
 				<staticText>
-					<reportElement x="4" y="2" width="36" height="20" uuid="d4abeddd-827a-4e8b-8dda-2e3e298b0448"/>
+					<reportElement positionType="Float" x="4" y="2" width="28" height="20" uuid="d4abeddd-827a-4e8b-8dda-2e3e298b0448"/>
 					<textElement>
 						<font fontName="Arial" size="8"/>
 					</textElement>
-					<text><![CDATA[CANT.]]></text>
+					<text><![CDATA[CANT]]></text>
 				</staticText>
 				<staticText>
-					<reportElement x="40" y="2" width="87" height="20" uuid="2d7d7781-7fe9-4a06-ba07-d79e152a64c7"/>
+					<reportElement x="40" y="2" width="76" height="20" uuid="2d7d7781-7fe9-4a06-ba07-d79e152a64c7"/>
 					<textElement>
 						<font fontName="Arial" size="8"/>
 					</textElement>
 					<text><![CDATA[DESCRIPCION]]></text>
 				</staticText>
 				<staticText>
-					<reportElement x="128" y="2" width="48" height="20" uuid="f5729f3b-6d12-454d-b61b-794fdb2f7fab"/>
-					<textElement verticalAlignment="Bottom">
+					<reportElement positionType="Float" x="122" y="2" width="48" height="20" uuid="f5729f3b-6d12-454d-b61b-794fdb2f7fab"/>
+					<textElement verticalAlignment="Top">
 						<font fontName="Arial" size="8"/>
 					</textElement>
-					<text><![CDATA[PRECIO
-UNITARIO]]></text>
+					<text><![CDATA[PRECIO]]></text>
 				</staticText>
 				<staticText>
-					<reportElement x="175" y="2" width="46" height="20" uuid="a6cb3f06-6bb1-4a4f-8243-7d90dd40b5e7"/>
-					<textElement verticalAlignment="Bottom">
+					<reportElement positionType="Float" x="175" y="2" width="46" height="20" uuid="a6cb3f06-6bb1-4a4f-8243-7d90dd40b5e7"/>
+					<textElement verticalAlignment="Top">
 						<font fontName="Arial" size="8"/>
+						<paragraph lineSpacing="Single"/>
 					</textElement>
-					<text><![CDATA[VENTAS
-AFECTAS]]></text>
+					<text><![CDATA[TOTAL]]></text>
 				</staticText>
 			</band>
 		</groupHeader>
 	</group>
 	<title>
-		<band height="189">
+		<band height="190">
 			<textField>
 				<reportElement x="16" y="21" width="208" height="31" uuid="9acb244e-5504-418e-bdcb-b66d6f4ff1af"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
