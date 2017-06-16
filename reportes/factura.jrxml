@@ -80,93 +80,93 @@ AFECTAS]]></text>
 		</groupHeader>
 	</group>
 	<title>
-		<band height="187" splitType="Immediate">
+		<band height="189">
 			<textField>
-				<reportElement x="16" y="23" width="208" height="31" uuid="9acb244e-5504-418e-bdcb-b66d6f4ff1af"/>
+				<reportElement x="16" y="21" width="208" height="31" uuid="9acb244e-5504-418e-bdcb-b66d6f4ff1af"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Arial" size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{Direccion}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="32" y="7" width="176" height="20" uuid="988da653-16b6-46a4-89d0-7917e4a76c37"/>
+				<reportElement x="32" y="5" width="176" height="20" uuid="988da653-16b6-46a4-89d0-7917e4a76c37"/>
 				<textElement textAlignment="Center">
 					<font fontName="Cambria" size="12" isBold="true" isItalic="true" isUnderline="false" isStrikeThrough="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{NombreEmpresa}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="16" y="65" width="100" height="20" uuid="289c6363-7b28-46e2-a24d-0831df66f91a"/>
+				<reportElement x="16" y="63" width="100" height="20" uuid="289c6363-7b28-46e2-a24d-0831df66f91a"/>
 				<textElement>
 					<font fontName="Arial" size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{Telefono}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="116" y="65" width="108" height="20" uuid="9756bc25-548c-4d9b-ae9b-c6c3c0c7791a"/>
+				<reportElement x="116" y="63" width="108" height="20" uuid="9756bc25-548c-4d9b-ae9b-c6c3c0c7791a"/>
 				<textElement>
 					<font fontName="Arial" size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{Fax}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="16" y="50" width="208" height="20" uuid="13ba380c-49b4-475b-a47a-4297b128fd9b"/>
+				<reportElement x="16" y="48" width="208" height="20" uuid="13ba380c-49b4-475b-a47a-4297b128fd9b"/>
 				<textElement textAlignment="Center">
 					<font fontName="Arial" size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{Giro}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="16" y="78" width="208" height="20" uuid="16e59eea-5558-4129-97ed-1fd161afbefe"/>
+				<reportElement x="16" y="76" width="208" height="20" uuid="16e59eea-5558-4129-97ed-1fd161afbefe"/>
 				<textElement textAlignment="Justified">
 					<font fontName="Arial"/>
 				</textElement>
 				<textFieldExpression><![CDATA["E-mail:"+$F{Email}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="16" y="95" width="82" height="20" uuid="9c07388c-0c6c-4ca5-97e8-e51726d640ee"/>
+				<reportElement x="16" y="93" width="82" height="20" uuid="9c07388c-0c6c-4ca5-97e8-e51726d640ee"/>
 				<textElement>
 					<font fontName="Arial"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{NRC}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="98" y="95" width="126" height="20" uuid="4da22ea0-c8f8-46d2-b98d-9777fcb6a0b5"/>
+				<reportElement x="98" y="93" width="126" height="20" uuid="4da22ea0-c8f8-46d2-b98d-9777fcb6a0b5"/>
 				<textElement>
 					<font fontName="Arial"/>
 				</textElement>
 				<textFieldExpression><![CDATA["NIT :"+$F{NIT}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="16" y="128" width="208" height="20" uuid="fb642481-ae3f-419e-9445-42da331c15f3"/>
+				<reportElement x="16" y="126" width="208" height="20" uuid="fb642481-ae3f-419e-9445-42da331c15f3"/>
 				<textElement>
 					<font fontName="Arial"/>
 				</textElement>
 				<textFieldExpression><![CDATA["TICKET No :"+$F{NumDoc}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="15" y="112" width="101" height="20" uuid="ab8d5442-f6a2-41af-a41b-17f4b34a95de"/>
+				<reportElement x="15" y="110" width="101" height="20" uuid="ab8d5442-f6a2-41af-a41b-17f4b34a95de"/>
 				<textElement>
 					<font fontName="Arial"/>
 				</textElement>
 				<textFieldExpression><![CDATA["CAJA # "+$F{NumCaja}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="98" y="112" width="126" height="20" uuid="04d4a9d4-607a-43dc-a89e-31cfbe093071"/>
+				<reportElement x="98" y="110" width="126" height="20" uuid="04d4a9d4-607a-43dc-a89e-31cfbe093071"/>
 				<textElement>
 					<font fontName="Arial"/>
 				</textElement>
 				<textFieldExpression><![CDATA["Fecha :"+$F{FechaContable}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="16" y="144" width="208" height="20" uuid="81345c15-10bf-4775-802c-dadc55be6b30"/>
+				<reportElement x="16" y="142" width="208" height="20" uuid="81345c15-10bf-4775-802c-dadc55be6b30"/>
 				<textElement>
 					<font fontName="Arial"/>
 				</textElement>
 				<textFieldExpression><![CDATA["CAJERO :"+$F{Cajero}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="16" y="164" width="208" height="20" uuid="4d452f43-2b37-4c8c-84c5-86aef72edcca"/>
+				<reportElement x="16" y="162" width="208" height="20" uuid="4d452f43-2b37-4c8c-84c5-86aef72edcca"/>
 				<textElement>
 					<font fontName="Arial"/>
 				</textElement>
