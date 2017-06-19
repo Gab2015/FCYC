@@ -73,7 +73,32 @@
 											<span class="text-danger"><?php echo form_error('txt_DocType'); ?></span>
 										</div>     
 									</div>
-								</div>  
+								</div>
+								<div class="form-group">
+									<div class="row colbox">
+										<div class="col-lg-4 col-xs-12">
+											<label for="txt_DUI" class="control-lable">DUI ó NIT venta mayor a $200</label>
+										</div>
+										<div class="col-lg-8 col-xs-12">
+											<input class="form-control" id="txt_DUI" name="txt_DUI" placeholder="DUI ó NIT" type="text" value="<?php echo $filaFactura->DUI; ?>"/>
+											<span class="text-danger"><?php echo form_error('txt_DUI'); ?></span>
+										</div>     
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="row colbox">
+										<div class="col-lg-4 col-xs-12">
+											<label for="txt_TipoPago" class="control-lable">Tipo Pago</label>
+										</div>
+										<div class="col-lg-8 col-xs-12">
+											<select class="form-control" id="txt_TipoPago" name="txt_TipoPago">
+												<option>Contado</option>
+												<option>Crédito</option>
+											</select>
+											<span class="text-danger"><?php echo form_error('txt_TipoPago'); ?></span>
+										</div>     
+									</div>
+								</div>    
 							</fieldset>
 						</div>
 						<div class="col-lg-1 col-xs-2"> 
@@ -245,7 +270,7 @@
 										</div>
 									</div>
 								</div> 
-								<div class="form-group">
+								<div class="hidden-md hidden-lg">
 									<div class="row colbox">
 										<div class="col-lg-4 col-xs-12">
 											<label for="txt_Iva" class="control-lable">IVA</label>

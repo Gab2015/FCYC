@@ -25,11 +25,11 @@ class m_Factura extends CI_Model {
         $rs_DetalleFacturas['rs_DetalleFactura'] = $rs_DetalleFactura->result();
         return  $rs_DetalleFacturas;
     }
-    function pc_m_Factura_i($NumDoc,$Cliente,$Nombre,$IdTipo,$Cajero,$Vendedor,$CodVendedor,$FechaContable,$NumCaja,$VentaGravada,$VentaExenta,$VentaNoSujeta,$Iva,$Total,$DocType){
+    function pc_m_Factura_i($NumDoc,$Cliente,$Nombre,$IdTipo,$Cajero,$Vendedor,$CodVendedor,$FechaContable,$NumCaja,$VentaGravada,$VentaExenta,$VentaNoSujeta,$Iva,$Total,$DocType,$DUI,$TipoPago){
         $vSiguienteDoc = $NumDoc + 1; 
         $Fecha   = date('Y-m-d H:i:s', strtotime(strtr($FechaContable, '/', '-')));
-        $ssql ="EXECUTE pc_m_Factura_i ?,?,?,?,?,?,?,?,?,?,?,?,?,?,?";
-        $params = array($vSiguienteDoc,$Cliente,$Nombre,$IdTipo,$Cajero,$Vendedor,$CodVendedor,$Fecha,$NumCaja,$VentaGravada,$VentaExenta,$VentaNoSujeta,$Iva,$Total,$DocType);
+        $ssql ="EXECUTE pc_m_Factura_i ?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?";
+        $params = array($vSiguienteDoc,$Cliente,$Nombre,$IdTipo,$Cajero,$Vendedor,$CodVendedor,$Fecha,$NumCaja,$VentaGravada,$VentaExenta,$VentaNoSujeta,$Iva,$Total,$DocType,$DUI,$TipoPago);
         $rs_Fac= $this->db->query($ssql,$params);
         return  $rs_Fac->result();
     }

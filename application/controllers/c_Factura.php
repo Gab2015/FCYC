@@ -105,6 +105,8 @@ class c_Factura extends CI_Controller {
 		$Iva            = $this->input->post("txt_Iva");
 		$Total          = $this->input->post("txt_Total");
 		$DocType        = $this->input->post("txt_DocType");
+		$DUI            = $this->input->post("txt_DUI");
+		$TipoPago       = $this->input->post("txt_TipoPago");
 
 		$this->form_validation->set_rules("txt_Cliente", "Cliente", "trim|required");
 		$this->form_validation->set_rules("txt_Nombre", "Nombre", "trim|required");
@@ -211,7 +213,7 @@ class c_Factura extends CI_Controller {
 		}
 		else{
 			if ($this->input->post('btn_guardar') == "Guardar"){
-				$Factura_result = $this->m_Factura->pc_m_Factura_i($NumDoc,$Cliente,$Nombre,$IdTipo,$Cajero,$Vendedor,$CodVendedor,$FechaContable,$NumCaja,$VentaGravada,$VentaExenta,$VentaNoSujeta,$Iva,$Total,$DocType);            
+				$Factura_result = $this->m_Factura->pc_m_Factura_i($NumDoc,$Cliente,$Nombre,$IdTipo,$Cajero,$Vendedor,$CodVendedor,$FechaContable,$NumCaja,$VentaGravada,$VentaExenta,$VentaNoSujeta,$Iva,$Total,$DocType,$DUI,$TipoPago);            
                 $tablaDetalle = array(
                     'IdFac' =>  $IdFac,
                     'LineaNumDoc' =>  $LineaNumDoc,
@@ -245,6 +247,8 @@ class c_Factura extends CI_Controller {
 						unset($_POST['txt_VentaNoSujeta']);
 						unset($_POST['txt_Iva']);
 						unset($_POST['txt_Total']);
+						unset($_POST['txt_DUI']);
+						unset($_POST['txt_TipoPago']);
 						unset($_POST['btn_guardar']);
                         redirect('c_Factura/index');  
 				}
