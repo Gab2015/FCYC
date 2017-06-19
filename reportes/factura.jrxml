@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="factura" language="groovy" pageWidth="240" pageHeight="841" columnWidth="240" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="3b7ac3e6-cba5-4095-b9d5-15e4aea18ea7">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="factura" language="groovy" pageWidth="240" pageHeight="841" columnWidth="240" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" isSummaryNewPage="true" uuid="3b7ac3e6-cba5-4095-b9d5-15e4aea18ea7">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
@@ -45,7 +45,7 @@
 	<group name="Ticket">
 		<groupExpression><![CDATA[$F{NumDoc}]]></groupExpression>
 		<groupHeader>
-			<band height="26" splitType="Immediate">
+			<band height="22" splitType="Immediate">
 				<staticText>
 					<reportElement positionType="Float" x="4" y="2" width="28" height="20" uuid="d4abeddd-827a-4e8b-8dda-2e3e298b0448"/>
 					<textElement>
@@ -79,7 +79,7 @@
 		</groupHeader>
 	</group>
 	<title>
-		<band height="190">
+		<band height="190" splitType="Immediate">
 			<textField>
 				<reportElement x="16" y="21" width="208" height="31" uuid="9acb244e-5504-418e-bdcb-b66d6f4ff1af"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
@@ -174,30 +174,30 @@
 		</band>
 	</title>
 	<detail>
-		<band height="13" splitType="Immediate">
+		<band height="15" splitType="Immediate">
 			<textField>
-				<reportElement x="4" y="0" width="36" height="13" uuid="02a5da0e-df5b-43fc-bdd6-9a546df27d99"/>
+				<reportElement x="4" y="0" width="36" height="15" uuid="02a5da0e-df5b-43fc-bdd6-9a546df27d99"/>
 				<textElement textAlignment="Center">
 					<font fontName="Arial" size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{Cantidad}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement stretchType="RelativeToBandHeight" x="40" y="0" width="87" height="13" isPrintWhenDetailOverflows="true" uuid="841a5c5d-9f44-4dd2-8ad6-0d83bf6cce8e"/>
+				<reportElement stretchType="RelativeToBandHeight" x="40" y="0" width="87" height="15" isPrintWhenDetailOverflows="true" uuid="841a5c5d-9f44-4dd2-8ad6-0d83bf6cce8e"/>
 				<textElement>
 					<font fontName="Arial" size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{DescripcionProducto}]]></textFieldExpression>
 			</textField>
 			<textField pattern="#,##0.00">
-				<reportElement x="128" y="0" width="48" height="13" uuid="07b71a2c-6c61-4be6-8dff-f23e8410e6c9"/>
+				<reportElement x="128" y="0" width="48" height="15" uuid="07b71a2c-6c61-4be6-8dff-f23e8410e6c9"/>
 				<textElement>
 					<font fontName="Arial" size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{PrecioConIva}]]></textFieldExpression>
 			</textField>
 			<textField pattern="#,##0.00">
-				<reportElement x="176" y="0" width="45" height="13" uuid="e541867d-f4c2-4d9d-abb2-0de28338aa05"/>
+				<reportElement x="176" y="0" width="45" height="15" uuid="e541867d-f4c2-4d9d-abb2-0de28338aa05"/>
 				<textElement>
 					<font fontName="Arial" size="8"/>
 				</textElement>

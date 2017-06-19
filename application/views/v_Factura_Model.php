@@ -20,6 +20,7 @@
                 <th>Precio Unitario</th>
                 <th class="hidden-md hidden-lg">Almacén</th>
                 <th class="hidden-md hidden-lg">NormaReparto</th>
+                <th class="hidden-md hidden-lg">NumFabricante</th>
               </thead>
               <tbody>
                 <?php
@@ -35,6 +36,7 @@
                   echo '<td>'.number_format($filaDetalle->PrecioConIva,2,".",",").'</td>';
                   echo '<td class="hidden-md hidden-lg">'.$filaDetalle->CodAlmacen.'</td>';
                   echo '<td class="hidden-md hidden-lg">'.$filaDetalle->NormaReparto.'</td>';
+                  echo '<td class="hidden-md hidden-lg">'.$filaDetalle->NumFabricante.'</td>';                  
                   echo '</tr>';
                   $i++;
                 }
