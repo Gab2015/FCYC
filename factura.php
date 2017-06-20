@@ -17,9 +17,8 @@ $pchartfolder="./class/pchart2";
 $vNumDoc = $_GET['vNumDoc'];
     //display errors should be off in the php.ini file
     ini_set('display_errors', 0);
-    ob_end_clean();
-    ob_start();
     //setting the path to the created jrxml file
+    ob_start();
     $xml =  simplexml_load_file('reportes/factura.jrxml');
     $PHPJasperXML = new PHPJasperXML();
     $PHPJasperXML->debugsql=false;
@@ -27,10 +26,10 @@ $vNumDoc = $_GET['vNumDoc'];
     $PHPJasperXML->xml_dismantle($xml);
     $PHPJasperXML->sql ="EXECUTE pc_m_Venta $vNumDoc";
     $PHPJasperXML->transferDBtoArray($server,$user,$pass,$bd,"odbc");
+    ob_end_clean();
     $PHPJasperXML->outpage("I");
 }
 else {
     if ( ! defined('BASEPATH')) exit('Acceso no permitido');
 }
-
 ?> 
