@@ -185,9 +185,9 @@
 				<textFieldExpression><![CDATA[$F{Cantidad}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="false">
-				<reportElement stretchType="RelativeToTallestObject" x="40" y="0" width="87" height="15" isPrintWhenDetailOverflows="true" printWhenGroupChanges="Ticket" uuid="841a5c5d-9f44-4dd2-8ad6-0d83bf6cce8e"/>
+				<reportElement x="40" y="0" width="87" height="15" printWhenGroupChanges="Ticket" uuid="841a5c5d-9f44-4dd2-8ad6-0d83bf6cce8e"/>
 				<textElement>
-					<font fontName="Arial" size="12" pdfEncoding="Cp1252" isPdfEmbedded="true"/>
+					<font fontName="Arial" size="10" pdfEncoding="Cp1252" isPdfEmbedded="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{DescripcionProducto}]]></textFieldExpression>
 			</textField>
