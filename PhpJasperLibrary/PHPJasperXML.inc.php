@@ -4793,6 +4793,8 @@ foreach($this->arrayVariable as $name=>$value){
             return number_format($txt,1,".","");
         elseif($pattern=="#,##0.0" || $pattern=="#,##0.0;-#,##0.0")
             return number_format($txt,1,".",",");
+        elseif($pattern=="$#,##0.0" || $pattern=="$#,##0.0;-$#,##0.0")
+            return number_format($txt,1,".",",");
         elseif($pattern=="###0.00" || $pattern=="###0.00;-###0.00")
             return number_format($txt,2,".","");
         elseif($pattern=="#,##0.00" || $pattern=="#,##0.00;-#,##0.00")
