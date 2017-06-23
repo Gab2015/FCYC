@@ -59,13 +59,29 @@ class c_Factura extends CI_Controller {
 				}
 			}
       //creo el array con datos de configuración para la vista			
-			$datos_vista['rs_Factura'] = $this->m_Factura->get_Factura();
-			$datos_vista['rs_DetalleFactura'] = $this->m_Factura->get_DetalleFactura();
+		  if ( isset( $_GET['Nuevo'] ) ) { 
+		    $vNuevo = "FALSE";
+		  	$datos_vista['rs_FacturaEnc'] = $this->m_Factura->get_Factura($vNuevo);
+		  	$vNuevo = "TRUE";
+		  	$UltimoDoc = 0;
+		  	$datos_vista['rs_FacturaPie'] = $this->m_Factura->get_Factura($vNuevo);
+			$datos_vista['rs_DetalleFactura'] = $this->m_Factura->get_DetalleFactura($UltimoDoc);
+			}
+		  else{
+		  	$vNuevo = "FALSE";
+		  	$datos_vista['rs_FacturaEnc'] = $this->m_Factura->get_Factura($vNuevo);
+			$UltimoDoc = $this->m_Factura->get_UltimoDoc();
+		  	$datos_vista['rs_FacturaPie'] = $this->m_Factura->get_Factura($vNuevo);
+			$datos_vista['rs_DetalleFactura'] = $this->m_Factura->get_DetalleFactura($UltimoDoc);
+		    } 
+			$datos_articulo['rs_articulo'] = $this->m_Factura->get_DetalleArticulo();
       //cargo la vista pasando los datos de configuracion
 			$this->load->view('v_Head');
 			$this->load->view('v_Header');
 			$this->load->view("v_Menu",$data);
 			$this->load->view('v_Factura',$datos_vista);
+			$this->load->view("v_Factura_Model",$datos_articulo);
+			$this->load->view('v_Foot');
 		}
 		else{
 			$this->session->set_flashdata('msg', '<div class="alert alert-danger text-center">¡Datos incorrectos!</div>');
@@ -73,6 +89,7 @@ class c_Factura extends CI_Controller {
 		}	
 	}
 	public function set_Factura(){
+		/*======Campos para inertar en la tabla factura======*/
 		$NumDoc         = $this->input->post("txt_NumDoc");
 		$Cliente        = $this->input->post("txt_Cliente");
 		$Nombre         = $this->input->post("txt_Nombre");
@@ -80,7 +97,7 @@ class c_Factura extends CI_Controller {
 		$Cajero         = $this->input->post("txt_Cajero");
 		$Vendedor       = $this->input->post("txt_Vendedor");
 		$CodVendedor    = $this->input->post("txt_CodVendedor");
-		$NumCaja        = 1;
+		$NumCaja        = $this->input->post("txt_NumCaja");
 		$FechaContable  = $this->input->post("txt_FechaContable");
 		$VentaGravada   = $this->input->post("txt_VentaGravada");
 		$VentaExenta    = 0;
@@ -88,9 +105,12 @@ class c_Factura extends CI_Controller {
 		$Iva            = $this->input->post("txt_Iva");
 		$Total          = $this->input->post("txt_Total");
 		$DocType        = $this->input->post("txt_DocType");
+		$DUI            = $this->input->post("txt_DUI");
+		$TipoPago       = $this->input->post("txt_TipoPago");
 
 		$this->form_validation->set_rules("txt_Cliente", "Cliente", "trim|required");
 		$this->form_validation->set_rules("txt_Nombre", "Nombre", "trim|required");
+		$this->form_validation->set_rules("txt_NumCaja", "NumCaja", "trim|required");
 		$this->form_validation->set_rules("txt_Cajero", "Cajero", "trim|required");
 		$this->form_validation->set_rules("txt_Vendedor", "Vendedor", "trim|required");
 		$this->form_validation->set_rules("txt_CodVendedor", "Codigo", "trim|required");
@@ -98,6 +118,20 @@ class c_Factura extends CI_Controller {
 		$this->form_validation->set_rules("txt_VentaGravada", "Gravada", "trim|required");
 		$this->form_validation->set_rules("txt_Iva", "IVA", "trim|required");
 		$this->form_validation->set_rules("txt_Total", "Total", "trim|required");
+       
+        /*======Campos para inertar en la tabla DetalleFactura======*/
+        $IdFac = $this->input->post("txt_IdFac");
+        $LineaNumDoc = $this->input->post("txt_LineaNumDoc");
+        $IdProducto = $this->input->post("txt_IdProducto");
+        $CodProducto = $this->input->post("txt_CodProducto");
+        $NumFabricante = $this->input->post("txt_NumFabricante");
+        $DescripcionProducto = $this->input->post("txt_DescripcionProducto");
+        $Cantidad = $this->input->post("txt_Cantidad");
+        $PrecioConIva = $this->input->post("txt_PrecioConIva");
+        $Afecto = $this->input->post("txt_Afecto");
+        $CuentaMayor = $this->input->post("txt_CuentaMayor");
+        $CuentaCoste = $this->input->post("txt_CuentaCoste");
+        $NormaReparto = $this->input->post("txt_NormaReparto");
 
 		if ($this->form_validation->run() == FALSE){
 			$usuario   = $this->session->userdata('username');
@@ -120,7 +154,7 @@ class c_Factura extends CI_Controller {
 						$config["item_divider"]          = "<li class='divider'></li>";
 						$this->multi_menu->initialize($config);
 						$data['activeTabVenta'] = $this->multi_menu->render();
-						
+
 					}
 					if ($fila['usuario'] == 'T')
 					{
@@ -148,13 +182,29 @@ class c_Factura extends CI_Controller {
 					}
 				}
       //creo el array con datos de configuración para la vista
-			$datos_vista['rs_Factura'] = $this->m_Factura->get_Factura();
-			$datos_vista['rs_DetalleFactura'] = $this->m_Factura->get_DetalleFactura();
+		  if ( isset( $_GET['Nuevo'] ) ) { 
+		    $vNuevo = "FALSE";
+		  	$datos_vista['rs_FacturaEnc'] = $this->m_Factura->get_Factura($vNuevo);
+		  	$vNuevo = "TRUE";
+		  	$UltimoDoc = 0;
+		  	$datos_vista['rs_FacturaPie'] = $this->m_Factura->get_Factura($vNuevo);
+			$datos_vista['rs_DetalleFactura'] = $this->m_Factura->get_DetalleFactura($UltimoDoc);
+			}
+		  else{
+		  	$vNuevo = "FALSE";
+		  	$datos_vista['rs_FacturaEnc'] = $this->m_Factura->get_Factura($vNuevo);
+			$UltimoDoc = $this->m_Factura->get_UltimoDoc();
+		  	$datos_vista['rs_FacturaPie'] = $this->m_Factura->get_Factura($vNuevo);
+			$datos_vista['rs_DetalleFactura'] = $this->m_Factura->get_DetalleFactura($UltimoDoc);
+		    } 
+			$datos_articulo['rs_articulo'] = $this->m_Factura->get_DetalleArticulo();
       //cargo la vista pasando los datos de configuracion
 				$this->load->view('v_Head');
 				$this->load->view('v_Header');
 				$this->load->view("v_Menu",$data);
 				$this->load->view('v_Factura',$datos_vista);
+				$this->load->view("v_Factura_Model",$datos_articulo);
+				$this->load->view('v_Foot');
 			}
 			else{
 				$this->session->set_flashdata('msg', '<div class="alert alert-danger text-center">¡Datos incorrectos!</div>');
@@ -163,74 +213,45 @@ class c_Factura extends CI_Controller {
 		}
 		else{
 			if ($this->input->post('btn_guardar') == "Guardar"){
-				$Factura_result = $this->m_Factura->pc_m_Factura_i($NumDoc,$Cliente,$Nombre,$IdTipo,$Cajero,$Vendedor,$CodVendedor,$FechaContable,$NumCaja,$VentaGravada,$VentaExenta,$VentaNoSujeta,$Iva,$Total,$DocType);
-				if (Empty($Factura_result) == FALSE){ 
-					$usuario   = $this->session->userdata('username');
-					$loginuser = $this->session->userdata('loginuser');
-					if ($loginuser == TRUE){ 
-						$menus = $this->menu->MenuUsuario($usuario);
-						$data['activeTabVenta'] = "";
-						$data['activeTabInventario'] = "";
-						$data['activeTabGUsuario'] = "";
-						foreach ($menus as $fila) {
-							if ($fila['venta'] == 'T')
-							{
-								$this->load->model("m_Menu", "menu");
-								$itemsVenta = $this->menu->MenuVenta();	
-								$this->multi_menu->set_items($itemsVenta);
-								$config["nav_tag_open"]          = '<ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">';		
-								$config["parent_tag_open"]       = '<li class="dropdown-submenu">';			
-								$config["parent_anchor_tag"]     = '<a tabindex="-1" href="%s">%s</a>';	
-								$config["children_tag_open"]     = '<ul class="dropdown-menu">';			
-								$config["item_divider"]          = "<li class='divider'></li>";
-								$this->multi_menu->initialize($config);
-								$data['activeTabVenta'] = $this->multi_menu->render();
-								
-							}
-							if ($fila['usuario'] == 'T')
-							{
-								$itemsGUsuario = $this->menu->MenuGUsuario();
-								$this->multi_menu->set_items($itemsGUsuario);
-								$config["nav_tag_open"]          = '<ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">';		
-								$config["parent_tag_open"]       = '<li class="dropdown-submenu">';			
-								$config["parent_anchor_tag"]     = '<a tabindex="-1" href="%s">%s</a>';	
-								$config["children_tag_open"]     = '<ul class="dropdown-menu">';			
-								$config["item_divider"]          = "<li class='divider'></li>";
-								$this->multi_menu->initialize($config);
-								$data['activeTabGUsuario'] = $this->multi_menu->render();
-							}
-							if ($fila['inventario'] == 'T')
-							{
-								$itemsInventario = $this->menu->MenuInventario();
-								$this->multi_menu->set_items($itemsInventario);
-								$config["nav_tag_open"]          = '<ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">';		
-								$config["parent_tag_open"]       = '<li class="dropdown-submenu">';			
-								$config["parent_anchor_tag"]     = '<a tabindex="-1" href="%s">%s</a>';	
-								$config["children_tag_open"]     = '<ul class="dropdown-menu">';			
-								$config["item_divider"]          = "<li class='divider'></li>";
-								$this->multi_menu->initialize($config);
-								$data['activeTabInventario'] = $this->multi_menu->render();
-							}
-						}
-      //creo el array con datos de configuración para la vista
-						$datos_vista['rs_Factura'] = $this->m_Factura->get_Factura();
-			            $datos_vista['rs_DetalleFactura'] = $this->m_Factura->get_DetalleFactura();
-      //cargo la vista pasando los datos de configuracion
-						$this->load->view('v_Head');
-						$this->load->view('v_Header');
-						$this->load->view("v_Menu",$data);
-						$this->load->view('v_Factura',$datos_vista);
-					}
-					else{
-						$this->session->set_flashdata('msg', '<div class="alert alert-danger text-center">¡Datos incorrectos!</div>');
-						redirect('c_Login/index');
-					}	
+				$Factura_result = $this->m_Factura->pc_m_Factura_i($NumDoc,$Cliente,$Nombre,$IdTipo,$Cajero,$Vendedor,$CodVendedor,$FechaContable,$NumCaja,$VentaGravada,$VentaExenta,$VentaNoSujeta,$Iva,$Total,$DocType,$DUI,$TipoPago);            
+                $tablaDetalle = array(
+                    'IdFac' =>  $IdFac,
+                    'LineaNumDoc' =>  $LineaNumDoc,
+                    'IdProducto' =>  $IdProducto,
+                    'CodProducto' =>  $CodProducto,
+                    'NumFabricante' =>  $NumFabricante,
+                    'DescripcionProducto' =>  $DescripcionProducto,
+                    'Cantidad' =>  $Cantidad,
+                    'PrecioConIva' =>  $PrecioConIva,
+                    'Afecto' =>  $Afecto,
+                    'CuentaMayor' =>  $CuentaMayor,
+                    'CuentaCoste' =>  $CuentaCoste,
+                    'NormaReparto' =>  $NormaReparto    
+                );      
+                $Detalle_result = $this->m_Factura->pc_m_DetalleFactura_i($tablaDetalle);
+                        unset($_POST['txt_Cliente']);
+						unset($_POST['txt_Nombre']);
+						unset($_POST['txt_Cajero']);
+						unset($_POST['txt_NumCaja']);
+						unset($_POST['txt_DocType']);
+						unset($_POST['txt_NumDoc']);
+						unset($_POST['txt_IdTipo']);
+						unset($_POST['txt_FechaContable']);
+						unset($_POST['txt_CodVendedor']);
+						unset($_POST['txt_Vendedor']);
+						unset($_POST['DetalleFac_length']);
+						unset($_POST['txt_Cantidad']);
+						unset($_POST['txt_Afecta']);
+						unset($_POST['txt_VentaGravada']);
+						unset($_POST['txt_VentaExenta']);
+						unset($_POST['txt_VentaNoSujeta']);
+						unset($_POST['txt_Iva']);
+						unset($_POST['txt_Total']);
+						unset($_POST['txt_DUI']);
+						unset($_POST['txt_TipoPago']);
+						unset($_POST['btn_guardar']);
+                        redirect('c_Factura/index');  
 				}
-				else{
-					$this->session->set_flashdata('msg', '<div class="alert alert-danger text-center">¡Datos incorrectos!</div>');
-					redirect('c_Login/index');
-				}
-			}
 			else{
 				$this->session->set_flashdata('msg', '<div class="alert alert-danger text-center">¡Datos incorrectos!</div>');
 				redirect('c_login/index');

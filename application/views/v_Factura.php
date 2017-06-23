@@ -11,7 +11,7 @@
 					<div class="col-lg-4 col-xs-11 well">
 						<fieldset>
 							<?php 	
-							foreach($rs_Factura['rs_Factura'] as $filaFactura){	
+							foreach($rs_FacturaEnc['rs_Factura'] as $filaFactura){	
 								?>
 								<div class="form-group">
 									<div class="row colbox">
@@ -19,7 +19,7 @@
 											<label for="txt_Cliente" class="control-label">Cliente</label>
 										</div>
 										<div class="col-lg-8 col-xs-12">
-											<input class="form-control" id="txt_Cliente" name="txt_Cliente" placeholder="C99999" type="text" value="<?php echo $filaFactura->Cliente; ?>" />
+											<input class="form-control" id="txt_Cliente" name="txt_Cliente" placeholder="C99999" type="text" value="<?php echo $filaFactura->Cliente; ?>" readonly/>
 											<span class="text-danger"><?php echo form_error('txt_Nombre'); ?></span>
 										</div>
 									</div>
@@ -38,21 +38,27 @@
 								<div class="form-group">
 									<div class="row colbox">
 										<div class="col-lg-4 col-xs-12">
-											<label for="txt_Cajero" class="control-label">Cajero</label>
+											<label for="txt_Cajero" class="control-lable">Cajero</label>
 										</div>
 										<div class="col-lg-8 col-xs-12">
-											<input class="form-control" id="txt_Cajero" name="txt_Cajero" placeholder="Cajero" type="text" value="<?php echo $filaFactura->Cajero; ?>" />
+											<select class="form-control" id="txt_Cajero" name="txt_Cajero">
+												<option>EDWIN PORTILLO</option>
+												<option>XAVIER JUAREZ</option>
+											</select>
 											<span class="text-danger"><?php echo form_error('txt_Cajero'); ?></span>
-										</div>
+										</div>     
 									</div>
-								</div> 
+								</div>
 								<div class="form-group">
 									<div class="row colbox">
 										<div class="col-lg-4 col-xs-12">
 											<label for="txt_NumCaja" class="control-lable">Caja #</label>
 										</div>
-										<div class="col-lg-8 col-xs-12">
-											<input class="form-control" id="txt_NumCaja" name="txt_NumCaja" placeholder="Caja #" type="text" value="<?php echo $filaFactura->NumCaja; ?>"/>
+										<div class="col-lg-6 col-xs-12">
+											<select class="form-control" id="txt_NumCaja" name="txt_NumCaja">
+												<option>1</option>
+												<option>2</option>
+											</select>
 											<span class="text-danger"><?php echo form_error('txt_NumCaja'); ?></span>
 										</div>     
 									</div>
@@ -67,7 +73,32 @@
 											<span class="text-danger"><?php echo form_error('txt_DocType'); ?></span>
 										</div>     
 									</div>
-								</div>  
+								</div>
+								<div class="form-group">
+									<div class="row colbox">
+										<div class="col-lg-4 col-xs-12">
+											<label for="txt_DUI" class="control-lable">DUI ó NIT venta mayor a $200</label>
+										</div>
+										<div class="col-lg-8 col-xs-12">
+											<input class="form-control" id="txt_DUI" name="txt_DUI" placeholder="DUI ó NIT" type="text" value="<?php echo $filaFactura->DUI; ?>"/>
+											<span class="text-danger"><?php echo form_error('txt_DUI'); ?></span>
+										</div>     
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="row colbox">
+										<div class="col-lg-4 col-xs-12">
+											<label for="txt_TipoPago" class="control-lable">Tipo Pago</label>
+										</div>
+										<div class="col-lg-8 col-xs-12">
+											<select class="form-control" id="txt_TipoPago" name="txt_TipoPago">
+												<option>Contado</option>
+												<option>Crédito</option>
+											</select>
+											<span class="text-danger"><?php echo form_error('txt_TipoPago'); ?></span>
+										</div>     
+									</div>
+								</div>    
 							</fieldset>
 						</div>
 						<div class="col-lg-1 col-xs-2"> 
@@ -91,7 +122,7 @@
 											<label for="txt_IdTipo" class="control-label">Serie</label>
 										</div>
 										<div class="col-lg-6 col-xs-12">
-											<input class="form-control" id="txt_IdTipo" name="txt_IdTipo" placeholder="Tipo" type="text" value="<?php echo $filaFactura->Documento; ?>" />
+											<input class="form-control" id="txt_IdTipo" name="txt_IdTipo" placeholder="Tipo" type="text" value="<?php echo $filaFactura->Documento; ?>" readonly/>
 											<span class="text-danger"><?php echo form_error('txt_IdTipo'); ?></span>
 										</div>
 									</div>
@@ -113,7 +144,7 @@
 											<label for="txt_CodVendedor" class="control-label">Código Vendedor</label>
 										</div>
 										<div class="col-lg-6 col-xs-12">
-											<input class="form-control" id="txt_CodVendedor" name="txt_CodVendedor" placeholder="Código" type="text" value="<?php echo $filaFactura->CodVendedor; ?>" />
+											<input class="form-control" id="txt_CodVendedor" name="txt_CodVendedor" placeholder="Código" type="text" value="<?php echo $filaFactura->CodVendedor; ?>" readonly/>
 											<span class="text-danger"><?php echo form_error('txt_CodVendedor'); ?></span>
 										</div>
 									</div>
@@ -123,16 +154,13 @@
 										<div class="col-lg-4 col-xs-12">
 											<label for="txt_Vendedor" class="control-lable">Vendedor</label>
 										</div>
-										<div class="col-lg-6 col-xs-12">
-											<input class="form-control" id="txt_Vendedor" name="txt_Vendedor" placeholder="Vendedor" type="text" value="<?php echo $filaFactura->Vendedor; ?>"/>
+										<div class="col-lg-8 col-xs-12">
+											<input class="form-control" id="txt_Vendedor" name="txt_Vendedor" placeholder="Vendedor" type="text" value="<?php echo $filaFactura->Vendedor; ?>" readonly/>
 											<span class="text-danger"><?php echo form_error('txt_Vendedor'); ?></span>
 										</div>     
 									</div>
 								</div>
 							</fieldset>
-							<?php 
-						}
-						?>
 					</div>
 				</div>
 				<div style="clear: both;"></div>  
@@ -142,9 +170,12 @@
 					<div class="col-lg-6 col-xs-12">
 						<span style="float:left"><a id="Agregar" class="btn btn-primary" href="#"><span id="Herramienta" class="glyphicon glyphicon-plus"></span> Agregar</a>&nbsp;</span>	 
 						<span style="float:left"><a id="Remover" class="btn btn-warning" href="#"><span id="Herramienta" class="glyphicon glyphicon-trash"></span> Remover</a>&nbsp;</span>	 
-						<span style="float:left"><a class="btn btn-success" href="<?php echo base_url('factura.php?Imprimir=true');?>" target="_blank"><span id="Herramienta" class="glyphicon glyphicon-print"></span> Imprimir</a>&nbsp;</span>	 
+						<span style="float:left"><a class="btn btn-success" href="<?php echo base_url('');?>factura.php?Imprimir=true&vNumDoc=<?php echo $filaFactura->NumDoc; ?>" target="_blank"><span id="Herramienta" class="glyphicon glyphicon-print"></span> Imprimir</a>&nbsp;</span>	 
 					</div>
 				</div>
+				<?php 
+					}
+				?>
 				<br>
 				<hr class="Linea">
 				<br>
@@ -152,7 +183,6 @@
 					<div class="col-lg-6 col-xs-12">
 						<table id="DetalleFac" class="table-bordered table-striped table-condensed table-hover">
 							<thead>
-								<th class="hidden-md hidden-lg">IdDetFac</th>
 								<th class="hidden-md hidden-lg">IdFac</th>
 								<th class="hidden-md hidden-lg">IdProducto</th>
 								<th class="hidden-md hidden-lg">CuentaMayor</th>
@@ -163,7 +193,7 @@
 								<th>#</th>
 								<th><input class='check_Todas' type="checkbox"/></th>
 								<th>Código</th>
-								<th>Numero de Parte</th>
+								<th class="hidden-md hidden-lg">Numero de Parte</th>
 								<th>Descripción</th>
 								<th>Cantidad</th>
 								<th>Precio Unitario</th>
@@ -174,22 +204,21 @@
 								$i = 1;
 								foreach($rs_DetalleFactura['rs_DetalleFactura'] as $filaDetalle){
 									echo '<tr>';
-									echo '<td class="hidden-md hidden-lg">'.$filaDetalle->IdDetFac.'</td>';
-									echo '<td class="hidden-md hidden-lg">'.$filaDetalle->IdFac.'</td>';
-									echo '<td class="hidden-md hidden-lg">'.$filaDetalle->IdProducto.'</td>';
-									echo '<td class="hidden-md hidden-lg">'.$filaDetalle->CuentaMayor.'</td>';
-									echo '<td class="hidden-md hidden-lg">'.$filaDetalle->CuentaCoste.'</td>';
-									echo '<td class="hidden-md hidden-lg">'.$filaDetalle->NormaReparto.'</td>';
-									echo '<td class="hidden-md hidden-lg">'.$filaDetalle->NumDoc.'</td>';
-									echo '<td class="hidden-md hidden-lg">'.$filaDetalle->Afecto.'</td>';
+					                echo '<td class="hidden-md hidden-lg"><input class="LineaCampo" id="txt_IdFac" name="txt_IdFac[]" placeholder="IdFac" type="text" value="'.$filaDetalle->IdFac.'" readonly/></td>';
+									echo '<td class="hidden-md hidden-lg"><input class="LineaCampo" id="txt_IdProducto" name="txt_IdProducto[]" placeholder="IdProducto" type="text" value="'.$filaDetalle->IdProducto.'" readonly/></td>';
+									echo '<td class="hidden-md hidden-lg"><input class="LineaCampo" id="txt_CuentaMayor" name="txt_CuentaMayor[]" placeholder="CuentaMayor" type="text" value="'.$filaDetalle->CuentaMayor.'" readonly/></td>';
+									echo '<td class="hidden-md hidden-lg"><input class="LineaCampo" id="txt_CuentaCoste" name="txt_CuentaCoste[]" placeholder="CuentaCoste" type="text" value="'.$filaDetalle->CuentaCoste.'" readonly/></td>';
+									echo '<td class="hidden-md hidden-lg"><input class="LineaCampo" id="txt_NormaReparto" name="txt_NormaReparto[]" placeholder="NormaReparto" type="text" value="'.$filaDetalle->NormaReparto.'" readonly/></td>';
+									echo '<td class="hidden-md hidden-lg"><input class="LineaCampo" id="txt_LineaNumDoc" name="txt_LineaNumDoc[]" placeholder="LineaNumDoc" type="text" value="'.$filaDetalle->NumDoc.'" readonly/></td>';
+									echo '<td class="hidden-md hidden-lg"><input class="LineaCampo" id="txt_Afecto" name="txt_Afecto[]" placeholder="Afecto" type="text" value="'.$filaDetalle->Afecto.'" readonly/></td>';
 									echo '<td><span id="snum">'.$i.'</span></td>';
 									echo '<td> <input type="checkbox" class="FilaMarcada"></td>';
-									echo '<td><input class="form-control" id="txt_CodProducto" name="txt_CodProducto" placeholder="Producto" type="text" value="'.$filaDetalle->CodProducto.'"/></td>';
-									echo '<td>'.$filaDetalle->NumFabricante.'</td>';
-									echo '<td>'.$filaDetalle->DescripcionProducto.'</td>';
-									echo '<td><input class="form-control" id="txt_Cantidad" name="txt_Cantidad" placeholder="Cantidad" type="text" value=""/></td>';
-									echo '<td class="txt_PrecioConIva">'.number_format($filaDetalle->PrecioConIva,2,".",",").'</td>';
-									echo '<td><input class="form-control" id="txt_Afecta" name="txt_Afecta" placeholder="Total" type="text" value="" readonly/></td>';
+									echo '<td><input class="LineaCampo" id="txt_CodProducto" name="txt_CodProducto[]" placeholder="Codigo" type="text" value="'.$filaDetalle->CodProducto.'" readonly/></td>';
+									echo '<td class="hidden-md hidden-lg"><input class="LineaCampo" id="txt_NumFabricante" name="txt_NumFabricante[]" placeholder="NumFabricante" type="text" value="'.$filaDetalle->NumFabricante.'" readonly/></td>';
+									echo '<td><input class="LineaCampo" id="txt_DescripcionProducto" name="txt_DescripcionProducto[]" placeholder="DescripcionProducto" type="text" value="'.$filaDetalle->DescripcionProducto.'" readonly/></td>';
+									echo '<td><input class="form-control" id="txt_Cantidad" name="txt_Cantidad[]" placeholder="Cantidad" type="text" value="'.$filaDetalle->Cantidad.'"/></td>';
+									echo '<td><input class="LineaCampo" id="txt_PrecioConIva" name="txt_PrecioConIva[]" placeholder="PrecioConIva" type="text" value="'.number_format($filaDetalle->PrecioConIva,2,".",",").'" readonly/></td>';
+									echo '<td><input class="form-control" id="txt_Afecta" name="txt_Afecta[]" placeholder="Total" type="text" value="'.$filaDetalle->Cantidad*number_format($filaDetalle->PrecioConIva,2,".",",").'" readonly/></td>';
 									echo '</tr>';
 									$i++;
 								}
@@ -205,8 +234,7 @@
 					</div>
 					<div class="col-lg-4 col-xs-11 well">
 						<?php
-
-						foreach($rs_Factura['rs_Factura'] as $filaPie){
+						foreach($rs_FacturaPie['rs_Factura'] as $filaPie){
 							?>
 							<fieldset>
 								<div class="form-group">
@@ -215,7 +243,7 @@
 											<label for="txt_VentaGravada" class="control-label">Venta Gravada</label>
 										</div>
 										<div class="col-lg-6 col-xs-12">
-											<input class="form-control" id="txt_VentaGravada" name="txt_VentaGravada" placeholder="Venta Gravada" type="text" value="" readonly/>
+											<input class="form-control" id="txt_VentaGravada" name="txt_VentaGravada" placeholder="Venta Gravada" type="text" value="<?php echo $filaPie->VentaGravada; ?>" readonly/>
 											<span class="text-danger"><?php echo form_error('txt_VentaGravada'); ?></span>
 										</div>
 									</div>
@@ -226,7 +254,7 @@
 											<label for="txt_VentaExenta" class="control-lable">Venta Exenta</label>
 										</div>
 										<div class="col-lg-6 col-xs-12">
-											<input class="form-control" id="txt_VentaExenta" name="txt_VentaExenta" placeholder="Venta Exenta" type="text" value="" readonly/>
+											<input class="form-control" id="txt_VentaExenta" name="txt_VentaExenta" placeholder="Venta Exenta" type="text" value="<?php echo $filaPie->VentaExenta; ?>" readonly/>
 											<span class="text-danger"><?php echo form_error('txt_VentaExenta'); ?></span>	
 										</div>     
 									</div>
@@ -237,18 +265,18 @@
 											<label for="txt_VentaNoSujeta" class="control-label">Venta No Sujeta</label>
 										</div>
 										<div class="col-lg-6 col-xs-12">
-											<input class="form-control" id="txt_VentaNoSujeta" name="txt_VentaNoSujeta" placeholder="No Sujeta" type="text" value="" readonly/>
+											<input class="form-control" id="txt_VentaNoSujeta" name="txt_VentaNoSujeta" placeholder="No Sujeta" type="text" value="<?php echo $filaPie->VentaNoSujeta; ?>" readonly/>
 											<span class="text-danger"><?php echo form_error('txt_VentaNoSujeta'); ?></span>
 										</div>
 									</div>
 								</div> 
-								<div class="form-group">
+								<div class="hidden-md hidden-lg">
 									<div class="row colbox">
 										<div class="col-lg-4 col-xs-12">
 											<label for="txt_Iva" class="control-lable">IVA</label>
 										</div>
 										<div class="col-lg-6 col-xs-12">
-											<input class="form-control" id="txt_Iva" name="txt_Iva" placeholder="IVA" type="text" value="" readonly/>
+											<input class="form-control" id="txt_Iva" name="txt_Iva" placeholder="IVA" type="text" value="<?php echo $filaPie->Iva; ?>" readonly/>
 											<span class="text-danger"><?php echo form_error('txt_Iva'); ?></span>
 										</div>     
 									</div>
@@ -259,7 +287,7 @@
 											<label for="txt_Total" class="control-lable">Total</label>
 										</div>
 										<div class="col-lg-6 col-xs-12">
-											<input class="form-control" id="txt_Total" name="txt_Total" placeholder="Total" type="text" value="" readonly/>
+											<input class="form-control" id="txt_Total" name="txt_Total" placeholder="Total" type="text" value="<?php echo $filaPie->Total; ?>" readonly/>
 											<span class="text-danger"><?php echo form_error('txt_Total'); ?></span>
 										</div>     
 									</div>
@@ -275,8 +303,7 @@
 				<br>
 				<div class="row">
 					<div class="col-lg-6 col-xs-12">
-						<span style="float:left"><a class="btn btn-primary" href="<?php echo base_url('c_Cuadros/c_Cuadros_i');?>"> Cancelar</a>&nbsp;</span>	 
-						<span style="float:left"><a class="btn btn-warning" href="<?php echo base_url('c_Cuadros/c_Cuadros_i');?>"> Actualizar</a>&nbsp;</span>	 
+						<span style="float:left"><a id="btn_nuevo" class="btn btn-warning" href="<?php echo base_url('');?>c_Factura/index?Nuevo=true" ><span id="Herramienta"></span> Nuevo</a>&nbsp;</span>	 
 						<input id="btn_guardar" name="btn_guardar" type="submit" class="btn btn-success" value="Guardar" />
 					</div>
 				</div>
@@ -284,12 +311,3 @@
 			</div>
 			<?php echo form_close();
 			echo $this->session->flashdata('msg'); ?>
-			<footer>    
-				<div class="col-lg-8 col-xs-12 Foot">
-					<h1 id="Foot">SISTEMAS C&C
-						<br>
-						Derechos de Información 2017</h1>
-					</div>
-				</footer>	
-			</body>
-			</html>

@@ -2,19 +2,19 @@
 //============================================================+
 // File name   : example_023.php
 // Begin       : 2008-03-04
-// Last Update : 2009-09-30
-// 
+// Last Update : 2010-08-08
+//
 // Description : Example 023 for TCPDF class
 //               Page Groups
-// 
+//
 // Author: Nicola Asuni
-// 
+//
 // (c) Copyright:
 //               Nicola Asuni
-//               Tecnick.com s.r.l.
-//               Via Della Pace, 11
-//               09044 Quartucciu (CA)
-//               ITALY
+//               Tecnick.com LTD
+//               Manor Coach House, Church Hill
+//               Aldershot, Hants, GU12 4RQ
+//               UK
 //               www.tecnick.com
 //               info@tecnick.com
 //============================================================+
@@ -24,9 +24,6 @@
  * @package com.tecnick.tcpdf
  * @abstract TCPDF - Example: Page Groups.
  * @author Nicola Asuni
- * @copyright 2004-2009 Nicola Asuni - Tecnick.com S.r.l (www.tecnick.com) Via Della Pace, 11 - 09044 - Quartucciu (CA) - ITALY - www.tecnick.com - info@tecnick.com
- * @link http://tcpdf.org
- * @license http://www.gnu.org/copyleft/lesser.html LGPL
  * @since 2008-03-04
  */
 
@@ -44,7 +41,7 @@ $pdf->SetSubject('TCPDF Tutorial');
 $pdf->SetKeywords('TCPDF, PDF, example, test, guide');
 
 // set default header data
-$pdf->SetHeaderData(PDF_HEADER_LOGO, PDF_HEADER_LOGO_WIDTH, PDF_HEADER_TITLE, PDF_HEADER_STRING);
+$pdf->SetHeaderData(PDF_HEADER_LOGO, PDF_HEADER_LOGO_WIDTH, PDF_HEADER_TITLE.' 023', PDF_HEADER_STRING);
 
 // set header and footer fonts
 $pdf->setHeaderFont(Array(PDF_FONT_NAME_MAIN, '', PDF_FONT_SIZE_MAIN));
@@ -62,32 +59,49 @@ $pdf->SetFooterMargin(PDF_MARGIN_FOOTER);
 $pdf->SetAutoPageBreak(TRUE, PDF_MARGIN_BOTTOM);
 
 //set image scale factor
-$pdf->setImageScale(PDF_IMAGE_SCALE_RATIO); 
+$pdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
 
 //set some language-dependent strings
-$pdf->setLanguageArray($l); 
+$pdf->setLanguageArray($l);
 
 // ---------------------------------------------------------
 
 // set font
-$pdf->SetFont('times', 'BI', 12);
+$pdf->SetFont('times', 'BI', 14);
 
 // Start First Page Group
 $pdf->startPageGroup();
 
 // add a page
 $pdf->AddPage();
-$pdf->Cell(0, 10, 'Start of group 1', 0, 1, 'L');
+
+// set some text to print
+$txt = <<<EOD
+Example of page groups.
+Check the page numbers on the page footer.
+
+This is the first page of group 1.
+EOD;
+
+// print a block of text using Write()
+$pdf->Write(0, $txt, '', 0, 'L', true, 0, false, false, 0);
+
+// add second page
 $pdf->AddPage();
+$pdf->Cell(0, 10, 'This is the second page of group 1', 0, 1, 'L');
 
 // Start Second Page Group
 $pdf->startPageGroup();
 
+// add some pages
 $pdf->AddPage();
-$pdf->Cell(0, 10, 'Start of group 2', 0, 1, 'L');
+$pdf->Cell(0, 10, 'This is the first page of group 2', 0, 1, 'L');
 $pdf->AddPage();
+$pdf->Cell(0, 10, 'This is the second page of group 2', 0, 1, 'L');
 $pdf->AddPage();
+$pdf->Cell(0, 10, 'This is the third page of group 2', 0, 1, 'L');
 $pdf->AddPage();
+$pdf->Cell(0, 10, 'This is the fourth page of group 2', 0, 1, 'L');
 
 // ---------------------------------------------------------
 
@@ -95,6 +109,5 @@ $pdf->AddPage();
 $pdf->Output('example_023.pdf', 'I');
 
 //============================================================+
-// END OF FILE                                                 
+// END OF FILE                                                
 //============================================================+
-?>

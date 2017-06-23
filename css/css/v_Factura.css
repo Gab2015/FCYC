@@ -11,3 +11,14 @@ hr.Linea{
 	margin-top:1px;
 	margin-bottom:1px;
 }
+#DetalleFac .LineaCampo {
+    border:0;
+    -moz-box-shadow: none!important;
+    -webkit-box-shadow: none!important;
+    box-shadow: none!important;
+    outline:transparent;
+    background: none !important;
+}
+.modal-dialog {
+    width: 800px;
+}
