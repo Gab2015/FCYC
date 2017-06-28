@@ -108,6 +108,7 @@ $("#Agregar").on('click',function(){
 //=========Genera una fila y la coloca al final=========//
 //=========INICI0=========//
 vNumDoc = $("input:text#txt_NumDoc").val();
+vNextIdFac = $("input:text#txt_NextIdFac").val();
 $("#btn_insertar").on('click',function(){
 	$('input[class=Marcada]:checkbox:checked').each(function(i,e){ 
 				var vNumFilaAgregada=$('#DetalleFac tr').length;
@@ -116,7 +117,7 @@ $("#btn_insertar").on('click',function(){
                 var vDescripcion = celda.eq(5).html();
                 var vPrecioUnitario = celda.eq(6).html();
                 var vNumFabricante = celda.eq(9).html();
-				var vFilaAgregada="<tr><td class='hidden-md hidden-lg'><input class='LineaCampo' id='txt_IdFac' name='txt_IdFac[]' placeholder='IdFac' type='text' value='1' readonly/></td>";
+				var vFilaAgregada="<tr><td class='hidden-md hidden-lg'><input class='LineaCampo' id='txt_IdFac' name='txt_IdFac[]' placeholder='IdFac' type='text' value='"+vNextIdFac+"' readonly/></td>";
 				vFilaAgregada +="<td class='hidden-md hidden-lg'><input class='LineaCampo' id='txt_IdProducto' name='txt_IdProducto[]' placeholder='IdProducto' type='text' value='1' readonly/></td>";
                 vFilaAgregada +="<td class='hidden-md hidden-lg'><input class='LineaCampo' id='txt_CuentaMayor' name='txt_CuentaMayor[]' placeholder='CuentaMayor' type='text' value='401050101-SV-GP' readonly/></td>";
                 vFilaAgregada +="<td class='hidden-md hidden-lg'><input class='LineaCampo' id='txt_CuentaCoste' name='txt_CuentaCoste[]' placeholder='CuentaCoste' type='text' value='501050101SVGP' readonly/></td>";

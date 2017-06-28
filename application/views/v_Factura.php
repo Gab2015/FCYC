@@ -160,6 +160,17 @@
 										</div>     
 									</div>
 								</div>
+								<div class="hidden-md hidden-lg">
+									<div class="row colbox">
+										<div class="col-lg-4 col-xs-12">
+											<label for="txt_NextIdFac" class="control-lable">NextIdFac</label>
+										</div>
+										<div class="col-lg-8 col-xs-12">
+											<input class="form-control" id="txt_NextIdFac" name="txt_NextIdFac" placeholder="NextIdFac" type="text" value="<?php echo $filaFactura->NextIdFac; ?>"/>
+											<span class="text-danger"><?php echo form_error('txt_NextIdFac'); ?></span>
+										</div>     
+									</div>
+								</div>
 							</fieldset>
 					</div>
 				</div>
@@ -170,7 +181,7 @@
 					<div class="col-lg-6 col-xs-12">
 						<span style="float:left"><a id="Agregar" class="btn btn-primary" href="#"><span id="Herramienta" class="glyphicon glyphicon-plus"></span> Agregar</a>&nbsp;</span>	 
 						<span style="float:left"><a id="Remover" class="btn btn-warning" href="#"><span id="Herramienta" class="glyphicon glyphicon-trash"></span> Remover</a>&nbsp;</span>	 
-						<span style="float:left"><a class="btn btn-success" href="<?php echo base_url('');?>factura.php?Imprimir=true&vNumDoc=<?php echo $filaFactura->NumDoc; ?>" target="_blank"><span id="Herramienta" class="glyphicon glyphicon-print"></span> Imprimir</a>&nbsp;</span>	 
+						<span style="float:left"><a class="btn btn-success" href="<?php echo base_url('');?>factura.php?Imprimir=true&vNumDoc=<?php echo $filaFactura->NumDoc; ?>&vNumCaja=<?php echo $filaFactura->NumCaja; ?>" target="_blank"><span id="Herramienta" class="glyphicon glyphicon-print"></span> Imprimir</a>&nbsp;</span>	 
 					</div>
 				</div>
 				<?php 

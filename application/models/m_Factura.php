@@ -3,24 +3,25 @@ class m_Factura extends CI_Model {
     function __construct(){
         parent::__construct();
     }
-    function get_Factura($vNuevo){
+    function get_Factura($vNuevo,$SerieCaja){
 	//Variables
-        $ssqlNumDoc = "EXECUTE pc_m_Factura ?";
-        $paramsNumDoc = array($vNuevo);
+        $ssqlNumDoc = "EXECUTE pc_m_Factura ?,?";
+        $paramsNumDoc = array($vNuevo,$SerieCaja);
         $rs_Factura = $this->db->query($ssqlNumDoc,$paramsNumDoc);
         $rs_Facturas['rs_Factura'] = $rs_Factura->result();
         return  $rs_Facturas;
     }
-    function get_UltimoDoc(){
+    function get_UltimoDoc($SerieCaja){
     //Variables
-        $ssqlNumDoc = "EXECUTE pc_m_UltimoDoc";
-        $rs_UltimoDoc = $this->db->query($ssqlNumDoc);
+        $ssqlNumDoc = "EXECUTE pc_m_UltimoDoc ?";
+        $paramsNumDoc = array($SerieCaja);
+        $rs_UltimoDoc = $this->db->query($ssqlNumDoc,$paramsNumDoc);
         return  $rs_UltimoDoc->row()->NumDoc;
     }
-    function get_DetalleFactura($UltimoDoc){
+    function get_DetalleFactura($UltimoDoc,$SerieCaja){
 	//Variables
-        $ssqlNumDoc = "EXECUTE pc_m_DetalleFactura ?";
-        $paramsNumDoc = array($UltimoDoc);
+        $ssqlNumDoc = "EXECUTE pc_m_DetalleFactura ?,?";
+        $paramsNumDoc = array($UltimoDoc,$SerieCaja);
         $rs_DetalleFactura = $this->db->query($ssqlNumDoc,$paramsNumDoc);
         $rs_DetalleFacturas['rs_DetalleFactura'] = $rs_DetalleFactura->result();
         return  $rs_DetalleFacturas;

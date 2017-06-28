@@ -59,20 +59,21 @@ class c_Factura extends CI_Controller {
 				}
 			}
       //creo el array con datos de configuración para la vista			
+		  $SerieCaja = ($usuario == "eportillo" ? 1 : 2);
 		  if ( isset( $_GET['Nuevo'] ) ) { 
 		    $vNuevo = "FALSE";
-		  	$datos_vista['rs_FacturaEnc'] = $this->m_Factura->get_Factura($vNuevo);
+		  	$datos_vista['rs_FacturaEnc'] = $this->m_Factura->get_Factura($vNuevo,$SerieCaja);
 		  	$vNuevo = "TRUE";
 		  	$UltimoDoc = 0;
-		  	$datos_vista['rs_FacturaPie'] = $this->m_Factura->get_Factura($vNuevo);
-			$datos_vista['rs_DetalleFactura'] = $this->m_Factura->get_DetalleFactura($UltimoDoc);
+		  	$datos_vista['rs_FacturaPie'] = $this->m_Factura->get_Factura($vNuevo,$SerieCaja);
+			$datos_vista['rs_DetalleFactura'] = $this->m_Factura->get_DetalleFactura($UltimoDoc,$SerieCaja);
 			}
 		  else{
 		  	$vNuevo = "FALSE";
-		  	$datos_vista['rs_FacturaEnc'] = $this->m_Factura->get_Factura($vNuevo);
-			$UltimoDoc = $this->m_Factura->get_UltimoDoc();
-		  	$datos_vista['rs_FacturaPie'] = $this->m_Factura->get_Factura($vNuevo);
-			$datos_vista['rs_DetalleFactura'] = $this->m_Factura->get_DetalleFactura($UltimoDoc);
+		  	$datos_vista['rs_FacturaEnc'] = $this->m_Factura->get_Factura($vNuevo,$SerieCaja);
+			$UltimoDoc = $this->m_Factura->get_UltimoDoc($SerieCaja);
+		  	$datos_vista['rs_FacturaPie'] = $this->m_Factura->get_Factura($vNuevo,$SerieCaja);
+			$datos_vista['rs_DetalleFactura'] = $this->m_Factura->get_DetalleFactura($UltimoDoc,$SerieCaja);
 		    } 
 			$datos_articulo['rs_articulo'] = $this->m_Factura->get_DetalleArticulo();
       //cargo la vista pasando los datos de configuracion
@@ -93,7 +94,7 @@ class c_Factura extends CI_Controller {
 		$NumDoc         = $this->input->post("txt_NumDoc");
 		$Cliente        = $this->input->post("txt_Cliente");
 		$Nombre         = $this->input->post("txt_Nombre");
-		$IdTipo         = 1;
+		$IdTipo         = $this->input->post("txt_NumCaja");
 		$Cajero         = $this->input->post("txt_Cajero");
 		$Vendedor       = $this->input->post("txt_Vendedor");
 		$CodVendedor    = $this->input->post("txt_CodVendedor");
@@ -182,20 +183,21 @@ class c_Factura extends CI_Controller {
 					}
 				}
       //creo el array con datos de configuración para la vista
+		  $SerieCaja = ($usuario == "eportillo" ? 1 : 2);
 		  if ( isset( $_GET['Nuevo'] ) ) { 
 		    $vNuevo = "FALSE";
-		  	$datos_vista['rs_FacturaEnc'] = $this->m_Factura->get_Factura($vNuevo);
+		  	$datos_vista['rs_FacturaEnc'] = $this->m_Factura->get_Factura($vNuevo,$SerieCaja);
 		  	$vNuevo = "TRUE";
 		  	$UltimoDoc = 0;
-		  	$datos_vista['rs_FacturaPie'] = $this->m_Factura->get_Factura($vNuevo);
-			$datos_vista['rs_DetalleFactura'] = $this->m_Factura->get_DetalleFactura($UltimoDoc);
+		  	$datos_vista['rs_FacturaPie'] = $this->m_Factura->get_Factura($vNuevo,$SerieCaja);
+			$datos_vista['rs_DetalleFactura'] = $this->m_Factura->get_DetalleFactura($UltimoDoc,$SerieCaja);
 			}
 		  else{
 		  	$vNuevo = "FALSE";
-		  	$datos_vista['rs_FacturaEnc'] = $this->m_Factura->get_Factura($vNuevo);
-			$UltimoDoc = $this->m_Factura->get_UltimoDoc();
-		  	$datos_vista['rs_FacturaPie'] = $this->m_Factura->get_Factura($vNuevo);
-			$datos_vista['rs_DetalleFactura'] = $this->m_Factura->get_DetalleFactura($UltimoDoc);
+		  	$datos_vista['rs_FacturaEnc'] = $this->m_Factura->get_Factura($vNuevo,$SerieCaja);
+			$UltimoDoc = $this->m_Factura->get_UltimoDoc($SerieCaja);
+		  	$datos_vista['rs_FacturaPie'] = $this->m_Factura->get_Factura($vNuevo,$SerieCaja);
+			$datos_vista['rs_DetalleFactura'] = $this->m_Factura->get_DetalleFactura($UltimoDoc,$SerieCaja);
 		    } 
 			$datos_articulo['rs_articulo'] = $this->m_Factura->get_DetalleArticulo();
       //cargo la vista pasando los datos de configuracion
