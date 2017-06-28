@@ -76,9 +76,10 @@ class c_Factura extends CI_Controller {
 			$datos_vista['rs_DetalleFactura'] = $this->m_Factura->get_DetalleFactura($UltimoDoc,$SerieCaja);
 		    } 
 			$datos_articulo['rs_articulo'] = $this->m_Factura->get_DetalleArticulo();
+            $Usuariobd['usuario'] = $usuario;
       //cargo la vista pasando los datos de configuracion
 			$this->load->view('v_Head');
-			$this->load->view('v_Header');
+			$this->load->view('v_Header',$Usuariobd);
 			$this->load->view("v_Menu",$data);
 			$this->load->view('v_Factura',$datos_vista);
 			$this->load->view("v_Factura_Model",$datos_articulo);

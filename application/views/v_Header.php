@@ -6,7 +6,7 @@
                </div>
                <div class="col-lg-1 col-sx-12">
                     <a class="btn btn-primary Cerrar" href="<?php echo base_url('c_Menu/Logout');?>">
-                    <span id="Herramienta"class="glyphicon glyphicon-user"></span> Cerrar</a>
+                    <span id="Herramienta"class="glyphicon glyphicon-user"></span> <?php echo $usuario;?>,Cerrar</a>
                </div>
           </nav>    
      </div>     
