@@ -160,6 +160,17 @@
 										</div>     
 									</div>
 								</div>
+								<div class="hidden-md hidden-lg">
+									<div class="row colbox">
+										<div class="col-lg-4 col-xs-12">
+											<label for="txt_NextIdFac" class="control-lable">NextIdFac</label>
+										</div>
+										<div class="col-lg-8 col-xs-12">
+											<input class="form-control" id="txt_NextIdFac" name="txt_NextIdFac" placeholder="NextIdFac" type="text" value="<?php echo $filaFactura->NextIdFac; ?>"/>
+											<span class="text-danger"><?php echo form_error('txt_NextIdFac'); ?></span>
+										</div>     
+									</div>
+								</div>
 							</fieldset>
 					</div>
 				</div>
