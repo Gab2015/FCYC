@@ -15,6 +15,7 @@ $version="0.9d";
 $pgport=5432;
 $pchartfolder="./class/pchart2";
 $vNumDoc = $_GET['vNumDoc'];
+$vNumCaja = $_GET['vNumCaja'];
     //display errors should be off in the php.ini file
     ini_set('display_errors', 0);
     //setting the path to the created jrxml file
@@ -24,7 +25,7 @@ $vNumDoc = $_GET['vNumDoc'];
     $PHPJasperXML->debugsql=false;
     //$PHPJasperXML->arrayParameter=array("vNumDoc"=>$vNumDoc);
     $PHPJasperXML->xml_dismantle($xml);
-    $PHPJasperXML->sql ="EXECUTE pc_m_Venta $vNumDoc";
+    $PHPJasperXML->sql ="EXECUTE pc_m_Venta $vNumDoc,$vNumCaja";
     $PHPJasperXML->transferDBtoArray($server,$user,$pass,$bd,"odbc");
     ob_end_clean();
     $PHPJasperXML->outpage("I");

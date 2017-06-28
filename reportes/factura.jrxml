@@ -4,8 +4,11 @@
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<parameter name="vNumDoc" class="java.lang.Integer"/>
+	<parameter name="vNumCaja" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
 	<queryString>
-		<![CDATA[EXECUTE pc_m_Venta $P{vNumDoc}]]>
+		<![CDATA[EXECUTE pc_m_Venta $P{vNumDoc},$P{vNumCaja}]]>
 	</queryString>
 	<field name="NumDoc" class="java.lang.Integer"/>
 	<field name="Cliente" class="java.lang.String"/>
@@ -240,7 +243,7 @@
 				<text><![CDATA[TOTAL NO
 SUJETA $...]]></text>
 			</staticText>
-			<textField pattern="$#,##0.00" isBlankWhenNull="true">
+			<textField pattern="#,##0.00" isBlankWhenNull="true">
 				<reportElement x="130" y="11" width="93" height="20" isRemoveLineWhenBlank="true" uuid="6da7edd4-dc02-4b56-aa41-18b9966b73d3"/>
 				<textElement textAlignment="Right">
 					<font fontName="Arial" size="12"/>
