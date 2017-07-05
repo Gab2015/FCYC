@@ -75,10 +75,10 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'SAP_BO',//'192.168.0.21\DESARROLLO',//'GABRIEL-ROJA-PC\DESARROLLO',
+	'hostname' => '192.168.0.21\DESARROLLO',//'GABRIEL-ROJA-PC\DESARROLLO',//'SAP_BO',
 	'port'     => '1433',
 	'username' => 'sa',
-	'password' => 'emanuel',
+	'password' => 'Gabo12345',
 	'database' => 'TicketCYC',
 	'dbdriver' => 'sqlsrv',
 	'dbprefix' => '',
