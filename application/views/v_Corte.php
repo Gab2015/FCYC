@@ -2,7 +2,7 @@
 		<form method="post" action="<?php echo base_url('corte.php')?>" target="_blank">      
 			<br>
 			<legend> 
-				<span class="inicio">REPORTE DE CAJA</span>
+				<span class="inicio">REPORTE CAJA DE VENTA DIARIA</span>
 			</legend>
 			<div class="row">
 				<div class="col-lg-4 col-xs-2"> 

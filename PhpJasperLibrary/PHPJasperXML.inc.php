@@ -1,5 +1,7 @@
 <?php
 
+require_once(dirname(__FILE__).'/tcpdf/tcpdf.php');
+
 //version 0.9d
 class PHPJasperXML {
     private $adjust=1.2;
@@ -27,6 +29,8 @@ class PHPJasperXML {
     private $offsetposition=0;
     private $detailbandqty=0;
     public $arraysqltable=array();
+    private $imagesPath;
+    
     
 	private $report_count=0;		//### New declaration (variable exists in original too)
 	private $group_count = array(); //### New declaration
@@ -39,6 +43,27 @@ class PHPJasperXML {
         if($this->fontdir=="")
         $this->fontdir=dirname(__FILE__)."/tcpdf/fonts";
     }
+    
+    //FIXME: PASARLO A LA SUBCLASE
+    public function loadValuesToArray($values) {
+    	$this->m=0;
+    
+    	foreach ($values as $row){
+    		foreach($this->arrayfield as $out) {
+    			if(!isset($row["$out"])){
+    				$this->arraysqltable[$this->m]["$out"]="    "; //FIXME 4 espacios para cuando hace substr(3, -1)?
+    			}else{
+    				$this->arraysqltable[$this->m]["$out"]= $row["$out"];//str_encode_utf8($row["$out"]);
+    			}
+    		}
+    		$this->m++;
+    	}
+    }
+    
+    public function setImagesPath($imagesPath){
+    	$this->imagesPath = $imagesPath;
+    }
+    
     
     public function setErrorReport($error_report=0){
         
@@ -273,7 +298,7 @@ class PHPJasperXML {
     }
 
     public function field_handler($xml_path) {
-        $this->arrayfield[]=$xml_path["name"];
+        $this->arrayfield[]=$xml_path["name"]."";
     }
 
     public function variable_handler($xml_path) {
@@ -1191,6 +1216,7 @@ $data->hyperlinkReferenceExpression=trim(str_replace(array(" ",'"'),"",$data->hy
         $fillcolor = array("r"=>255,"g"=>255,"b"=>255);
         $stretchoverflow="false";
         $printoverflow="false";
+        $stretchType = "";
         $height=$data->reportElement["height"];
         $drawcolor=array("r"=>0,"g"=>0,"b"=>0);
         $data->hyperlinkReferenceExpression=$data->hyperlinkReferenceExpression;
@@ -1213,6 +1239,9 @@ $data->hyperlinkReferenceExpression=trim(str_replace(array(" ",'"'),"",$data->hy
         }
         if(isset($data->reportElement["isPrintWhenDetailOverflows"])&&$data->reportElement["isPrintWhenDetailOverflows"]=="true") {
             $printoverflow="true";
+        }
+        if(isset($data->reportElement["stretchType"])) {
+        	$stretchType=$data->reportElement["stretchType"]."";
         }
         if(isset($data->box)) {
             $borderset="";
@@ -1355,7 +1384,7 @@ $font=$data->textElement->font["fontName"];
                
                 $this->pointer[]=array("type"=>"MultiCell","width"=>$data->reportElement["width"]+0,"height"=>$height+0,"txt"=>$data->textFieldExpression."",
                         "border"=>$border,"align"=>$align,"fill"=>$fill,
-                        "hidden_type"=>"field","soverflow"=>$stretchoverflow,"poverflow"=>$printoverflow,
+                        "hidden_type"=>"field","soverflow"=>$stretchoverflow,"poverflow"=>$printoverflow, "stretchType"=>$stretchType,
                         "printWhenExpression"=>$data->reportElement->printWhenExpression."",
                         "link"=>$data->hyperlinkReferenceExpression."","pattern"=>$data["pattern"],"linktarget"=>$data["hyperlinkTarget"]."",
                         "writeHTML"=>$writeHTML,"isPrintRepeatedValues"=>$isPrintRepeatedValues,"rotation"=>$rotation,"valign"=>$valign,
@@ -1839,7 +1868,7 @@ $font=$data->textElement->font["fontName"];
         if($filename=="")
             $filename=$this->arrayPageSetting["name"].".pdf";
 
-         $this->disconnect($this->cndriver);
+//          $this->disconnect($this->cndriver);
          $this->pdf->SetXY(10,10);
          //$this->pdf->IncludeJS($this->createJS());
          //($name, $w, $h, $caption, $action, $prop=array(), $opt=array(), $x='', $y='', $js=false)
@@ -3508,11 +3537,42 @@ foreach($this->arrayVariable as $name=>$value){
 //                    if(($checkpoint +$detailheight >$this->detailallowtill) && ({$this->pdf->getPage()}>1) || <br/>
 //                        ($checkpoint +$detailheight >$this->detailallowtill-$this->orititleheight) && ({$this->pdf->getNumPages()}==1)<br/><br/>
 //                    ";
+
+                
+
+                $rowheight = 0;
+                foreach ($this->arraydetail[$d] as $out) {
+                	if(isset($out["hidden_type"])){
+                		switch ($out["hidden_type"]) {
+                			case "field":
+                				if($out["stretchType"] == "RelativeToTallestObject"){
+                					$txt = $this->analyse_expression($out["txt"],$out["isPrintRepeatedValues"] );
+                					$txt = $this->formatText($txt, isset($out["pattern"])?$out["pattern"]:"");
+                					$rowheight = max($this->pdf->getNumLines($txt, $out["width"]), $rowheight);
+                				}
+                				break;
+                			case "font":
+                				if($this->CurrentFontFamily!=$out["font"] || $this->CurrentFontStyle!=$out["fontstyle"] ||
+                				(($this->CurrentFontSizePt!=$out["fontsize"]+0) && $out["fontsize"]+0 != 0)){
+                					$this->pdf->SetFont($out["font"],$out["fontstyle"],$out["fontsize"]);
+                					$this->CurrentFontFamily = $this->pdf->getFontFamily();
+                					$this->CurrentFontStyle = $this->pdf->getFontStyle();
+                					$this->CurrentFontSizePt = $this->pdf->getFontSizePt();
+                				}
+                				break;
+                			default: break;
+                		}
+                	}
+                }
+                
+                //IF $rowheight > espacio libre hasta el footer ? cambiar de pagina >
+                $altoFila = $rowheight*(($this->pdf->GetFontSize() * $this->pdf->getCellHeightRatio()) + (2 * 1));
+                
                      if(($checkpoint +$detailheight >$this->detailallowtill) && ($this->pdf->getPage()>1) ||
-                        ($checkpoint +$detailheight >$this->detailallowtill-$this->orititleheight) && ($this->pdf->getNumPages()==1) 
+                        ($checkpoint +$detailheight >$this->detailallowtill-$this->orititleheight) && ($this->pdf->getNumPages()==1) ||
+                        		$checkpoint +$detailheight  + $altoFila >$this->detailallowtill
                              ){
-                    
-                                                $this->columnFooter();
+                        $this->columnFooter();
 						$this->pageFooter();
 						$this->pageHeader();
                                                 $colheader=$this->columnHeader($this->arrayPageSetting["topMargin"]+$this->titlebandheight+$this->arraypageHeader[0]["height"]);           
@@ -3526,6 +3586,7 @@ foreach($this->arrayVariable as $name=>$value){
 /* begin page handling*/
 
 				
+		
                 foreach ($this->arraydetail[$d] as $out) {
                     $this->currentrow=$this->arraysqltable[$this->global_pointer];
               
@@ -3535,7 +3596,16 @@ foreach($this->arrayVariable as $name=>$value){
                      //        $txt=$this->analyse_expression($compare["txt"]);
                        //  $out["txt"].":".print_r($out,true)."<br/>";
 		         $maxheight=$this->detailallowtill-$checkpoint;//$this->arrayPageSetting["pageHeight"]-$this->arraypageFooter[0]["height"]-$this->pdf->GetY()+2-$this->columnheaderbandheight-$this->columnfooterbandheight;
-                            $this->prepare_print_array=array("type"=>"MultiCell","width"=>$out["width"],"height"=>$out["height"],"txt"=>$out["txt"],
+					         $cellMargins= 1;
+					         $height=0;
+					         if($out["stretchType"] == "RelativeToTallestObject"){
+					         	$maxheight=$rowheight*(($this->pdf->GetFontSize() * $this->pdf->getCellHeightRatio()) + (2 * $cellMargins));//FIXME 1 temp, calcular el margen
+					         	$height=$maxheight;
+					         }else{
+					         	$maxheight=0;
+					         	$height=$out['height'];
+					         }
+                            $this->prepare_print_array=array("type"=>"MultiCell","width"=>$out["width"],"height"=>$height,"txt"=>$out["txt"],
 									"border"=>$out["border"],"align"=>$out["align"],"fill"=>$out["fill"],"hidden_type"=>$out["hidden_type"],
 									"printWhenExpression"=>$out["printWhenExpression"],"soverflow"=>$out["soverflow"],"poverflow"=>$out["poverflow"],"link"=>$out["link"],
 									"pattern"=>$out["pattern"],"writeHTML"=>$out["writeHTML"],"isPrintRepeatedValues"=>$out["isPrintRepeatedValues"],"valign"=>$out["valign"],
@@ -3543,7 +3613,6 @@ foreach($this->arrayVariable as $name=>$value){
                             $this->display($this->prepare_print_array,0,true,$maxheight);
                             
               //                                  $checkpoint=$this->arraydetail[0]["y_axis"];
-
 					        break;
                         case "relativebottomline":
                         //$this->relativebottomline($out,$tempY);
@@ -3836,7 +3905,8 @@ foreach($this->arrayVariable as $name=>$value){
                 $this->checkoverflow($arraydata,$this->updatePageNo($arraydata["txt"]),'',$maxheight);
             }
             elseif($fielddata==true) {
-                $this->checkoverflow($arraydata,$this->updatePageNo($this->analyse_expression($arraydata["txt"],$arraydata["isPrintRepeatedValues"] )),$maxheight);
+                //$this->checkoverflow($arraydata,$this->updatePageNo($this->analyse_expression($arraydata["txt"],$arraydata["isPrintRepeatedValues"] )),$maxheight);
+                $this->checkoverflow($arraydata,$this->updatePageNo($this->analyse_expression($arraydata["txt"],isset($arraydata["isPrintRepeatedValues"])?$arraydata["isPrintRepeatedValues"]:null )),$maxheight);
             }
         }
         elseif($arraydata["type"]=="SetXY") {
@@ -3885,12 +3955,12 @@ foreach($this->arrayVariable as $name=>$value){
             elseif($imgtype=='png'|| $imgtype=='PNG')
                   $imgtype="PNG";
           //echo $path;
-        if(file_exists($path) || $this->left($path,4)=='http' ){  
+        if(file_exists($this->imagesPath . $path) || $this->left($path,4)=='http' ){  
             //$path="/Applications/XAMPP/xamppfiles/simbiz/modules/simantz/images/modulepic.jpg";
                   //  $path="/simbiz/images/pendingno.png";
 
             if($arraydata["link"]=="") 
-                    $this->pdf->Image($path,$arraydata["x"]+$this->arrayPageSetting["leftMargin"],$arraydata["y"]+$y_axis,
+                    $this->pdf->Image($this->imagesPath . $path,$arraydata["x"]+$this->arrayPageSetting["leftMargin"],$arraydata["y"]+$y_axis,
                           $arraydata["width"],$arraydata["height"],$imgtype,$arraydata["link"]);            
             else{
 //                 if($arraydata['linktarget']=='Blank' && strpos($_SERVER['HTTP_USER_AGENT'],"Safari")!==false &&     strpos($_SERVER['HTTP_USER_AGENT'],"Chrome")==false){
@@ -4384,11 +4454,18 @@ foreach($this->arrayVariable as $name=>$value){
                                     $arraydata["valign"]="M";
                                 if($arraydata["valign"]=="")
                                     $arraydata["valign"]="T";
+
+                if($maxheight==0){
+
+                                	$maxheight=$this->pdf->getNumLines($txt, $arraydata["width"])*(($this->pdf->GetFontSize() * $this->pdf->getCellHeightRatio()) + (2 * 1));
+                                	$maxheight = max($maxheight, $arraydata["height"]); //FIXED para poder alinear verticalmente
+                                }                                
+                                
                                 
 				$x=$this->pdf->GetX();
                              //if($arraydata["link"])   echo $arraydata["linktarget"].",".$arraydata["link"]."<br/><br/>";
 		        $this->pdf->MultiCell($arraydata["width"], $arraydata["height"], $this->formatText($txt, $arraydata["pattern"]),$arraydata["border"] 
-       							,$arraydata["align"], $arraydata["fill"],1,'','',true,0,false,true,$maxheight);//,$arraydata["valign"]);
+       							,$arraydata["align"], $arraydata["fill"],1,'','',true,0,false,true,$maxheight,$arraydata["valign"]);//,$arraydata["valign"]);
 		
 				if( $this->pdf->balancetext=='' && $this->currentband=='detail'){
 					if($this->maxpagey['page_'.($this->pdf->getPage()-1)]=='')
@@ -4792,8 +4869,6 @@ foreach($this->arrayVariable as $name=>$value){
         elseif($pattern=="###0.0")
             return number_format($txt,1,".","");
         elseif($pattern=="#,##0.0" || $pattern=="#,##0.0;-#,##0.0")
-            return number_format($txt,1,".",",");
-        elseif($pattern=="$#,##0.0" || $pattern=="$#,##0.0;-$#,##0.0")
             return number_format($txt,1,".",",");
         elseif($pattern=="###0.00" || $pattern=="###0.00;-###0.00")
             return number_format($txt,2,".","");
