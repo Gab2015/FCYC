@@ -5,7 +5,7 @@
 				<span class="inicio">REPORTE DE CAJA</span>
 			</legend>
 			<div class="row">
-				<div class="col-lg-1 col-xs-2"> 
+				<div class="col-lg-4 col-xs-2"> 
 				</div>
 				<div class="col-lg-4 col-xs-11 well">
 					<fieldset>
@@ -39,9 +39,12 @@
 			<hr class="Linea">
 			<br>
 			<div class="row">
-				<div class="col-lg-6 col-xs-12">
+				<div class="col-lg-4 col-xs-2"> 
+				</div>
+				<div class="col-lg-4 col-xs-11">
 					<button type="submit" name="Generar" class="btn btn-primary">Generar</button>		
 				</div>
 			</div>
 		</form>
 	</div>
+	<br>

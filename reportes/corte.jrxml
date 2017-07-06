@@ -3,10 +3,8 @@
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
-	<parameter name="vFecha" class="java.util.Date">
-		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
-	</parameter>
 	<parameter name="vNumCaja" class="java.lang.Integer"/>
+	<parameter name="vFecha" class="java.lang.String"/>
 	<queryString>
 		<![CDATA[EXECUTE pc_m_corte $P{vFecha},$P{vNumCaja}]]>
 	</queryString>
@@ -35,8 +33,8 @@
 				<text><![CDATA[SISTEMAS CYC]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="189" y="39" width="203" height="20" uuid="f3252da5-a323-41ac-b63d-ae3a443a2255"/>
-				<textElement>
+				<reportElement x="164" y="39" width="247" height="20" uuid="f3252da5-a323-41ac-b63d-ae3a443a2255"/>
+				<textElement textAlignment="Center">
 					<font fontName="Arial" size="12" isBold="true"/>
 				</textElement>
 				<text><![CDATA[REPORTE DE CAJA VENTA DIARIA]]></text>
@@ -48,41 +46,20 @@
 				</textElement>
 				<text><![CDATA[Caja No:]]></text>
 			</staticText>
-			<textField pattern="dd/MM/yyyy">
-				<reportElement x="441" y="120" width="89" height="20" uuid="3d10acb1-eaf5-4ab3-a719-f03d408c0662"/>
-				<textElement>
-					<font fontName="Arial" size="12"/>
-				</textElement>
-				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
-			</textField>
 			<staticText>
-				<reportElement x="395" y="120" width="43" height="20" uuid="63131924-6bd3-44da-815c-ed5385a84889"/>
+				<reportElement x="391" y="119" width="73" height="20" uuid="63131924-6bd3-44da-815c-ed5385a84889"/>
 				<textElement>
 					<font fontName="Arial" size="12"/>
 				</textElement>
-				<text><![CDATA[Fecha:]]></text>
+				<text><![CDATA[Fecha:Hora]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="71" y="120" width="41" height="20" uuid="57a41dfe-9c4d-42dd-bf91-882017c628ea"/>
+				<reportElement x="71" y="120" width="93" height="20" uuid="57a41dfe-9c4d-42dd-bf91-882017c628ea"/>
 				<textElement>
 					<font fontName="Arial" size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{vNumCaja}]]></textFieldExpression>
 			</textField>
-			<textField pattern="h.mm a">
-				<reportElement x="441" y="143" width="89" height="20" uuid="b49748a9-1226-40ab-b644-4273dbd5de1d"/>
-				<textElement>
-					<font fontName="Arial" size="12"/>
-				</textElement>
-				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
-			</textField>
-			<staticText>
-				<reportElement x="395" y="143" width="43" height="20" uuid="e45ea653-1263-4d9c-85cb-87bf945a9214"/>
-				<textElement>
-					<font fontName="Arial" size="12"/>
-				</textElement>
-				<text><![CDATA[Hora:]]></text>
-			</staticText>
 			<staticText>
 				<reportElement x="429" y="94" width="56" height="20" uuid="79b40ab7-7135-4e01-8693-ca5237c0b2aa"/>
 				<textElement>
@@ -97,16 +74,16 @@
 				</textElement>
 				<text><![CDATA[Fecha corte:]]></text>
 			</staticText>
-			<textField>
-				<reportElement x="89" y="143" width="100" height="20" uuid="5b1397ab-17ea-4914-9e8b-03e28d9cec52"/>
-				<textElement>
-					<font fontName="Arial" size="12"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$P{vFecha}]]></textFieldExpression>
-			</textField>
 			<line>
 				<reportElement x="5" y="167" width="562" height="1" uuid="fc89e4a6-9708-4081-9444-b6e28b870825"/>
 			</line>
+			<textField pattern="dd/MM/yyyy h.mm a">
+				<reportElement x="391" y="139" width="174" height="20" uuid="8d82eb08-d998-4b03-a485-f392b4ad8f62"/>
+				<textElement>
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
 		</band>
 	</title>
 	<columnHeader>
@@ -170,52 +147,52 @@
 				</textElement>
 				<text><![CDATA[Impreso desde sistema ticket de sistemas cyc]]></text>
 			</staticText>
-			<textField>
-				<reportElement x="446" y="6" width="80" height="20" uuid="8f462d7d-ebe7-4f8e-bce2-cb3ccd3297a0"/>
-				<textElement textAlignment="Right"/>
-				<textFieldExpression><![CDATA["Pag "+$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
-			</textField>
-			<textField evaluationTime="Report">
-				<reportElement x="526" y="6" width="40" height="20" uuid="83b10f99-bb54-4241-b7cd-a10e16212d74"/>
-				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
-			</textField>
 			<line>
 				<reportElement x="5" y="3" width="561" height="1" uuid="a2b5763a-e037-46b0-8082-2dad80c70cf1"/>
 			</line>
+			<textField>
+				<reportElement x="442" y="6" width="80" height="20" uuid="648c557d-3790-4970-906b-6aded02cf8de"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="522" y="6" width="40" height="20" uuid="0421e9cf-03ad-4472-a3a6-eb50bb4a1b26"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
 		</band>
 	</pageFooter>
 	<summary>
 		<band height="147" splitType="Stretch">
 			<rectangle radius="4">
-				<reportElement x="195" y="25" width="175" height="59" uuid="8fb44d7d-ac09-466e-8c72-0b107d9f5ccd"/>
+				<reportElement x="185" y="23" width="196" height="59" uuid="8fb44d7d-ac09-466e-8c72-0b107d9f5ccd"/>
 			</rectangle>
 			<staticText>
-				<reportElement x="95" y="6" width="71" height="20" uuid="40165352-c11c-49a2-83a5-d68072ecf732"/>
+				<reportElement x="73" y="6" width="93" height="20" uuid="40165352-c11c-49a2-83a5-d68072ecf732"/>
 				<textElement>
 					<font fontName="Arial" size="12" isBold="true"/>
 				</textElement>
 				<text><![CDATA[RESUMEN...]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="200" y="29" width="74" height="20" uuid="45ebe539-32e1-46bc-8e15-9d5645feacbb"/>
+				<reportElement x="190" y="27" width="92" height="20" uuid="45ebe539-32e1-46bc-8e15-9d5645feacbb"/>
 				<textElement>
 					<font fontName="Arial" size="12"/>
 				</textElement>
 				<text><![CDATA[Total IVA $...]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="200" y="53" width="89" height="20" uuid="da33e72f-84dc-41e5-a3b9-d860652f5fa0"/>
+				<reportElement x="190" y="51" width="92" height="20" uuid="da33e72f-84dc-41e5-a3b9-d860652f5fa0"/>
 				<textElement>
 					<font fontName="Arial" size="12"/>
 				</textElement>
 				<text><![CDATA[Total Venta $...]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="292" y="29" width="78" height="20" uuid="a2c1ae23-66cf-4a25-ab97-7aac10bc5713"/>
+				<reportElement x="284" y="27" width="84" height="20" uuid="a2c1ae23-66cf-4a25-ab97-7aac10bc5713"/>
 				<textFieldExpression><![CDATA[$V{Iva_1}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="292" y="53" width="78" height="20" uuid="9142cea3-8c70-4d05-810b-86eebe38156b"/>
+				<reportElement x="284" y="51" width="84" height="20" uuid="9142cea3-8c70-4d05-810b-86eebe38156b"/>
 				<textFieldExpression><![CDATA[$V{Total_1}]]></textFieldExpression>
 			</textField>
 		</band>

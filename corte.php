@@ -1,5 +1,5 @@
 <?php
-if ( $_GET['Imprimir'] == 'true') { 
+if ( isset($_POST['Generar']) ){ 
 define ('BASEPATH','./');
 //Import the PhpJasperLibrary
 include ('PhpJasperLibrary/tcpdf/tcpdf.php');
@@ -14,18 +14,18 @@ $pass=   $db['default']['password'];
 $version="0.9d";
 $pgport=5432;
 $pchartfolder="./class/pchart2";
-$vNumDoc = $_GET['vNumDoc'];
-$vNumCaja = $_GET['vNumCaja'];
+$vFecha = "'".date('Y-m-d H:i:s', strtotime(strtr($_POST['txt_FechaContable'], '/', '-')))."'";
+$vNumCaja = $_POST['txt_NumCaja'];
     //display errors should be off in the php.ini file
     ini_set('display_errors', 0);
     //setting the path to the created jrxml file
     ob_start();
-    $xml =  simplexml_load_file('reportes/factura.jrxml');
+    $xml =  simplexml_load_file('reportes/corte.jrxml');
     $PHPJasperXML = new PHPJasperXML();
     $PHPJasperXML->debugsql=false;
-    //$PHPJasperXML->arrayParameter=array("vNumDoc"=>$vNumDoc);
+    //$PHPJasperXML->arrayParameter=array("vFecha"=>$vFecha,"vNumCaja"=>$vNumCaja);
     $PHPJasperXML->xml_dismantle($xml);
-    $PHPJasperXML->sql ="EXECUTE pc_m_Venta $vNumDoc,$vNumCaja";
+    $PHPJasperXML->sql ="EXECUTE pc_m_corte $vFecha,$vNumCaja";
     $PHPJasperXML->transferDBtoArray($server,$user,$pass,$bd,"odbc");
     ob_end_clean();
     $PHPJasperXML->outpage("I");
