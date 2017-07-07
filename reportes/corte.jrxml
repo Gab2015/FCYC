@@ -14,6 +14,7 @@
 	<field name="VentaGravada" class="java.math.BigDecimal"/>
 	<field name="Iva" class="java.math.BigDecimal"/>
 	<field name="Total" class="java.math.BigDecimal"/>
+	<field name="Cajero" class="java.lang.String"/>
 	<variable name="Iva_1" class="java.math.BigDecimal" calculation="Sum">
 		<variableExpression><![CDATA[$F{Iva}]]></variableExpression>
 	</variable>
@@ -94,6 +95,20 @@
 					<font fontName="Arial" size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{vFecha}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="134" y="120" width="54" height="20" uuid="a9b6ceba-d768-4990-b7f2-2c8308b9df3e"/>
+				<textElement>
+					<font fontName="Arial Black" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cajero:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="190" y="120" width="161" height="20" uuid="d6ddc54f-bcbf-43be-9971-effdb62f55f6"/>
+				<textElement>
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Cajero}]]></textFieldExpression>
 			</textField>
 		</band>
 	</title>
