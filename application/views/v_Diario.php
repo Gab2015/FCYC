@@ -47,7 +47,7 @@
 			</div>
 			<div class="col-lg-4 col-xs-11">
 				<input id="btn_generar" name="btn_generar" type="submit" class="btn btn-primary" value="Generar" />
-				<span style="float:left"><a class="btn btn-success" href="<?php echo base_url('');?>diario.php?Imprimir=true&vNumDoc=<?php echo $filaDiario->NumDoc;?>" target="_blank"><span id="Herramienta" class="glyphicon glyphicon-print"></span> Imprimir</a>&nbsp;</span>	 		
+				<span style="float:left"><a class="btn btn-success" href="<?php echo base_url('');?>diario.php?Imprimir=true&vNumDoc=<?php echo $filaDiario->NumDoc;?>&vNumCaja=<?php echo $filaDiario->NumCaja;?>" target="_blank"><span id="Herramienta" class="glyphicon glyphicon-print"></span> Imprimir</a>&nbsp;</span>	 		
 			</div>
 		</div>
 		<?php

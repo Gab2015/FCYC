@@ -144,9 +144,10 @@ class c_Diario extends CI_Controller {
 	}
 			else{
 			if ($this->input->post('btn_generar') == "Generar"){
-				$Factura_result = $this->m_Factura->pc_m_Factura_i($NumDoc,$Cliente,$Nombre,$IdTipo,$Cajero,$Vendedor,$CodVendedor,$FechaContable,$NumCaja,$VentaGravada,$VentaExenta,$VentaNoSujeta,$Iva,$Total,$DocType,$DUI,$TipoPago);
+				$Factura_result = $this->m_Diario->pc_m_Diario_i($NumDoc,$usuario,$IdTipo);
 						unset($_POST['txt_NumCaja']);
 						unset($_POST['txt_IdTipo']);
+						redirect('c_Diario/index');  
 				}
 			else{
 				$this->session->set_flashdata('msg', '<div class="alert alert-danger text-center">¡Datos incorrectos!</div>');

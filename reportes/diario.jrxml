@@ -3,29 +3,15 @@
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
+	<parameter name="vNumDoc" class="java.lang.Integer"/>
+	<parameter name="vNumCaja" class="java.lang.Integer"/>
 	<queryString>
-		<![CDATA[SELECT * FROM Factura]]>
+		<![CDATA[EXECUTE pc_m_Diario $P{vNumDoc},$P{vNumCaja}]]>
 	</queryString>
-	<field name="IdFac" class="java.lang.Integer"/>
 	<field name="NumDoc" class="java.lang.Integer"/>
-	<field name="Cliente" class="java.lang.String"/>
-	<field name="Nombre" class="java.lang.String"/>
-	<field name="IdTipo" class="java.lang.Integer"/>
-	<field name="Cajero" class="java.lang.String"/>
-	<field name="Vendedor" class="java.lang.String"/>
-	<field name="CodVendedor" class="java.lang.Integer"/>
-	<field name="FechaContable" class="java.sql.Timestamp"/>
-	<field name="NumCaja" class="java.lang.Integer"/>
-	<field name="VentaGravada" class="java.math.BigDecimal"/>
-	<field name="VentaExenta" class="java.math.BigDecimal"/>
-	<field name="VentaNoSujeta" class="java.math.BigDecimal"/>
-	<field name="Iva" class="java.math.BigDecimal"/>
-	<field name="Total" class="java.math.BigDecimal"/>
-	<field name="DocType" class="java.lang.String"/>
-	<field name="DUI" class="java.lang.String"/>
-	<field name="TipoPago" class="java.lang.String"/>
+	<field name="Codusuario" class="java.lang.String"/>
 	<title>
-		<band height="180" splitType="Stretch">
+		<band height="193" splitType="Stretch">
 			<image scaleImage="FillFrame">
 				<reportElement x="20" y="9" width="66" height="93" uuid="e25f74f3-e9c1-4c1f-9e42-10c090278f7c"/>
 				<imageExpression><![CDATA["C:\\xampp\\htdocs\\FCYC\\imagenes\\logoCYC.jpg"]]></imageExpression>
@@ -38,66 +24,94 @@
 				<text><![CDATA[REPORTE DIARIO]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="34" y="128" width="45" height="20" uuid="b4e1d2bf-d8bf-4334-9cc2-cd11d4f7f144"/>
+				<reportElement x="34" y="141" width="45" height="20" uuid="b4e1d2bf-d8bf-4334-9cc2-cd11d4f7f144"/>
 				<textElement>
 					<font fontName="Arial" size="12"/>
 				</textElement>
 				<text><![CDATA[Fecha:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="10" y="156" width="69" height="20" uuid="4e91cb01-b326-4c11-bd0e-1fbfd70cccfe"/>
+				<reportElement x="10" y="169" width="69" height="20" uuid="4e91cb01-b326-4c11-bd0e-1fbfd70cccfe"/>
 				<textElement>
 					<font fontName="Arial" size="12"/>
 				</textElement>
 				<text><![CDATA[Encargado:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="453" y="156" width="138" height="20" uuid="0d23c255-0d4e-463d-808e-885fac41b471"/>
+				<reportElement x="453" y="169" width="138" height="20" uuid="0d23c255-0d4e-463d-808e-885fac41b471"/>
 				<textElement>
 					<font fontName="Arial" size="12"/>
 				</textElement>
 				<text><![CDATA[Centro de fotocopias #:]]></text>
 			</staticText>
 			<line>
-				<reportElement x="86" y="139" width="359" height="1" uuid="c41f30a7-2eb6-43a1-957f-3753390a5f56"/>
+				<reportElement x="86" y="152" width="359" height="1" uuid="c41f30a7-2eb6-43a1-957f-3753390a5f56"/>
 			</line>
 			<line>
-				<reportElement x="86" y="166" width="359" height="1" uuid="e4ca716f-2891-4842-9ee6-8adeba13d8ef"/>
+				<reportElement x="86" y="179" width="359" height="1" uuid="e4ca716f-2891-4842-9ee6-8adeba13d8ef"/>
 			</line>
 			<line>
-				<reportElement x="596" y="166" width="148" height="1" uuid="ee269e21-482c-49bc-ac95-358b5e88d6ec"/>
+				<reportElement x="596" y="179" width="148" height="1" uuid="ee269e21-482c-49bc-ac95-358b5e88d6ec"/>
 			</line>
 			<staticText>
-				<reportElement x="454" y="99" width="64" height="20" uuid="726af63c-1d79-4679-a82a-1f38a2341838"/>
+				<reportElement x="453" y="91" width="64" height="20" uuid="726af63c-1d79-4679-a82a-1f38a2341838"/>
 				<textElement>
 					<font fontName="Arial Black" size="12" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Impreso:]]></text>
 			</staticText>
 			<textField pattern="dd/MM/yyyy h.mm a">
-				<reportElement x="524" y="99" width="174" height="20" uuid="a5074e28-0114-4a58-acb2-83cd0deb3297"/>
+				<reportElement x="523" y="91" width="174" height="20" uuid="a5074e28-0114-4a58-acb2-83cd0deb3297"/>
 				<textElement>
 					<font fontName="Arial" size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
 			</textField>
 			<rectangle>
-				<reportElement x="451" y="124" width="248" height="24" uuid="e7f0110a-c8b2-4ed7-b2f4-61aadc4a9f04"/>
+				<reportElement x="451" y="137" width="248" height="24" uuid="e7f0110a-c8b2-4ed7-b2f4-61aadc4a9f04"/>
 			</rectangle>
 			<line>
-				<reportElement x="606" y="124" width="1" height="24" uuid="20f6e9a5-c07c-4052-b9dd-c1772b2f839f"/>
+				<reportElement x="606" y="137" width="1" height="24" uuid="20f6e9a5-c07c-4052-b9dd-c1772b2f839f"/>
 			</line>
 			<staticText>
-				<reportElement x="457" y="126" width="140" height="20" uuid="7956eeb8-944e-4405-8354-2f28da040a75"/>
+				<reportElement x="457" y="139" width="140" height="20" uuid="7956eeb8-944e-4405-8354-2f28da040a75"/>
 				<textElement>
 					<font fontName="Arial Black" size="12" isBold="true"/>
 				</textElement>
 				<text><![CDATA[No DE REMESA:]]></text>
 			</staticText>
+			<staticText>
+				<reportElement x="453" y="114" width="64" height="20" uuid="b9f96966-ede6-45ac-8a3e-03845c3971f9"/>
+				<textElement>
+					<font fontName="Arial Black" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Usuario:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="524" y="114" width="100" height="20" uuid="7069726c-c306-4de5-8ce1-91f14ecf40fd"/>
+				<textElement>
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Codusuario}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="516" y="42" width="26" height="29" forecolor="#FF0000" uuid="f6a293fe-9999-40eb-a00b-1d9684ce3636"/>
+				<textElement>
+					<font fontName="Arial Black" size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[N°]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="545" y="42" width="136" height="29" forecolor="#FF0000" uuid="18995330-bc08-4954-ad71-5f00038ec491"/>
+				<textElement>
+					<font fontName="Arial Black" size="16"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{vNumDoc}]]></textFieldExpression>
+			</textField>
 		</band>
 	</title>
 	<pageHeader>
-		<band height="374">
+		<band height="361">
 			<rectangle>
 				<reportElement x="451" y="9" width="290" height="24" backcolor="#CCCCCC" uuid="9b27a33f-70aa-4a35-a71c-f752df6c73d1"/>
 			</rectangle>
