@@ -61,7 +61,8 @@ class c_Diario extends CI_Controller {
       //creo el array con datos de configuración para la vista			
             $Usuariobd['usuario'] = $usuario;
 		    $Tipo = ($usuario == "eportillo" ? 1 : 2);
-            $datos_diario['rs_Diario'] = $this->m_Diario->get_UltimoDiario($Tipo);
+            $UltimoDoc = $this->m_Diario->get_UltimoDiario($Tipo);
+            $datos_diario['rs_Diario'] = $this->m_Diario->get_Diario($UltimoDoc,$Tipo);
       //cargo la vista pasando los datos de configuracion
 			$this->load->view('v_Head');
 			$this->load->view('v_Header',$Usuariobd);
@@ -145,8 +146,6 @@ class c_Diario extends CI_Controller {
 			else{
 			if ($this->input->post('btn_generar') == "Generar"){
 				$Factura_result = $this->m_Diario->pc_m_Diario_i($NumDoc,$usuario,$IdTipo);
-						unset($_POST['txt_NumCaja']);
-						unset($_POST['txt_IdTipo']);
 						redirect('c_Diario/index');  
 				}
 			else{

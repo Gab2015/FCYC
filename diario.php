@@ -25,7 +25,7 @@ $vNumCaja = $_GET['vNumCaja'];
     $PHPJasperXML->debugsql=false;
     $PHPJasperXML->arrayParameter=array("vNumDoc"=>$vNumDoc,"vNumCaja"=>$vNumCaja);
     $PHPJasperXML->xml_dismantle($xml);
-    //$PHPJasperXML->sql ="EXECUTE pc_m_Venta $vNumDoc,$vNumCaja";
+    //$PHPJasperXML->sql ="EXECUTE pc_m_Diario $vNumDoc,$vNumCaja";
     $PHPJasperXML->transferDBtoArray($server,$user,$pass,$bd,"odbc");
     ob_end_clean();
     $PHPJasperXML->outpage("I");

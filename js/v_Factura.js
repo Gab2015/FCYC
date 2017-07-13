@@ -111,39 +111,51 @@ vNumDoc = $("input:text#txt_NumDoc").val();
 vNextIdFac = $("input:text#txt_NextIdFac").val();
 $("#btn_insertar").on('click',function(){
 	$('input[class=Marcada]:checkbox:checked').each(function(i,e){ 
-				var vNumFilaAgregada=$('#DetalleFac tr').length;
-				var celda = $(this).closest('tr').children('td');
-				var vCodigo = celda.eq(4).html();
-                var vDescripcion = celda.eq(5).html();
-                var vPrecioUnitario = celda.eq(6).html();
-                var vNumFabricante = celda.eq(9).html();
-				var vFilaAgregada="<tr><td class='hidden-md hidden-lg'><input class='LineaCampo' id='txt_IdFac' name='txt_IdFac[]' placeholder='IdFac' type='text' value='"+vNextIdFac+"' readonly/></td>";
-				vFilaAgregada +="<td class='hidden-md hidden-lg'><input class='LineaCampo' id='txt_IdProducto' name='txt_IdProducto[]' placeholder='IdProducto' type='text' value='1' readonly/></td>";
-                vFilaAgregada +="<td class='hidden-md hidden-lg'><input class='LineaCampo' id='txt_CuentaMayor' name='txt_CuentaMayor[]' placeholder='CuentaMayor' type='text' value='401050101-SV-GP' readonly/></td>";
-                vFilaAgregada +="<td class='hidden-md hidden-lg'><input class='LineaCampo' id='txt_CuentaCoste' name='txt_CuentaCoste[]' placeholder='CuentaCoste' type='text' value='501050101SVGP' readonly/></td>";
-                vFilaAgregada +="<td class='hidden-md hidden-lg'><input class='LineaCampo' id='txt_NormaReparto' name='txt_NormaReparto[]' placeholder='NormaReparto' type='text' value='GRAFIPRO' readonly/></td>";
-                vFilaAgregada +="<td class='hidden-md hidden-lg'><input class='LineaCampo' id='txt_LineaNumDoc' name='txt_LineaNumDoc[]' placeholder='NumDoc' type='text' value='"+vNumDoc+"' readonly/></td>";
-                vFilaAgregada +="<td class='hidden-md hidden-lg'><input class='LineaCampo' id='txt_Afecto' name='txt_Afecto[]' placeholder='Afecto' type='text' value='IVA' readonly/></td>";
-				vFilaAgregada +="<td><span id='snum'>"+vNumFilaAgregada+"</span></td>";
-				vFilaAgregada +="<td><input type='checkbox' class='FilaMarcada'></td>";
-				vFilaAgregada +="<td><input class='LineaCampo' id='txt_CodProducto' name='txt_CodProducto[]' placeholder='Codigo' type='text' value='"+vCodigo+"' readonly/></td>";
-				vFilaAgregada +="<td class='hidden-md hidden-lg'><input class='LineaCampo' id='txt_NumFabricante' name='txt_NumFabricante[]' placeholder='NumFabricante' type='text' value='"+vNumFabricante+"' readonly/></td>";
-				vFilaAgregada +="<td><input class='LineaCampo' id='txt_DescripcionProducto' name='txt_DescripcionProducto[]' placeholder='DescripcionProducto' type='text' value='"+vDescripcion+"' readonly/></td>";
-				vFilaAgregada +="<td><input class='form-control' id='txt_Cantidad' name='txt_Cantidad[]' placeholder='Cantidad' type='text' value=''/></td>";
-				vFilaAgregada +="<td><input class='LineaCampo' id='txt_PrecioConIva' name='txt_PrecioConIva[]' placeholder='PrecioConIva' type='text' value='"+vPrecioUnitario+"' readonly/></td>";
-				vFilaAgregada +="<td><input class='form-control' id='txt_Afecta' name='txt_Afecta[]' placeholder='Total' type='text' value='' readonly/></td></tr>";				
-				$('#DetalleFac').append(vFilaAgregada);
-				$('#modal_Articulo').modal('hide');
-    });
+		var vNumFilaAgregada=$('#DetalleFac tr').length;
+		var celda = $(this).closest('tr').children('td');
+		var vCodigo = celda.eq(4).html();
+		var vDescripcion = celda.eq(5).html();
+		var vPrecioUnitario = celda.eq(6).html();
+		var vNumFabricante = celda.eq(9).html();
+		var vFilaAgregada="<tr><td class='hidden-md hidden-lg'><input class='LineaCampo' id='txt_IdFac' name='txt_IdFac[]' placeholder='IdFac' type='text' value='"+vNextIdFac+"' readonly/></td>";
+		vFilaAgregada +="<td class='hidden-md hidden-lg'><input class='LineaCampo' id='txt_IdProducto' name='txt_IdProducto[]' placeholder='IdProducto' type='text' value='1' readonly/></td>";
+		vFilaAgregada +="<td class='hidden-md hidden-lg'><input class='LineaCampo' id='txt_CuentaMayor' name='txt_CuentaMayor[]' placeholder='CuentaMayor' type='text' value='401050101-SV-GP' readonly/></td>";
+		vFilaAgregada +="<td class='hidden-md hidden-lg'><input class='LineaCampo' id='txt_CuentaCoste' name='txt_CuentaCoste[]' placeholder='CuentaCoste' type='text' value='501050101SVGP' readonly/></td>";
+		vFilaAgregada +="<td class='hidden-md hidden-lg'><input class='LineaCampo' id='txt_NormaReparto' name='txt_NormaReparto[]' placeholder='NormaReparto' type='text' value='GRAFIPRO' readonly/></td>";
+		vFilaAgregada +="<td class='hidden-md hidden-lg'><input class='LineaCampo' id='txt_LineaNumDoc' name='txt_LineaNumDoc[]' placeholder='NumDoc' type='text' value='"+vNumDoc+"' readonly/></td>";
+		vFilaAgregada +="<td class='hidden-md hidden-lg'><input class='LineaCampo' id='txt_Afecto' name='txt_Afecto[]' placeholder='Afecto' type='text' value='IVA' readonly/></td>";
+		vFilaAgregada +="<td><span id='snum'>"+vNumFilaAgregada+"</span></td>";
+		vFilaAgregada +="<td><input type='checkbox' class='FilaMarcada'></td>";
+		vFilaAgregada +="<td><input class='LineaCampo' id='txt_CodProducto' name='txt_CodProducto[]' placeholder='Codigo' type='text' value='"+vCodigo+"' readonly/></td>";
+		vFilaAgregada +="<td class='hidden-md hidden-lg'><input class='LineaCampo' id='txt_NumFabricante' name='txt_NumFabricante[]' placeholder='NumFabricante' type='text' value='"+vNumFabricante+"' readonly/></td>";
+		vFilaAgregada +="<td><input class='LineaCampo' id='txt_DescripcionProducto' name='txt_DescripcionProducto[]' placeholder='DescripcionProducto' type='text' value='"+vDescripcion+"' readonly/></td>";
+		vFilaAgregada +="<td><input class='form-control' id='txt_Cantidad' name='txt_Cantidad[]' placeholder='Cantidad' type='text' value=''/></td>";
+		vFilaAgregada +="<td><input class='LineaCampo' id='txt_PrecioConIva' name='txt_PrecioConIva[]' placeholder='PrecioConIva' type='text' value='"+vPrecioUnitario+"' readonly/></td>";
+		vFilaAgregada +="<td><input class='form-control' id='txt_Afecta' name='txt_Afecta[]' placeholder='Total' type='text' value='' readonly/></td></tr>";				
+		$('#DetalleFac').append(vFilaAgregada);
+		$('#modal_Articulo').modal('hide');
+	});
 });
 //=========FIN=========//
 //=========INICIO de calendario=========//
- $("#txt_FechaContable").datepicker({format: 'dd/mm/yyyy'});
+$("#txt_FechaContable").datepicker({format: 'dd/mm/yyyy'});
 //=========FIN=========//
 $("input[type=text]#txt_DescripcionProducto").attr('size', function() {
-    return this.value.length;
+	return this.value.length;
 });
 $("input[type=text]#txt_DescripcionProducto").on('keyup', function() {
-    $(this).attr('size', this.value.length);
+	$(this).attr('size', this.value.length);
 }).trigger('keyup');
+//=========FIN=========//
+//=========FIN=========//
+//=========INICIO de calendario=========//
+$('#diario').on('click', function(e){
+    e.preventDefault();
+    var url = $(this).attr('href');
+    var NumCaja = $('[name="txt_NumCaja"]').val();
+    if( NumCaja ){
+        window.open(url+NumCaja,'_blank');
+    }  
+});
+//=========FIN=========//
 });

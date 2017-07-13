@@ -8,13 +8,12 @@ class m_Diario extends CI_Model {
         $ssqlNumDoc = "EXECUTE pc_m_UltimoDiario ?";
         $paramsNumDoc = array($Tipo);
         $rs_UltimoDiario = $this->db->query($ssqlNumDoc,$paramsNumDoc);
-        $rs_UltimoDiarios['rs_UltimoDiario'] = $rs_UltimoDiario->result();
-        return  $rs_UltimoDiarios;
+        return  $rs_UltimoDiario->row()->NumDoc;
     }
     function get_Diario($NumDoc,$IdTipo){
     //Variables
         $ssqlNumDoc = "EXECUTE pc_m_Diario ?,?";
-        $paramsNumDoc = array($NumDoc);
+        $paramsNumDoc = array($NumDoc,$IdTipo);
         $rs_Diario = $this->db->query($ssqlNumDoc,$paramsNumDoc);
         $rs_Diarios['rs_Diario'] = $rs_Diario->result();
         return  $rs_Diarios;
