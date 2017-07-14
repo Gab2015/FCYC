@@ -145,8 +145,9 @@ class c_Diario extends CI_Controller {
 	}
 			else{
 			if ($this->input->post('btn_generar') == "Generar"){
-				$Factura_result = $this->m_Diario->pc_m_Diario_i($NumDoc,$usuario,$IdTipo);
-						redirect('c_Diario/index');  
+				$usuario   = $this->session->userdata('username');
+				$Factura_result = $this->m_Diario->pc_m_Diario_i($NumDoc,$usuario,$Tipo);
+				redirect('c_Diario/index');  
 				}
 			else{
 				$this->session->set_flashdata('msg', '<div class="alert alert-danger text-center">¡Datos incorrectos!</div>');
