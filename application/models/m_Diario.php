@@ -21,7 +21,7 @@ class m_Diario extends CI_Model {
     function pc_m_Diario_i($NumDoc,$usuario,$IdTipo){
         $vSiguienteDoc = $NumDoc + 1; 
         $ssql ="EXECUTE pc_m_Diario_i ?,?,?";
-        $params = array($vSiguienteDoc,$Cliente,$IdTipo);
+        $params = array($vSiguienteDoc,$usuario,$IdTipo);
         $rs_DiarioInsert= $this->db->query($ssql,$params);
         return  $rs_DiarioInsert->result();
     }
