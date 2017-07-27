@@ -75,7 +75,7 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'SAP_BO',//'GABRIEL-ROJA-PC\DESARROLLO',//'192.168.0.21\DESARROLLO',
+	'hostname' => 'SAP_BO',//'192.168.0.21\DESARROLLO',
 	'port'     => '1433',
 	'username' => 'sa',
 	'password' => 'emanuel',
